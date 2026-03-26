@@ -2,32 +2,32 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 
 const Home = () => {
   return (
-    <div className="space-y-20 md:space-y-28">
-      <section className="home-hero">
+    <div className="flex flex-col gap-16 md:gap-24 pb-16 md:pb-24">
+      <section className="home-hero pt-4 md:pt-12">
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gradient-to-tr from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 flex-shrink-0 border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden flex items-center justify-center transition-colors">
+          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-100 dark:bg-gray-800 flex-shrink-0 border border-gray-200 dark:border-gray-700 overflow-hidden flex items-center justify-center transition-colors">
             {/* Replace with your actual photo later */}
-            <span className="text-4xl text-blue-500 dark:text-blue-300 font-bold">MS</span>
+            <span className="text-4xl text-gray-400 dark:text-gray-500 font-bold">MS</span>
           </div>
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
               Hi, I'm Maksym Shykov
             </h2>
-            <p className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-medium mb-6">
+            <p className="mt-2 text-lg text-slate-500 dark:text-slate-400 font-medium mb-6">
               Engineering Manager focused on building high-performance teams and delivering impactful products.
             </p>
-            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 mt-4">
               With 15 years of experience in IT, I specialize in leading cross-functional teams, implementing AI solutions, and fostering engineering excellence. When I'm not leading teams, you can find me exploring new technologies or writing about my learnings on my blog.
             </p>
             
             <div className="home-actions">
-              <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-all hover:-translate-y-0.5 shadow-sm">
+              <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors">
                 <Github className="w-5 h-5" /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-all hover:-translate-y-0.5 shadow-sm">
+              <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors">
                 <Linkedin className="w-5 h-5" /> LinkedIn
               </a>
-              <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-all hover:-translate-y-0.5 shadow-sm">
+              <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors">
                 <Twitter className="w-5 h-5" /> X (Twitter)
               </a>
             </div>
@@ -35,13 +35,13 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700/50 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-400/5 hover:-translate-y-1 transition-all duration-300">
+      <section>
+        <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
             <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">01</span>
             Core Skills
           </h3>
-          <ul className="grid grid-cols-1 gap-3 text-gray-600 dark:text-gray-300">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 dark:text-gray-300">
             <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
               <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
               <span className="font-medium">Engineering Leadership & Mentoring</span>
@@ -69,8 +69,10 @@ const Home = () => {
             </a>
           </div>
         </div>
+      </section>
         
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700/50 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-400/5 hover:-translate-y-1 transition-all duration-300">
+      <section>
+        <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
             <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">02</span>
             What I Do
