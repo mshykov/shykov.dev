@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -64,9 +65,9 @@ const Home = () => {
             </li>
           </ul>
           <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700/50">
-            <a href="/blog" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-all hover:underline decoration-2 underline-offset-4">
+            <Link to="/blog" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-colors hover:underline decoration-2 underline-offset-4">
               Read my latest articles <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -82,9 +83,9 @@ const Home = () => {
               I specialize in leading and scaling cross-functional engineering teams to deliver high-quality, impactful products. From architecting robust QA processes to driving cutting-edge AI integrations like smart search and personalized paywalls, my focus is on aligning engineering excellence with business value.
             </p>
             <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700/50">
-              <a href="/experience" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-all hover:underline decoration-2 underline-offset-4">
+              <Link to="/experience" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-colors hover:underline decoration-2 underline-offset-4">
                 View my full experience <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

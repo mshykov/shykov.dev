@@ -64,7 +64,7 @@ const Layout = () => {
     <div className="layout-root">
       {/* Header */}
       <header className="layout-header">
-        <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-all">
+        <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-colors">
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
             Maksym Shykov
           </h1>
