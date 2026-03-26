@@ -200,7 +200,7 @@
     padding-top: 0.875rem; /* Increased py-3.5 */
     padding-bottom: 0.875rem;
     border-radius: 9999px; /* rounded-full */
-    transition: all 0.2s ease-in-out;
+    transition: background-color, border-color 0.2s ease-in-out;
     background-color: #ffffff;
     border: 1px solid #e5e7eb; /* gray-200 */
   }

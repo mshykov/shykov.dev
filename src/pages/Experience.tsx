@@ -127,7 +127,7 @@ const Experience = () => {
                           href={exp.companyUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0 mt-1 hover:border-blue-200 dark:hover:border-blue-800 transition-colors group/logo"
+                          className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0 mt-1 hover:border-blue-200 dark:hover:border-blue-800 transition-colors"
                           aria-label={`Visit ${exp.company} website`}
                         >
                           <img src={exp.logoUrl} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
