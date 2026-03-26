@@ -64,12 +64,12 @@ const Layout = () => {
     <div className="layout-root">
       {/* Header */}
       <header className="layout-header">
-        <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-all">
+        <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-colors">
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
             Maksym Shykov
           </h1>
           <p className="text-lg text-gray-500 dark:text-gray-400 font-medium">
-            Software Engineer & Tech Enthusiast
+            Leader of Engineers & Tech Enthusiast
           </p>
         </Link>
         
@@ -79,7 +79,7 @@ const Layout = () => {
               <li>
                 <NavLink 
                   to="/" 
-                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-all scale-105" : "hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:underline decoration-3 underline-offset-8 hover:scale-105"}
+                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
                 >
                   Home
                 </NavLink>
@@ -87,7 +87,7 @@ const Layout = () => {
               <li>
                 <NavLink 
                   to="/experience" 
-                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-all scale-105" : "hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:underline decoration-3 underline-offset-8 hover:scale-105"}
+                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
                 >
                   Experience
                 </NavLink>
@@ -95,7 +95,7 @@ const Layout = () => {
               <li>
                 <NavLink 
                   to="/blog" 
-                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-all scale-105" : "hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:underline decoration-3 underline-offset-8 hover:scale-105"}
+                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
                 >
                   Blog
                 </NavLink>
@@ -129,14 +129,14 @@ const Layout = () => {
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <a 
                 href="mailto:maksym.shykov@gmail.com" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors"
               >
                 <Mail className="w-5 h-5" />
                 Send an Email
               </a>
               <button
                 onClick={copyEmail}
-                className="theme-toggle flex items-center justify-center w-[52px] h-[52px] transition-all hover:-translate-y-0.5 active:scale-95"
+                className="theme-toggle flex items-center justify-center w-[52px] h-[52px] transition-colors"
                 aria-label="Copy email address"
                 title="Copy email address"
               >
@@ -148,13 +148,13 @@ const Layout = () => {
           <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
             <h3 className="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm">Follow Me</h3>
             <div className="social-links -m-2">
-              <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all">
+              <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 <Github className="w-6 h-6" />
               </a>
-              <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all">
+              <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all">
+              <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 <Twitter className="w-6 h-6" />
               </a>
             </div>

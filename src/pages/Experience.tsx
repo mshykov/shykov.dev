@@ -105,8 +105,8 @@ const Experience = () => {
   ];
 
   return (
-    <div className="space-y-24 md:space-y-32">
-      <section className="experience-section">
+    <div className="space-y-4">
+      <section className="experience-section py-12 md:py-16">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Working Experience</h2>
         <div className="space-y-8">
           {experiences.map((exp, index) => (
@@ -127,13 +127,13 @@ const Experience = () => {
                           href={exp.companyUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0 shadow-sm mt-1 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all group/logo"
+                          className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0 mt-1 hover:border-blue-200 dark:hover:border-blue-800 transition-colors"
                           aria-label={`Visit ${exp.company} website`}
                         >
-                          <img src={exp.logoUrl} alt={`${exp.company} logo`} className="w-8 h-8 object-contain transition-transform group-hover/logo:scale-110" />
+                          <img src={exp.logoUrl} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
                         </a>
                       ) : (
-                        <div className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0 shadow-sm mt-1">
+                        <div className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0 mt-1">
                           <img src={exp.logoUrl} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
                         </div>
                       )
@@ -154,11 +154,11 @@ const Experience = () => {
         </div>
       </section>
 
-      <section>
+      <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Education</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {education.map((edu, index) => (
-            <div key={index} className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col h-full transition-colors hover:shadow-md hover:-translate-y-1 hover:border-blue-100 dark:hover:border-blue-900/50">
+            <div key={index} className="bg-white dark:bg-[#111827] p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col h-full transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
               <div className="text-3xl mb-4">🎓</div>
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">{edu.name}</h3>
               <div className="mt-auto">
@@ -170,11 +170,11 @@ const Experience = () => {
         </div>
       </section>
 
-      <section>
+      <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Courses & Certifications</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((cert, index) => (
-            <div key={index} className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col h-full transition-colors hover:shadow-md hover:-translate-y-1 hover:border-blue-100 dark:hover:border-blue-900/50">
+            <div key={index} className="bg-white dark:bg-[#111827] p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col h-full transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
               <div className="text-3xl mb-4">📜</div>
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">{cert.name}</h3>
               <div className="mt-auto">
