@@ -79,7 +79,7 @@ const Layout = () => {
               <li>
                 <NavLink 
                   to="/" 
-                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
+                  className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
                 >
                   Home
                 </NavLink>
@@ -87,7 +87,7 @@ const Layout = () => {
               <li>
                 <NavLink 
                   to="/experience" 
-                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
+                  className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
                 >
                   Experience
                 </NavLink>
@@ -95,7 +95,7 @@ const Layout = () => {
               <li>
                 <NavLink 
                   to="/blog" 
-                  className={({ isActive }) => isActive ? "text-blue-800 dark:text-blue-500 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
+                  className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
                 >
                   Blog
                 </NavLink>

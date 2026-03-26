@@ -36,60 +36,62 @@ const Home = () => {
         </div>
       </section>
 
-      <section>
-        <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">01</span>
-            Core Skills
-          </h3>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 dark:text-gray-300">
-            <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-              <span className="font-medium">Engineering Leadership & Mentoring</span>
-            </li>
-            <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-              <span className="font-medium">Cross-Functional Team Building</span>
-            </li>
-            <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-              <span className="font-medium">AI Solutions (Search & Paywalls)</span>
-            </li>
-            <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-              <span className="font-medium">Quality Assurance & Test Automation</span>
-            </li>
-            <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-              <span className="font-medium">Agile Project Management</span>
-            </li>
-          </ul>
-          <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700/50">
-            <Link to="/blog" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-colors hover:underline decoration-2 underline-offset-4">
-              Read my latest articles <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-            </Link>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <section className="h-full">
+          <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80 h-full flex flex-col">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">01</span>
+              Core Skills
+            </h3>
+            <ul className="grid grid-cols-1 gap-3 text-gray-600 dark:text-gray-300 mb-8">
+              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
+                <span className="font-medium">Engineering Leadership & Mentoring</span>
+              </li>
+              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
+                <span className="font-medium">Cross-Functional Team Building</span>
+              </li>
+              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
+                <span className="font-medium">AI Solutions (Search & Paywalls)</span>
+              </li>
+              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
+                <span className="font-medium">Quality Assurance & Test Automation</span>
+              </li>
+              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
+                <span className="font-medium">Agile Project Management</span>
+              </li>
+            </ul>
+            <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700/50">
+              <Link to="/blog" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-all hover:underline decoration-2 underline-offset-4">
+                Read my latest articles <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-        
-      <section>
-        <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">02</span>
-            What I Do
-          </h3>
-          <div className="space-y-4">
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              I specialize in leading and scaling cross-functional engineering teams to deliver high-quality, impactful products. From architecting robust QA processes to driving cutting-edge AI integrations like smart search and personalized paywalls, my focus is on aligning engineering excellence with business value.
-            </p>
-            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700/50">
-              <Link to="/experience" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-colors hover:underline decoration-2 underline-offset-4">
+        </section>
+          
+        <section className="h-full">
+          <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80 h-full flex flex-col">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">02</span>
+              What I Do
+            </h3>
+            <div className="space-y-4 mb-8">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                I specialize in leading and scaling cross-functional engineering teams to deliver high-quality, impactful products. From architecting robust QA processes to driving cutting-edge AI integrations like smart search and personalized paywalls, my focus is on aligning engineering excellence with business value.
+              </p>
+            </div>
+            <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700/50">
+              <Link to="/experience" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-all hover:underline decoration-2 underline-offset-4">
                 View my full experience <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };

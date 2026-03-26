@@ -245,21 +245,7 @@
     max-width: 64rem; /* matched to footer max-w-5xl */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* px-4 */
-    padding-right: 1rem;
     flex-grow: 1;
-  }
-  @media (min-width: 768px) {
-    .layout-main {
-      padding-left: 1.5rem; /* md:px-6 */
-      padding-right: 1.5rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .layout-main {
-      padding-left: 2rem; /* lg:px-8 */
-      padding-right: 2rem;
-    }
   }
   .layout-footer {
     width: 100%;
