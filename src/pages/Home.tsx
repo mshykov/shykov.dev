@@ -7,15 +7,14 @@ const Home = () => {
       <section className="home-hero pt-4 md:pt-12">
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-100 dark:bg-gray-800 flex-shrink-0 border border-gray-200 dark:border-gray-700 overflow-hidden flex items-center justify-center transition-colors">
-            {/* Replace with your actual photo later */}
-            <span className="text-4xl text-gray-400 dark:text-gray-500 font-bold">MS</span>
+            <img src="/avatar.jpg" alt="Maksym Shykov" className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
               Hi, I'm Maksym Shykov
             </h2>
             <p className="mt-2 text-lg text-slate-500 dark:text-slate-400 font-medium mb-6">
-              Engineering Manager focused on building high-performance teams and delivering impactful products.
+              Engineering Lead focused on building high-performance teams and delivering impactful products.
             </p>
             <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 mt-4">
               With 15 years of experience in IT, I specialize in leading cross-functional teams, implementing AI solutions, and fostering engineering excellence. When I'm not leading teams, you can find me exploring new technologies or writing about my learnings on my blog.

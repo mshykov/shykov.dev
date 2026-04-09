@@ -69,7 +69,7 @@ const Layout = () => {
             Maksym Shykov
           </h1>
           <p className="text-lg text-gray-500 dark:text-gray-400 font-medium">
-            Leader of Engineers & Tech Enthusiast
+            Engineering Lead & Tech Enthusiast
           </p>
         </Link>
         

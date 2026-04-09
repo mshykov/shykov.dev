@@ -27,3 +27,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private files
+Engineering_Manager_Maksym_Shykov.pdf
