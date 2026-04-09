@@ -64,52 +64,54 @@ const Layout = () => {
     <div className="layout-root">
       {/* Header */}
       <header className="layout-header">
-        <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-colors">
-          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
-            Maksym Shykov
-          </h1>
-          <p className="text-lg text-gray-500 dark:text-gray-400 font-medium">
-            Leader of Engineers & Tech Enthusiast
-          </p>
-        </Link>
-        
-        <div className="flex items-center space-x-4">
-          <nav className="layout-nav">
-            <ul className="layout-nav-list">
-              <li>
-                <NavLink 
-                  to="/" 
-                  className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink 
-                  to="/experience" 
-                  className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
-                >
-                  Experience
-                </NavLink>
-              </li>
-              <li>
-                <NavLink 
-                  to="/blog" 
-                  className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
-                >
-                  Blog
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+        <div className="layout-header-inner w-full">
+          <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-colors">
+            <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
+              Maksym Shykov
+            </h1>
+            <p className="text-lg text-gray-500 dark:text-gray-400 font-medium">
+              Engineering Lead & Tech Enthusiast
+            </p>
+          </Link>
           
-          <button 
-            onClick={toggleTheme}
-            className="theme-toggle"
-            aria-label="Toggle dark mode"
-          >
-            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+          <div className="flex items-center space-x-4">
+            <nav className="layout-nav">
+              <ul className="layout-nav-list">
+                <li>
+                  <NavLink 
+                    to="/" 
+                    className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink 
+                    to="/experience" 
+                    className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
+                  >
+                    Experience
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink 
+                    to="/blog" 
+                    className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
+                  >
+                    Blog
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+            
+            <button 
+              onClick={toggleTheme}
+              className="theme-toggle"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </header>
 
