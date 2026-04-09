@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import ScrollToTop from './components/ScrollToTop';
 
 const Layout = lazy(() => import('./components/Layout'));
 const Home = lazy(() => import('./pages/Home'));
@@ -9,6 +10,7 @@ const Blog = lazy(() => import('./pages/Blog'));
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading…</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
