@@ -30,3 +30,4 @@ dist-ssr
 
 # Private files
 Engineering_Manager_Maksym_Shykov.pdf
+\n# Exclude raw generated images\npublic/Gemini_Generated_Image_*.png
