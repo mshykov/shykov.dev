@@ -1,6 +1,28 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Sun, Moon, Github, Linkedin, Mail, Twitter, Copy, Check } from 'lucide-react';
+import { initAnalytics } from '../firebase';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+// Stored in localStorage under 'cookie-consent' as 'accepted' | 'declined';
+// null means the visitor hasn't chosen yet (banner should show).
+const CONSENT_KEY = 'cookie-consent';
+
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  isActive
+    ? 'text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors'
+    : 'hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8';
+
+const navItems = [
+  { to: '/', label: 'Home' },
+  { to: '/experience', label: 'Experience' },
+  { to: '/blog', label: 'Blog' },
+];
 
 const Layout = () => {
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -13,10 +35,17 @@ const Layout = () => {
   const [showCookies, setShowCookies] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText('maksym.shykov@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyEmail = async () => {
+    try {
+      // `navigator.clipboard` is undefined in insecure contexts and writeText
+      // rejects when the document lacks focus/permission — only flip the
+      // success state once the write actually resolves.
+      await navigator.clipboard?.writeText('maksym.shykov@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // copy failed — leave the UI unchanged (the mailto link is the fallback)
+    }
   };
 
   useEffect(() => {
@@ -32,11 +61,14 @@ const Layout = () => {
       // no-op: localStorage may be unavailable in some environments
     }
 
-    // Check if cookies accepted and show banner after a short delay
-    const cookiesAccepted = localStorage.getItem('cookies-accepted');
+    // Show the banner only until the visitor has made a choice. If they
+    // previously accepted, (re)initialize analytics for this session.
+    const consent = localStorage.getItem(CONSENT_KEY);
     let timer: number | undefined;
-    if (!cookiesAccepted) {
+    if (consent === null) {
       timer = window.setTimeout(() => setShowCookies(true), 1500); // Small delay for better UX
+    } else if (consent === 'accepted') {
+      void initAnalytics();
     }
     return () => {
       if (timer) clearTimeout(timer);
@@ -56,7 +88,15 @@ const Layout = () => {
   };
 
   const acceptCookies = () => {
-    localStorage.setItem('cookies-accepted', 'true');
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
+    void initAnalytics();
+    setShowCookies(false);
+  };
+
+  const declineCookies = () => {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
     setShowCookies(false);
   };
 
@@ -66,41 +106,26 @@ const Layout = () => {
       <header className="layout-header">
         <div className="layout-header-inner w-full">
           <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-colors">
-            <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
+            {/* Brand is intentionally not an <h1>: each page owns its own <h1>
+                so the heading reflects the current route for AT/SEO. */}
+            <span className="block text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
               Maksym Shykov
-            </h1>
+            </span>
             <p className="text-lg text-gray-500 dark:text-gray-400 font-medium">
               Engineering Lead & Tech Enthusiast
             </p>
           </Link>
-          
+
           <div className="flex items-center space-x-4">
             <nav className="layout-nav">
               <ul className="layout-nav-list">
-                <li>
-                  <NavLink 
-                    to="/" 
-                    className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
-                  >
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink 
-                    to="/experience" 
-                    className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
-                  >
-                    Experience
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink 
-                    to="/blog" 
-                    className={({ isActive }) => isActive ? "text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors" : "hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8"}
-                  >
-                    Blog
-                  </NavLink>
-                </li>
+                {navItems.map(({ to, label }) => (
+                  <li key={to}>
+                    <NavLink to={to} className={navLinkClass}>
+                      {label}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </nav>
             
@@ -170,7 +195,7 @@ const Layout = () => {
 
       {/* Cookie Banner */}
       {showCookies && (
-        <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:max-w-md bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 z-50 animate-in fade-in slide-in-from-bottom-8 duration-500">
+        <div className="cookie-banner-enter fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:max-w-md bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 z-50">
           <div className="flex flex-col gap-4">
             <div className="space-y-1">
               <h4 className="font-bold text-gray-900 dark:text-white">Cookie Policy</h4>
@@ -185,8 +210,8 @@ const Layout = () => {
               >
                 Accept
               </button>
-              <button 
-                onClick={() => setShowCookies(false)}
+              <button
+                onClick={declineCookies}
                 className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 font-bold py-2 px-4 rounded-xl transition-colors text-sm"
               >
                 Decline

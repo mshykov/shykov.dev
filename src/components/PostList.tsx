@@ -4,12 +4,16 @@ import { db } from '../firebase';
 import type { Post } from '../types';
 import PostCard from './PostCard';
 
-const PostList: React.FC = () => {
+const PostList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Guard against StrictMode's double-mount (dev) and unmount-mid-fetch:
+    // discard the response if the effect has already been cleaned up.
+    let ignore = false;
+
     const fetchPosts = async () => {
       try {
         setLoading(true);
@@ -24,22 +28,28 @@ const PostList: React.FC = () => {
 
         const querySnapshot = await getDocs(q);
         const fetchedPosts: Post[] = [];
-        
+
         querySnapshot.forEach((doc) => {
-          fetchedPosts.push({ id: doc.id, ...doc.data() } as Post);
+          // Spread first, then set id last so the document id always wins over
+          // any stored field literally named `id`.
+          fetchedPosts.push({ ...doc.data(), id: doc.id } as Post);
         });
 
-        setPosts(fetchedPosts);
+        if (!ignore) setPosts(fetchedPosts);
       } catch (err) {
         console.error("Error fetching posts:", err);
         const message = err instanceof Error ? err.message : String(err);
-        setError(message || 'Failed to load posts.');
+        if (!ignore) setError(message || 'Failed to load posts.');
       } finally {
-        setLoading(false);
+        if (!ignore) setLoading(false);
       }
     };
 
     fetchPosts();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   if (loading) {

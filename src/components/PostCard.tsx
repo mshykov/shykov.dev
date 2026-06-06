@@ -4,23 +4,28 @@ interface PostCardProps {
   post: Post;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post }) => {
+const PostCard = ({ post }: PostCardProps) => {
   // Format the date if it's a Firebase Timestamp or a serializable date
   let date = 'Unknown date';
+  let isoDate: string | null = null;
   const createdAt = post.createdAt;
 
   const hasToDate = (v: unknown): v is { toDate: () => Date } => {
     return typeof v === 'object' && v !== null && 'toDate' in (v as object) && typeof (v as { toDate?: unknown }).toDate === 'function';
   };
 
+  // The Date constructor never throws on bad input — it returns an Invalid Date —
+  // so detect unparseable values with isNaN(getTime()) rather than try/catch.
+  let parsed: Date | null = null;
   if (hasToDate(createdAt)) {
-    date = createdAt.toDate().toLocaleDateString();
+    parsed = createdAt.toDate();
   } else if (createdAt) {
-    try {
-      date = new Date(createdAt as string | number).toLocaleDateString();
-    } catch {
-      // ignore invalid date formats
-    }
+    const d = new Date(createdAt as string | number);
+    if (!Number.isNaN(d.getTime())) parsed = d;
+  }
+  if (parsed) {
+    date = parsed.toLocaleDateString();
+    isoDate = parsed.toISOString();
   }
 
   return (
@@ -46,7 +51,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       
       <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-50 dark:border-gray-700 pt-4 transition-colors">
         <span>By {post.author || 'Anonymous'}</span>
-        <time>{date}</time>
+        {isoDate ? <time dateTime={isoDate}>{date}</time> : <span>{date}</span>}
       </div>
     </article>
   );

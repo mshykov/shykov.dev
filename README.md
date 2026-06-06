@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# Maksym Shykov — Personal Website & Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A single-page React app for Maksym Shykov's personal site and blog. It is served
+as static files from Firebase Hosting and reads published posts from Firestore.
+There is no custom backend — the only server-side surface is Firestore (security
+rules in [`firestore.rules`](firestore.rules)).
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **react-router-dom v7**, built with **Vite 7**
+- **TypeScript** (strict)
+- **Tailwind CSS v4** via the `@tailwindcss/vite` plugin (single stylesheet, `src/index.css`)
+- **Firebase** — Firestore (data), Auth, Analytics; Firebase Hosting (deploy)
 
-## React Compiler
+## Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install        # install dependencies
+npm run dev        # Vite dev server with HMR
+npm run build      # tsc -b (typecheck) then vite build → dist/
+npm run lint       # ESLint over the repo
+npm run preview    # serve the production build locally
+firebase deploy    # deploy to Firebase Hosting (project: m-shykov); serves dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+There is no test runner. `npm run build` is the gate — it runs `tsc -b`, so type
+errors fail the build even though Vite alone would not catch them.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Copy `.env.example` to `.env` and fill in the `VITE_FIREBASE_*` values (find them
+in the Firebase console → Project settings). They are injected at build time by
+Vite and consumed in [`src/firebase.ts`](src/firebase.ts). Missing vars don't fail
+the build — they surface as Firebase runtime errors in the browser (and a console
+warning naming the missing keys).
+
+## Architecture
+
+- **Routing** ([`src/App.tsx`](src/App.tsx)): all routes are `lazy()`-loaded under a
+  single `Layout` route (`/` → Home, `/experience`, `/blog`), wrapped in `Suspense`.
+  `ScrollToTop` resets scroll on navigation. Hosting rewrites all paths to
+  `/index.html`, so deep links resolve as client-side routes.
+- **Layout** ([`src/components/Layout.tsx`](src/components/Layout.tsx)): header/nav/
+  footer around an `<Outlet/>`; owns dark-mode and cookie-consent state.
+- **Data flow**: `Blog` → `PostList` → `PostCard`. `PostList` queries Firestore
+  directly (`where('published','==',true)`, `limit(10)`). No global state library,
+  no data-fetching cache — each component queries Firestore itself. The `Post`/`User`
+  shapes live in [`src/types/index.ts`](src/types/index.ts) and mirror the documents.
+- **Dark mode** is class-based (`.dark` on `<html>`), persisted in
+  `localStorage.theme`. An inline script in `index.html` applies it before React
+  mounts to prevent a flash of unstyled content.
+
+For agent-oriented contributor guidance, see [`CLAUDE.md`](CLAUDE.md).

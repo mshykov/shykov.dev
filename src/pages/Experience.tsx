@@ -107,10 +107,10 @@ const Experience = () => {
   return (
     <div className="space-y-4">
       <section className="experience-section py-12 md:py-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Working Experience</h2>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Working Experience</h1>
         <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={index} className="relative pl-8 md:pl-0">
+          {experiences.map((exp) => (
+            <div key={`${exp.company}-${exp.period}`} className="relative pl-8 md:pl-0">
               <div className="md:hidden absolute left-0 top-2 w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full"></div>
               <div className="hidden md:block absolute left-[10.5rem] top-2 w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full z-10"></div>
               <div className="hidden md:block absolute left-[10.8rem] top-0 bottom-[-2rem] w-px bg-gray-200 dark:bg-gray-700 transition-colors"></div>
@@ -157,8 +157,8 @@ const Experience = () => {
       <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Education</h2>
         <div className="grid md:grid-cols-2 gap-6">
-          {education.map((edu, index) => (
-            <div key={index} className="bg-white dark:bg-[#111827] p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col h-full transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
+          {education.map((edu) => (
+            <div key={edu.name} className="bg-white dark:bg-[#111827] p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col h-full transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
               <div className="text-3xl mb-4">🎓</div>
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">{edu.name}</h3>
               <div className="mt-auto">
@@ -173,8 +173,8 @@ const Experience = () => {
       <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Courses & Certifications</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((cert, index) => (
-            <div key={index} className="bg-white dark:bg-[#111827] p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col h-full transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
+          {courses.map((cert) => (
+            <div key={cert.name} className="bg-white dark:bg-[#111827] p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col h-full transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80">
               <div className="text-3xl mb-4">📜</div>
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">{cert.name}</h3>
               <div className="mt-auto">

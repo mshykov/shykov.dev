@@ -2,16 +2,66 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maksym Shykov | Software Engineer</title>
+
+    <!-- Icons (see ~/.claude/CLAUDE.md icon/PWA checklist) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-title" content="Maksym Shykov" />
+    <meta name="theme-color" content="#1877F2" />
+
+    <title>Maksym Shykov | Engineering Lead</title>
+    <meta
+      name="description"
+      content="Maksym Shykov — Engineering Lead focused on building high-performance teams and delivering impactful products. Notes on engineering leadership and technology."
+    />
+    <link rel="canonical" href="https://m-shykov.web.app/" />
     <meta name="google-site-verification" content="mvIcVBY-h8wFwSgI-sCqZzc_m6rH85YlRD-qFGqRT4k" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://m-shykov.web.app/" />
+    <meta property="og:title" content="Maksym Shykov | Engineering Lead" />
+    <meta
+      property="og:description"
+      content="Engineering Lead focused on building high-performance teams and delivering impactful products. Notes on engineering leadership and technology."
+    />
+    <meta property="og:image" content="https://m-shykov.web.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@Shykov" />
+    <meta name="twitter:title" content="Maksym Shykov | Engineering Lead" />
+    <meta
+      name="twitter:description"
+      content="Engineering Lead focused on building high-performance teams and delivering impactful products. Notes on engineering leadership and technology."
+    />
+    <meta name="twitter:image" content="https://m-shykov.web.app/og-image.png" />
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WS43P0R63F"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // Consent Mode v2: deny analytics/ads storage until the user accepts the
+      // cookie banner (see src/components/Layout.tsx). Re-apply a stored choice
+      // so returning visitors aren't re-prompted or under-tracked.
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied'
+      });
+      try {
+        if (localStorage.getItem('cookie-consent') === 'accepted') {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+      } catch (e) { /* localStorage may be unavailable */ }
       gtag('config', 'G-WS43P0R63F');
     </script>
     <script>

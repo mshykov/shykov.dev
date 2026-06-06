@@ -10,9 +10,9 @@ const Home = () => {
             <img src="/avatar-optimized.jpg" alt="Maksym Shykov" className="w-full h-full object-cover" />
           </div>
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
+            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
               Hi, I'm Maksym Shykov
-            </h2>
+            </h1>
             <p className="mt-2 text-lg text-slate-500 dark:text-slate-400 font-medium mb-6">
               Engineering Lead focused on building high-performance teams and delivering impactful products.
             </p>
