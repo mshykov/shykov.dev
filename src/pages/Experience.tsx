@@ -1,3 +1,5 @@
+import Seo from '../components/Seo';
+
 const Experience = () => {
   const experiences = [
     {
@@ -106,6 +108,11 @@ const Experience = () => {
 
   return (
     <div className="space-y-4">
+      <Seo
+        title="Experience — Maksym Shykov"
+        description="Maksym Shykov's career: Engineering Manager at Headway and MacPaw (Setapp), QA leadership, and 15 years building and scaling cross-functional engineering teams."
+        path="/experience"
+      />
       <section className="experience-section py-12 md:py-16">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-4 transition-colors">Working Experience</h1>
         <div className="space-y-8">

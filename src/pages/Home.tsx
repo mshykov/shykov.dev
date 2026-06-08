@@ -1,13 +1,19 @@
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const Home = () => {
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-16 md:pb-24">
+      <Seo
+        title="Maksym Shykov | Engineering Lead"
+        description="Maksym Shykov — Engineering Lead with 15 years in IT, focused on building high-performance teams, AI solutions, and engineering excellence."
+        path="/"
+      />
       <section className="home-hero pt-4 md:pt-12">
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-100 dark:bg-gray-800 flex-shrink-0 border border-gray-200 dark:border-gray-700 overflow-hidden flex items-center justify-center transition-colors">
-            <img src="/avatar-optimized.jpg" alt="Maksym Shykov" className="w-full h-full object-cover" />
+            <img src="/avatar-optimized.jpg" alt="Portrait of Maksym Shykov, Engineering Lead" className="w-full h-full object-cover" />
           </div>
           <div>
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
