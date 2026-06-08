@@ -39,6 +39,13 @@ Documents mirror the interfaces in `src/types/index.ts`:
 
 Security rules (`firestore.rules`): published posts are world-readable; unpublished posts require auth; **all client writes are denied** (`allow write: if false`) because posts are authored out-of-band via the Firebase console / Admin SDK, which bypass rules. `users` docs are readable/writable only by their owner. For an unauthenticated `list` query, Firestore rejects the whole query unless it carries `where('published','==',true)` — keep that filter on every anonymous posts query.
 
+## SEO
+
+- **Per-route metadata**: the base `<head>` tags live statically in `index.html` (representing Home). Each page renders `<Seo title description path />` (`src/components/Seo.tsx`), whose effect updates `document.title`, the description, canonical, and og/twitter title/description/url on navigation — so each route has a unique, accurate title/description (Google renders JS). **When adding a route, render `<Seo>` in it** (use `noindex` for non-indexable pages like the 404).
+- **Crawlability**: `public/robots.txt` (allows all + Sitemap line) and `public/sitemap.xml` (lists the routes) ship at the site root — Firebase serves them as static files before the SPA rewrite. The catch-all route (`*` → `NotFound`) renders `noindex` to avoid soft-404s.
+- **Structured data**: a `WebSite` + `Person` JSON-LD `@graph` in `index.html` (static, sitewide). Update it if the role, employer, or social profiles change.
+- **Limitation**: non-JS social scrapers only see `index.html`'s static (Home) OG tags; per-route social previews would require SSR/prerender, which this static SPA intentionally doesn't do.
+
 ## Styling & dark mode
 
 - **Tailwind CSS v4** via the `@tailwindcss/vite` plugin. There is no JS Tailwind config and no PostCSS config — content detection is automatic and theme customization goes in an `@theme` block in CSS. The single stylesheet is `src/index.css`, which `@import "tailwindcss"` and defines `@font-face` (Fixel Text), reusable component classes under `@layer components` (e.g. `layout-root`, `layout-header`, `posts-grid`, `theme-toggle`), and base styles. Prefer Tailwind utilities in JSX; reach for these component classes for repeated layout structures. Note: `animate-in`/`slide-in-from-*` plugin utilities are **not** available (no plugin installed) — use a hand-written `@keyframes` class instead (see `cookie-banner-enter`).
