@@ -1,9 +1,10 @@
-# SEO — This Project
+# SEO — shykov.dev
 
-How this site (Maksym Shykov's personal site/blog) implements the general guidance in
-the org-level SEO reference (`~/Projects/docs/seo.md`, shared across projects). The
-site is a client-rendered React + Vite SPA on Firebase Hosting;
-routes are `/`, `/experience`, `/blog`. Canonical domain: `https://m-shykov.web.app`.
+> Baseline: `MSH/docs/seo.md` (org common rules). Below: shykov.dev-specific rules.
+
+This site (Maksym Shykov's personal site/blog) is a client-rendered React + Vite SPA on
+Firebase Hosting; routes are `/`, `/experience`, `/blog`. Canonical domain:
+`https://m-shykov.web.app`.
 
 ## What's implemented
 
