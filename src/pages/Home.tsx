@@ -46,8 +46,8 @@ const Home = () => {
       {/* Hero — typography-led, no decoration */}
       <section className="pt-20 md:pt-28 pb-16 md:pb-20">
         <p className="section-label mb-5">Engineering Lead · Headway</p>
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-ink dark:text-ink-dark leading-[1.1] mb-6 text-balance">
-          I build engineering teams that ship AI-powered products.
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink dark:text-ink-dark leading-[1.15] mb-6 text-balance">
+          Building engineering teams that ship AI-powered products.
         </h1>
         <p className="text-lg text-ink-secondary dark:text-ink-secondary-dark leading-relaxed max-w-xl mb-10">
           Fifteen years in software — from QA engineer at Samsung to leading
