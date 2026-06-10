@@ -57,10 +57,10 @@ const PostList = () => {
       <div className="loading-wrapper">
         <div className="loading-card">
           <div className="flex-1 space-y-4 py-1">
-            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 transition-colors"></div>
+            <div className="h-4 bg-surface dark:bg-surface-dark rounded w-3/4 transition-colors"></div>
             <div className="space-y-2">
-              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded transition-colors"></div>
-              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6 transition-colors"></div>
+              <div className="h-4 bg-surface dark:bg-surface-dark rounded transition-colors"></div>
+              <div className="h-4 bg-surface dark:bg-surface-dark rounded w-5/6 transition-colors"></div>
             </div>
           </div>
         </div>
@@ -70,9 +70,9 @@ const PostList = () => {
 
   if (error) {
     return (
-      <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-4 rounded-lg text-center transition-colors">
+      <div className="border border-hairline dark:border-hairline-dark text-ink-secondary dark:text-ink-secondary-dark p-4 rounded-lg text-center transition-colors mt-6">
         <p>{error}</p>
-        <p className="text-sm mt-2">Check your Firestore security rules and configuration.</p>
+        <p className="text-sm mt-2 text-ink-tertiary dark:text-ink-tertiary-dark">Check your Firestore security rules and configuration.</p>
       </div>
     );
   }
@@ -80,8 +80,8 @@ const PostList = () => {
   if (posts.length === 0) {
     return (
       <div className="empty-posts">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No posts yet</h3>
-        <p className="text-gray-500 dark:text-gray-400">Check back later for new content!</p>
+        <h3 className="text-lg font-semibold text-ink dark:text-ink-dark mb-2">No posts yet</h3>
+        <p className="text-ink-secondary dark:text-ink-secondary-dark text-sm">Check back later for new content.</p>
       </div>
     );
   }

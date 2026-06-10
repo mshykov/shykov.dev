@@ -1,102 +1,116 @@
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 
+// Highlights are drawn from the verifiable track record on /experience —
+// keep the two in sync when updating either.
+const highlights = [
+  {
+    metric: "EU's first alternative iOS app marketplace",
+    context: 'Shipped Setapp Mobile at MacPaw under the Digital Markets Act window',
+  },
+  {
+    metric: 'AI paywalls & ML-driven personalization',
+    context: 'Released recommendation systems and pricing optimization for the Headway app',
+  },
+  {
+    metric: '95% availability at 0.2s response time',
+    context: 'AI Assistant and Smart Search for Setapp, from prototype to production',
+  },
+  {
+    metric: '2.5× faster release cycle',
+    context: 'Streamlined desktop and mobile release processes across two platforms',
+  },
+  {
+    metric: '14 engineers across two cross-functional teams',
+    context: 'Hired, built, and managed desktop and mobile orgs at MacPaw',
+  },
+];
+
+const focusAreas = [
+  'Engineering leadership and mentoring',
+  'Building and scaling cross-functional teams',
+  'AI product integration — search, personalization, paywalls',
+  'Quality engineering and release management',
+];
+
 const Home = () => {
   return (
-    <div className="flex flex-col gap-16 md:gap-24 pb-16 md:pb-24">
+    <div className="flex flex-col pb-8">
       <Seo
         title="Maksym Shykov | Engineering Lead"
         description="Maksym Shykov — Engineering Lead with 15 years in IT, focused on building high-performance teams, AI solutions, and engineering excellence."
         path="/"
       />
-      <section className="home-hero pt-4 md:pt-12">
-        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-100 dark:bg-gray-800 flex-shrink-0 border border-gray-200 dark:border-gray-700 overflow-hidden flex items-center justify-center transition-colors">
-            <img src="/avatar-optimized.jpg" alt="Portrait of Maksym Shykov, Engineering Lead" className="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
-              Hi, I'm Maksym Shykov
-            </h1>
-            <p className="mt-2 text-lg text-slate-500 dark:text-slate-400 font-medium mb-6">
-              Engineering Lead focused on building high-performance teams and delivering impactful products.
-            </p>
-            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 mt-4">
-              With 15 years of experience in IT, I specialize in leading cross-functional teams, implementing AI solutions, and fostering engineering excellence. When I'm not leading teams, you can find me exploring new technologies or writing about my learnings on my blog.
-            </p>
-            
-            <div className="home-actions">
-              <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors">
-                <Github className="w-5 h-5" /> GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors">
-                <Linkedin className="w-5 h-5" /> LinkedIn
-              </a>
-              <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors">
-                <Twitter className="w-5 h-5" /> X (Twitter)
-              </a>
-            </div>
+
+      {/* Hero — typography-led, no decoration */}
+      <section className="pt-20 md:pt-28 pb-16 md:pb-20">
+        <p className="section-label mb-5">Engineering Lead · Headway</p>
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-ink dark:text-ink-dark leading-[1.1] mb-6 text-balance">
+          I build engineering teams that ship AI-powered products.
+        </h1>
+        <p className="text-lg text-ink-secondary dark:text-ink-secondary-dark leading-relaxed max-w-xl mb-10">
+          Fifteen years in software — from QA engineer at Samsung to leading
+          cross-functional teams at MacPaw and Headway. I care about
+          engineering excellence that compounds into business value.
+        </p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Link to="/experience" className="btn-ink">
+            View experience <ArrowRight className="w-4 h-4" />
+          </Link>
+          <div className="flex items-center gap-1">
+            <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
+              <Twitter className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-        <section className="h-full">
-          <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80 h-full flex flex-col">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">01</span>
-              Core Skills
-            </h3>
-            <ul className="grid grid-cols-1 gap-3 text-gray-600 dark:text-gray-300 mb-8">
-              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-                <span className="font-medium">Engineering Leadership & Mentoring</span>
-              </li>
-              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-                <span className="font-medium">Cross-Functional Team Building</span>
-              </li>
-              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-                <span className="font-medium">AI Solutions (Search & Paywalls)</span>
-              </li>
-              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-                <span className="font-medium">Quality Assurance & Test Automation</span>
-              </li>
-              <li className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <span className="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full"></span> 
-                <span className="font-medium">Agile Project Management</span>
-              </li>
-            </ul>
-            <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700/50">
-              <Link to="/blog" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-all hover:underline decoration-2 underline-offset-4">
-                Read my latest articles <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-          
-        <section className="h-full">
-          <div className="bg-white dark:bg-[#111827] p-8 rounded-2xl border border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/80 h-full flex flex-col">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">02</span>
-              What I Do
-            </h3>
-            <div className="space-y-4 mb-8">
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I specialize in leading and scaling cross-functional engineering teams to deliver high-quality, impactful products. From architecting robust QA processes to driving cutting-edge AI integrations like smart search and personalized paywalls, my focus is on aligning engineering excellence with business value.
-              </p>
-            </div>
-            <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700/50">
-              <Link to="/experience" className="group text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold inline-flex items-center gap-2 transition-all hover:underline decoration-2 underline-offset-4">
-                View my full experience <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+      {/* Career highlights — facts, not adjectives */}
+      <section className="py-14 border-t border-hairline dark:border-hairline-dark">
+        <h2 className="section-label mb-8">Career highlights</h2>
+        <ul>
+          {highlights.map(({ metric, context }) => (
+            <li
+              key={metric}
+              className="py-4 first:pt-0 last:pb-0 border-b border-hairline dark:border-hairline-dark last:border-b-0 md:grid md:grid-cols-[1fr_1.2fr] md:gap-8"
+            >
+              <span className="block font-semibold text-ink dark:text-ink-dark">
+                {metric}
+              </span>
+              <span className="block text-sm text-ink-secondary dark:text-ink-secondary-dark mt-1 md:mt-0.5 leading-relaxed">
+                {context}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Focus */}
+      <section className="py-14 border-t border-hairline dark:border-hairline-dark">
+        <h2 className="section-label mb-8">Focus</h2>
+        <ul className="space-y-3 max-w-xl">
+          {focusAreas.map((area) => (
+            <li
+              key={area}
+              className="text-ink-secondary dark:text-ink-secondary-dark leading-relaxed"
+            >
+              {area}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-10 text-sm">
+          <Link to="/blog" className="text-link inline-flex items-center gap-1.5 font-medium">
+            Read my writing <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </p>
+      </section>
     </div>
   );
 };
