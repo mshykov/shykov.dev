@@ -46,7 +46,7 @@ const apps = [
   {
     name: 'local-review',
     url: 'https://mshykov.github.io/local-review/',
-    label: 'Open source',
+    label: 'Free · Open source',
     description:
       'Privacy-first AI code reviews from your terminal with multi-LLM support, shipped as a single Go binary.',
   },
