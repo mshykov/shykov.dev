@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, Linkedin, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 
@@ -24,6 +24,31 @@ const highlights = [
   {
     metric: '14 engineers across two cross-functional teams',
     context: 'Hired, built, and managed desktop and mobile orgs at MacPaw',
+  },
+];
+
+// Things I've built and shipped myself — the "Builder." in the hero.
+const apps = [
+  {
+    name: 'CoffeeSlack',
+    url: 'https://www.coffeeslack.com/',
+    label: 'Free',
+    description:
+      'Random coffee for Slack — pairs teammates for casual 1:1 chats with a /coffee command.',
+  },
+  {
+    name: 'Alotno',
+    url: 'https://alotno.app/',
+    label: 'Free · Open source',
+    description:
+      'PNG-to-vector converter that runs entirely in your browser — SVG, PDF, EPS, DXF. No uploads, no accounts.',
+  },
+  {
+    name: 'local-review',
+    url: 'https://mshykov.github.io/local-review/',
+    label: 'Open source',
+    description:
+      'Privacy-first AI code reviews from your terminal with multi-LLM support, shipped as a single Go binary.',
   },
 ];
 
@@ -86,6 +111,37 @@ const Home = () => {
               </span>
               <span className="block text-sm text-ink-secondary dark:text-ink-secondary-dark mt-1 md:mt-0.5 leading-relaxed">
                 {context}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Apps — shipped solo, proof of the "Builder." */}
+      <section className="py-14 border-t border-hairline dark:border-hairline-dark">
+        <h2 className="section-label mb-8">Apps I've built</h2>
+        <ul>
+          {apps.map(({ name, url, label, description }) => (
+            <li
+              key={name}
+              className="py-4 first:pt-0 last:pb-0 border-b border-hairline dark:border-hairline-dark last:border-b-0 md:grid md:grid-cols-[1fr_1.2fr] md:gap-8"
+            >
+              <span className="block">
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink dark:text-ink-dark hover:underline underline-offset-4 inline-flex items-center gap-1"
+                >
+                  {name}
+                  <ArrowUpRight className="w-3.5 h-3.5 text-ink-tertiary dark:text-ink-tertiary-dark" />
+                </a>
+                <span className="block text-xs text-ink-tertiary dark:text-ink-tertiary-dark mt-0.5">
+                  {label}
+                </span>
+              </span>
+              <span className="block text-sm text-ink-secondary dark:text-ink-secondary-dark mt-1 md:mt-0.5 leading-relaxed">
+                {description}
               </span>
             </li>
           ))}
