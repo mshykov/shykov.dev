@@ -53,10 +53,22 @@ const apps = [
 ];
 
 const focusAreas = [
-  'Engineering leadership and mentoring',
-  'Building and scaling cross-functional teams',
-  'AI product integration — search, personalization, paywalls',
-  'Quality engineering and release management',
+  {
+    area: 'Engineering leadership and mentoring',
+    detail: 'Growth plans, transparent promotions, and hands-on coaching for engineers and leads',
+  },
+  {
+    area: 'Building and scaling cross-functional teams',
+    detail: 'Hiring and team structure for product orgs across iOS, Android, desktop, and web',
+  },
+  {
+    area: 'AI product integration',
+    detail: 'Search, personalization, and paywalls — taken from prototype to production-grade availability',
+  },
+  {
+    area: 'Quality engineering and release management',
+    detail: 'QA-bred discipline: test automation, integration testing, and releases that ship on time',
+  },
 ];
 
 const Home = () => {
@@ -75,7 +87,7 @@ const Home = () => {
           Leader. Mentor. Builder.
         </h1>
         <p className="text-lg text-ink-secondary dark:text-ink-secondary-dark leading-relaxed max-w-xl mb-10">
-          I lead engineering teams at Headway, mentor engineers, and build
+          I run engineering teams at Headway, mentor engineers, and build
           AI-powered products hands-on. Fifteen years in software — from QA
           engineer at Samsung to engineering management at MacPaw and Headway.
         </p>
@@ -83,6 +95,9 @@ const Home = () => {
           <Link to="/experience" className="btn-ink">
             View experience <ArrowRight className="w-4 h-4" />
           </Link>
+          <a href="#contact" className="text-link text-sm font-medium">
+            Get in touch
+          </a>
           <div className="flex items-center gap-1">
             <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
               <Github className="w-5 h-5" />
@@ -151,13 +166,18 @@ const Home = () => {
       {/* Focus */}
       <section className="py-14 border-t border-hairline dark:border-hairline-dark">
         <h2 className="section-label mb-8">Focus</h2>
-        <ul className="space-y-3 max-w-xl">
-          {focusAreas.map((area) => (
+        <ul>
+          {focusAreas.map(({ area, detail }) => (
             <li
               key={area}
-              className="text-ink-secondary dark:text-ink-secondary-dark leading-relaxed"
+              className="py-4 first:pt-0 last:pb-0 border-b border-hairline dark:border-hairline-dark last:border-b-0 md:grid md:grid-cols-[1fr_1.2fr] md:gap-8"
             >
-              {area}
+              <span className="block font-semibold text-ink dark:text-ink-dark">
+                {area}
+              </span>
+              <span className="block text-sm text-ink-secondary dark:text-ink-secondary-dark mt-1 md:mt-0.5 leading-relaxed">
+                {detail}
+              </span>
             </li>
           ))}
         </ul>
