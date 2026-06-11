@@ -47,12 +47,12 @@ const Home = () => {
       <section className="pt-20 md:pt-28 pb-16 md:pb-20">
         <p className="section-label mb-5">Engineering Lead · Headway</p>
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink dark:text-ink-dark leading-[1.15] mb-6 text-balance">
-          Building engineering teams that ship AI-powered products.
+          Leader. Mentor. Builder.
         </h1>
         <p className="text-lg text-ink-secondary dark:text-ink-secondary-dark leading-relaxed max-w-xl mb-10">
-          Fifteen years in software — from QA engineer at Samsung to leading
-          cross-functional teams at MacPaw and Headway. I care about
-          engineering excellence that compounds into business value.
+          I lead engineering teams at Headway, mentor engineers, and build
+          AI-powered products hands-on. Fifteen years in software — from QA
+          engineer at Samsung to engineering management at MacPaw and Headway.
         </p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <Link to="/experience" className="btn-ink">
