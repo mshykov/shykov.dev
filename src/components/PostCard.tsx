@@ -24,35 +24,38 @@ const PostCard = ({ post }: PostCardProps) => {
     if (!Number.isNaN(d.getTime())) parsed = d;
   }
   if (parsed) {
-    date = parsed.toLocaleDateString();
+    date = parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
     isoDate = parsed.toISOString();
   }
 
   return (
     <article className="post-card">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{post.title}</h3>
-        {!post.published && (
-          <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 text-xs px-2 py-1 rounded-full font-medium transition-colors">
-            Draft
-          </span>
-        )}
+      <div className="flex items-baseline justify-between gap-4 mb-2">
+        <h3 className="text-lg font-semibold text-ink dark:text-ink-dark leading-snug">
+          {post.title}
+        </h3>
+        <span className="text-xs text-ink-tertiary dark:text-ink-tertiary-dark whitespace-nowrap">
+          {isoDate ? <time dateTime={isoDate}>{date}</time> : date}
+        </span>
       </div>
-      
-      <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">{post.content}</p>
-      
-      <div className="flex flex-wrap gap-2 mb-4">
-        {post.tags?.map((tag) => (
-          <span key={tag} className="bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs px-2 py-1 rounded-md font-medium transition-colors">
-            #{tag}
-          </span>
-        ))}
-      </div>
-      
-      <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-50 dark:border-gray-700 pt-4 transition-colors">
-        <span>By {post.author || 'Anonymous'}</span>
-        {isoDate ? <time dateTime={isoDate}>{date}</time> : <span>{date}</span>}
-      </div>
+
+      {!post.published && (
+        <span className="inline-block text-xs font-medium text-ink-tertiary dark:text-ink-tertiary-dark border border-hairline dark:border-hairline-dark rounded px-1.5 py-0.5 mb-2">
+          Draft
+        </span>
+      )}
+
+      <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark leading-relaxed line-clamp-3 mb-3">
+        {post.content}
+      </p>
+
+      {post.tags && post.tags.length > 0 && (
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-ink-tertiary dark:text-ink-tertiary-dark">
+          {post.tags.map((tag) => (
+            <span key={tag}>#{tag}</span>
+          ))}
+        </div>
+      )}
     </article>
   );
 };

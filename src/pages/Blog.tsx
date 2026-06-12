@@ -3,18 +3,23 @@ import Seo from '../components/Seo';
 
 const Blog = () => {
   return (
-    <div className="space-y-4">
+    <div className="pb-8">
       <Seo
-        title="Blog — Maksym Shykov"
+        title="Writing — Maksym Shykov"
         description="Articles by Maksym Shykov on software development, engineering leadership, AI, and lessons from building and scaling teams."
         path="/blog"
       />
-      <section className="py-12 md:py-16 border-b border-gray-200 dark:border-gray-700 transition-colors">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Articles</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-2">Thoughts, tutorials, and insights about software development and life.</p>
+      <section className="pt-20 md:pt-28 pb-14">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink dark:text-ink-dark mb-3">
+          Writing
+        </h1>
+        <p className="text-ink-secondary dark:text-ink-secondary-dark max-w-xl leading-relaxed">
+          Notes on engineering leadership, AI products, and lessons from
+          building teams.
+        </p>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="border-t border-hairline dark:border-hairline-dark">
         <PostList />
       </section>
     </div>

@@ -15,13 +15,13 @@ const CONSENT_KEY = 'cookie-consent';
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   isActive
-    ? 'text-blue-600 dark:text-blue-400 underline decoration-3 underline-offset-8 transition-colors'
-    : 'hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:underline decoration-3 underline-offset-8';
+    ? 'text-ink dark:text-ink-dark underline decoration-1 underline-offset-8 transition-colors'
+    : 'hover:text-ink dark:hover:text-ink-dark transition-colors';
 
 const navItems = [
   { to: '/', label: 'Home' },
   { to: '/experience', label: 'Experience' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/blog', label: 'Writing' },
 ];
 
 const Layout = () => {
@@ -104,20 +104,20 @@ const Layout = () => {
     <div className="layout-root">
       {/* Header */}
       <header className="layout-header">
-        <div className="layout-header-inner w-full">
-          <Link to="/" className="site-brand -m-2 p-2 rounded-xl transition-colors">
-            {/* Brand is intentionally not an <h1>: each page owns its own <h1>
-                so the heading reflects the current route for AT/SEO. */}
-            <span className="block text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-1">
-              Maksym Shykov
-            </span>
-            <p className="text-lg text-gray-500 dark:text-gray-400 font-medium">
-              Engineering Lead & Tech Enthusiast
-            </p>
+        <div className="layout-header-inner">
+          {/* Brand is intentionally not an <h1>: each page owns its own <h1>
+              so the heading reflects the current route for AT/SEO. */}
+          <Link
+            to="/"
+            className="text-sm font-semibold tracking-tight text-ink dark:text-ink-dark whitespace-nowrap"
+            aria-label="Maksym Shykov — home"
+          >
+            <span className="hidden sm:inline">Maksym Shykov</span>
+            <span className="sm:hidden">MS</span>
           </Link>
 
-          <div className="flex items-center space-x-4">
-            <nav className="layout-nav">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <nav>
               <ul className="layout-nav-list">
                 {navItems.map(({ to, label }) => (
                   <li key={to}>
@@ -128,13 +128,13 @@ const Layout = () => {
                 ))}
               </ul>
             </nav>
-            
-            <button 
+
+            <button
               onClick={toggleTheme}
               className="theme-toggle"
               aria-label="Toggle dark mode"
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
           </div>
         </div>
@@ -144,76 +144,68 @@ const Layout = () => {
       <main className="layout-main">
         <Outlet />
       </main>
-      
+
       {/* Footer */}
       <footer id="contact" className="layout-footer">
         <div className="layout-footer-inner">
-          <div className="footer-brand">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Get in Touch</h2>
-            <p className="text-gray-500 dark:text-gray-400 max-w-xs mb-6">
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+          <div>
+            <h2 className="text-base font-semibold text-ink dark:text-ink-dark mb-2">
+              Get in touch
+            </h2>
+            <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark max-w-sm mb-4 leading-relaxed">
+              Open to conversations about engineering leadership, AI products,
+              and building teams.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              <a 
-                href="mailto:maksym.shykov@gmail.com" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                Send an Email
+            <div className="flex items-center gap-3">
+              <a href="mailto:maksym.shykov@gmail.com" className="btn-ink">
+                <Mail className="w-4 h-4" />
+                Email me
               </a>
               <button
                 onClick={copyEmail}
-                className="theme-toggle flex items-center justify-center w-[52px] h-[52px] transition-colors"
+                className="btn-ghost px-3"
                 aria-label="Copy email address"
                 title="Copy email address"
               >
-                {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>
 
-          <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
-            <h3 className="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm">Follow Me</h3>
-            <div className="social-links -m-2">
-              <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                <Github className="w-6 h-6" />
-              </a>
-              <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 rounded-lg text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                <Twitter className="w-6 h-6" />
-              </a>
-            </div>
+          <div className="social-links">
+            <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
+              <Twitter className="w-5 h-5" />
+            </a>
           </div>
         </div>
 
-        <div className="mt-12 text-center text-gray-400 dark:text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Maksym Shykov. All rights reserved.</p>
+        <div className="mt-10 text-xs text-ink-tertiary dark:text-ink-tertiary-dark">
+          <p>© {new Date().getFullYear()} Maksym Shykov</p>
         </div>
       </footer>
 
       {/* Cookie Banner */}
       {showCookies && (
-        <div className="cookie-banner-enter fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:max-w-md bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 z-50">
+        <div className="cookie-banner-enter fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:max-w-sm bg-paper dark:bg-surface-dark p-5 rounded-lg shadow-lg border border-hairline dark:border-hairline-dark z-50">
           <div className="flex flex-col gap-4">
             <div className="space-y-1">
-              <h4 className="font-bold text-gray-900 dark:text-white">Cookie Policy</h4>
-              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                I use cookies to improve your experience and analyze traffic via Google Analytics. By clicking "Accept", you agree to the use of cookies.
+              <h4 className="text-sm font-semibold text-ink dark:text-ink-dark">Cookies</h4>
+              <p className="text-xs text-ink-secondary dark:text-ink-secondary-dark leading-relaxed">
+                This site uses cookies to analyze traffic via Google Analytics.
+                By clicking "Accept", you agree to the use of cookies.
               </p>
             </div>
-            <div className="flex gap-3">
-              <button 
-                onClick={acceptCookies}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl transition-colors text-sm"
-              >
+            <div className="flex gap-2">
+              <button onClick={acceptCookies} className="btn-ink flex-1 justify-center">
                 Accept
               </button>
-              <button
-                onClick={declineCookies}
-                className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 font-bold py-2 px-4 rounded-xl transition-colors text-sm"
-              >
+              <button onClick={declineCookies} className="btn-ghost flex-1">
                 Decline
               </button>
             </div>
