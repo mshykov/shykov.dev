@@ -13,7 +13,9 @@ npm run dev        # Vite dev server with HMR
 npm run build      # tsc -b (typecheck all tsconfig projects) then vite build → dist/
 npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
-firebase deploy    # deploy to Firebase Hosting (project: m-shykov); serves dist/
+# Production hosting is Cloudflare Pages (project: shykov-dev, domain: shykov.dev),
+# deployed by GitHub Actions on merge to master (.github/workflows/cloudflare-pages-merge.yml).
+# firebase deploy now only updates the legacy m-shykov.web.app 301 redirects + Firestore rules.
 ```
 
 There is no test runner configured. `npm run build` is the gate — it runs `tsc -b`, so type errors fail the build even though Vite alone would not catch them.
