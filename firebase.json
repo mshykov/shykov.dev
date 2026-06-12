@@ -13,6 +13,13 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/:path*",
+        "destination": "https://shykov.dev/:path",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",

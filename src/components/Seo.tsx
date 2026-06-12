@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const SITE_URL = 'https://m-shykov.web.app';
+export const SITE_URL = 'https://shykov.dev';
 
 interface SeoProps {
   /** Unique, accurate page title (rendered as <title> and og/twitter title). */

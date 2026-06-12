@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://m-shykov.web.app/sitemap.xml
+Sitemap: https://shykov.dev/sitemap.xml
