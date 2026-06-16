@@ -76,7 +76,7 @@ const Home = () => {
     <div className="flex flex-col pb-8">
       <Seo
         title="Maksym Shykov | Engineering Lead"
-        description="Maksym Shykov — Engineering Lead with 15 years in IT, focused on building high-performance teams, AI solutions, and engineering excellence."
+        description="Maksym Shykov — engineering leader at Headway, 15 years in software. I build teams that ship AI products, and still build hands-on: CoffeeSlack, Alotno, local-review."
         path="/"
       />
 
