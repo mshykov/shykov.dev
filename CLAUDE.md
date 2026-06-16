@@ -6,6 +6,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Maksym Shykov's personal website/blog — a single-page React app served as static files from Firebase Hosting, reading published posts from Firestore. There is no custom backend; the only server-side surface is Firestore (security rules in `firestore.rules`).
 
+## Docs
+
+Project-specific docs (deltas over the org baselines) live in `docs/`:
+
+- [docs/seo.md](docs/seo.md)
+- [docs/design.md](docs/design.md)
+- [docs/developer.md](docs/developer.md)
+- [docs/security.md](docs/security.md)
+
+The org common rules at `~/Projects/MSH/docs/` are the baseline; each file above
+records only the shykov.dev-specific deltas. There is no `docs/testing.md` — this
+project has no test suite; the `tsc -b` / `npm run build` step is the gate (see
+[docs/developer.md](docs/developer.md)).
+
 ## Commands
 
 ```bash
