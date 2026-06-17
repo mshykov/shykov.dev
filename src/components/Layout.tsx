@@ -40,7 +40,7 @@ const Layout = () => {
       // `navigator.clipboard` is undefined in insecure contexts and writeText
       // rejects when the document lacks focus/permission — only flip the
       // success state once the write actually resolves.
-      await navigator.clipboard?.writeText('maksym.shykov@gmail.com');
+      await navigator.clipboard?.writeText('maksym@shykov.dev');
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -157,7 +157,7 @@ const Layout = () => {
               and building teams.
             </p>
             <div className="flex items-center gap-3">
-              <a href="mailto:maksym.shykov@gmail.com" className="btn-ink">
+              <a href="mailto:maksym@shykov.dev" className="btn-ink">
                 <Mail className="w-4 h-4" />
                 Email me
               </a>
