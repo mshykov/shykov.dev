@@ -26,4 +26,4 @@ jobs:
           VITE_FIREBASE_APP_ID: '${{ secrets.VITE_FIREBASE_APP_ID }}'
           VITE_FIREBASE_MEASUREMENT_ID: '${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}'
       - name: Run Lighthouse CI
-        run: npx --yes @lhci/cli@0.16.x autorun
+        run: npx --yes @lhci/cli@0.15.x autorun
