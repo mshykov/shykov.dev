@@ -1,7 +1,8 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Github, Linkedin, Mail, Twitter, Copy, Check } from 'lucide-react';
+import { Sun, Moon, Mail, Copy, Check } from 'lucide-react';
 import { initAnalytics } from '../firebase';
+import SocialLinks from './SocialLinks';
 
 declare global {
   interface Window {
@@ -175,15 +176,7 @@ const Layout = () => {
           </div>
 
           <div className="social-links">
-            <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="https://www.linkedin.com/in/maksym-shykov/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href="https://x.com/Shykov" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 rounded-lg text-ink-tertiary dark:text-ink-tertiary-dark hover:text-ink dark:hover:text-ink-dark transition-colors">
-              <Twitter className="w-5 h-5" />
-            </a>
+            <SocialLinks />
           </div>
         </div>
 
