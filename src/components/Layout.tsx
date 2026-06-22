@@ -110,8 +110,10 @@ const Layout = () => {
           <Link
             to="/"
             className="text-sm font-semibold tracking-tight text-ink dark:text-ink-dark whitespace-nowrap"
-            aria-label="Maksym Shykov — home"
           >
+            {/* No aria-label: the accessible name comes from the visible text at
+                each breakpoint ("Maksym Shykov" / "MS"), so it always matches the
+                visible label (WCAG 2.5.3 Label in Name). */}
             <span className="hidden sm:inline">Maksym Shykov</span>
             <span className="sm:hidden">MS</span>
           </Link>
@@ -195,7 +197,7 @@ const Layout = () => {
         <div className="cookie-banner-enter fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:max-w-sm bg-paper dark:bg-surface-dark p-5 rounded-lg shadow-lg border border-hairline dark:border-hairline-dark z-50">
           <div className="flex flex-col gap-4">
             <div className="space-y-1">
-              <h4 className="text-sm font-semibold text-ink dark:text-ink-dark">Cookies</h4>
+              <h2 className="text-sm font-semibold text-ink dark:text-ink-dark">Cookies</h2>
               <p className="text-xs text-ink-secondary dark:text-ink-secondary-dark leading-relaxed">
                 This site uses cookies to analyze traffic via Google Analytics.
                 By clicking "Accept", you agree to the use of cookies.
