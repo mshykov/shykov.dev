@@ -2,17 +2,8 @@ import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Sun, Moon, Mail, Copy, Check } from 'lucide-react';
 import { initAnalytics } from '../firebase';
+import { getConsent, setConsent } from '../lib/consent';
 import SocialLinks from './SocialLinks';
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
-// Stored in localStorage under 'cookie-consent' as 'accepted' | 'declined';
-// null means the visitor hasn't chosen yet (banner should show).
-const CONSENT_KEY = 'cookie-consent';
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   isActive
@@ -64,7 +55,7 @@ const Layout = () => {
 
     // Show the banner only until the visitor has made a choice. If they
     // previously accepted, (re)initialize analytics for this session.
-    const consent = localStorage.getItem(CONSENT_KEY);
+    const consent = getConsent();
     let timer: number | undefined;
     if (consent === null) {
       timer = window.setTimeout(() => setShowCookies(true), 1500); // Small delay for better UX
@@ -89,15 +80,13 @@ const Layout = () => {
   };
 
   const acceptCookies = () => {
-    localStorage.setItem(CONSENT_KEY, 'accepted');
-    window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
+    setConsent('accepted');
     void initAnalytics();
     setShowCookies(false);
   };
 
   const declineCookies = () => {
-    localStorage.setItem(CONSENT_KEY, 'declined');
-    window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
+    setConsent('declined');
     setShowCookies(false);
   };
 

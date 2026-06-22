@@ -1,32 +1,12 @@
 import type { Post } from '../types';
+import { formatPostDate } from '../lib/formatDate';
 
 interface PostCardProps {
   post: Post;
 }
 
 const PostCard = ({ post }: PostCardProps) => {
-  // Format the date if it's a Firebase Timestamp or a serializable date
-  let date = 'Unknown date';
-  let isoDate: string | null = null;
-  const createdAt = post.createdAt;
-
-  const hasToDate = (v: unknown): v is { toDate: () => Date } => {
-    return typeof v === 'object' && v !== null && 'toDate' in (v as object) && typeof (v as { toDate?: unknown }).toDate === 'function';
-  };
-
-  // The Date constructor never throws on bad input — it returns an Invalid Date —
-  // so detect unparseable values with isNaN(getTime()) rather than try/catch.
-  let parsed: Date | null = null;
-  if (hasToDate(createdAt)) {
-    parsed = createdAt.toDate();
-  } else if (createdAt) {
-    const d = new Date(createdAt as string | number);
-    if (!Number.isNaN(d.getTime())) parsed = d;
-  }
-  if (parsed) {
-    date = parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-    isoDate = parsed.toISOString();
-  }
+  const { display: date, iso: isoDate } = formatPostDate(post.createdAt);
 
   return (
     <article className="post-card">
