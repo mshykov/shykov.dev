@@ -15,10 +15,9 @@ Project-specific docs (deltas over the org baselines) live in `docs/`:
 - [docs/developer.md](docs/developer.md)
 - [docs/security.md](docs/security.md)
 
-The org common rules at `~/Projects/MSH/docs/` are the baseline; each file above
-records only the shykov.dev-specific deltas. There is no `docs/testing.md` — this
-project has no test suite; the `tsc -b` / `npm run build` step is the gate (see
-[docs/developer.md](docs/developer.md)).
+Each file above is self-contained. A minimal Vitest smoke suite (`npm test`) covers
+the pure helpers in `src/lib/` (consent + date formatting); the primary gate remains
+`tsc -b` / `npm run build` (see [docs/developer.md](docs/developer.md)).
 
 ## Commands
 
@@ -27,12 +26,13 @@ npm run dev        # Vite dev server with HMR
 npm run build      # tsc -b (typecheck all tsconfig projects) then vite build → dist/
 npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
+npm test           # Vitest smoke suite over src/lib/ (consent + date helpers)
 # Production hosting is Cloudflare Pages (project: shykov-dev, domain: shykov.dev),
 # deployed by GitHub Actions on merge to master (.github/workflows/cloudflare-pages-merge.yml).
 # firebase deploy now only updates the legacy m-shykov.web.app 301 redirects + Firestore rules.
 ```
 
-There is no test runner configured. `npm run build` is the gate — it runs `tsc -b`, so type errors fail the build even though Vite alone would not catch them.
+`npm run build` is the primary gate — it runs `tsc -b`, so type errors fail the build even though Vite alone would not catch them. `npm test` runs a small Vitest suite over the pure helpers in `src/lib/` (consent state + post-date formatting); component/integration tests are intentionally out of scope.
 
 ## Environment
 

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getAnalytics, isSupported, type Analytics } from "firebase/analytics";
+import { getConsent } from "./lib/consent";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -43,7 +44,7 @@ export let analytics: Analytics | null = null;
 export const initAnalytics = async (): Promise<Analytics | null> => {
   if (analytics) return analytics;
   if (typeof window === 'undefined' || !firebaseConfig.measurementId) return null;
-  if (localStorage.getItem('cookie-consent') !== 'accepted') return null;
+  if (getConsent() !== 'accepted') return null;
   try {
     if (await isSupported()) {
       analytics = getAnalytics(app);

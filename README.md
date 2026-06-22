@@ -20,13 +20,15 @@ npm run dev        # Vite dev server with HMR
 npm run build      # tsc -b (typecheck) then vite build → dist/
 npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
+npm test           # Vitest smoke suite over src/lib/ (consent + date helpers)
 # Production deploys run via GitHub Actions → Cloudflare Pages (project: shykov-dev)
 # on merge to master. Manual deploy: npx wrangler pages deploy dist --project-name=shykov-dev
 # firebase deploy now only updates the legacy m-shykov.web.app 301 redirects + Firestore rules.
 ```
 
-There is no test runner. `npm run build` is the gate — it runs `tsc -b`, so type
-errors fail the build even though Vite alone would not catch them.
+`npm run build` is the primary gate — it runs `tsc -b`, so type errors fail the
+build even though Vite alone would not catch them. `npm test` runs a small Vitest
+suite over the pure helpers in `src/lib/`.
 
 ## Setup
 
