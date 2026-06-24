@@ -8,12 +8,13 @@ Maksym Shykov's personal website/blog — a single-page React app served as stat
 
 ## Docs
 
-Project-specific docs (deltas over the org baselines) live in `docs/`:
+Project-specific docs (self-contained) live in `docs/`:
 
 - [docs/seo.md](docs/seo.md)
 - [docs/design.md](docs/design.md)
 - [docs/developer.md](docs/developer.md)
 - [docs/security.md](docs/security.md)
+- [docs/retro.md](docs/retro.md) — session retro + workflow lessons
 
 Each file above is self-contained. A minimal Vitest smoke suite (`npm test`) covers
 the pure helpers in `src/lib/` (consent + date formatting); the primary gate remains
