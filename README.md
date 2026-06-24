@@ -38,6 +38,23 @@ Vite and consumed in [`src/firebase.ts`](src/firebase.ts). Missing vars don't fa
 the build — they surface as Firebase runtime errors in the browser (and a console
 warning naming the missing keys).
 
+## Project layout
+
+```
+src/
+  components/    Reusable UI (Layout, PostList, PostCard, SocialLinks, Seo, ScrollToTop)
+  pages/         Route views (Home, Experience, Blog, NotFound)
+  lib/           Pure, testable helpers (consent, formatDate) + their *.test.ts
+  types/         Shared TypeScript interfaces (Post, User)
+  firebase.ts    Firebase init + consent-gated analytics
+  index.css      Single stylesheet: @theme tokens, @font-face, component classes
+  App.tsx        Router; main.tsx mounts it; test-setup.ts bootstraps Vitest
+public/          Static assets copied verbatim (icons, fonts, logos, manifest,
+                 robots.txt, sitemap.xml, _redirects)
+docs/            Self-contained topic docs (seo, design, developer, security, retro)
+.github/workflows/  cloudflare-pages-merge (deploy), lighthouse-ci (PR gate)
+```
+
 ## Architecture
 
 - **Routing** ([`src/App.tsx`](src/App.tsx)): all routes are `lazy()`-loaded under a

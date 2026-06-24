@@ -31,5 +31,8 @@ dist-ssr
 # Private files
 Engineering_Manager_Maksym_Shykov.pdf
 
+# Local-only scratch: notes, session histories, reports — never pushed
+_do_not_commit/
+
 # Exclude raw generated images
 public/Gemini_Generated_Image_*.png
