@@ -11,6 +11,10 @@ interface SeoProps {
   path: string;
   /** When true, emit <meta name="robots" content="noindex,follow"> (e.g. the 404 page). */
   noindex?: boolean;
+  /** Open Graph type. Article pages should use "article"; default is "website". */
+  type?: 'website' | 'article';
+  /** Optional JSON-LD object rendered into the route-level structured data script. */
+  jsonLd?: Record<string, unknown>;
 }
 
 const setContent = (selector: string, value: string) => {
@@ -26,7 +30,25 @@ const setContent = (selector: string, value: string) => {
  * static tags, i.e. the Home values. Per-route social previews would require
  * prerendering/SSR — out of scope for this static SPA.
  */
-const Seo = ({ title, description, path, noindex = false }: SeoProps) => {
+const ensureJsonLdScript = () => {
+  const existing = document.head.querySelector<HTMLScriptElement>('script[data-route-json-ld]');
+  if (existing) return existing;
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.dataset.routeJsonLd = 'true';
+  document.head.appendChild(script);
+  return script;
+};
+
+const Seo = ({
+  title,
+  description,
+  path,
+  noindex = false,
+  type = 'website',
+  jsonLd,
+}: SeoProps) => {
   useEffect(() => {
     const url = `${SITE_URL}${path}`;
     document.title = title;
@@ -34,11 +56,19 @@ const Seo = ({ title, description, path, noindex = false }: SeoProps) => {
     setContent('meta[property="og:title"]', title);
     setContent('meta[property="og:description"]', description);
     setContent('meta[property="og:url"]', url);
+    setContent('meta[property="og:type"]', type);
     setContent('meta[name="twitter:title"]', title);
     setContent('meta[name="twitter:description"]', description);
     setContent('meta[name="robots"]', noindex ? 'noindex, follow' : 'index, follow');
     document.head.querySelector('link[rel="canonical"]')?.setAttribute('href', url);
-  }, [title, description, path, noindex]);
+
+    const routeJsonLd = document.head.querySelector<HTMLScriptElement>('script[data-route-json-ld]');
+    if (jsonLd) {
+      ensureJsonLdScript().textContent = JSON.stringify(jsonLd);
+    } else if (routeJsonLd) {
+      routeJsonLd.remove();
+    }
+  }, [title, description, path, noindex, type, jsonLd]);
 
   return null;
 };

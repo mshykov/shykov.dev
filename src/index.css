@@ -310,6 +310,103 @@
     padding: 4rem 0;
   }
 
+  /* ---- Static article pages ---- */
+  .article-prose {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-ink-secondary);
+  }
+  .dark .article-prose {
+    color: var(--color-ink-secondary-dark);
+  }
+  .article-prose > * + * {
+    margin-top: 1.25rem;
+  }
+  .article-prose h2 {
+    margin-top: 3rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+  }
+  .dark .article-prose h2 {
+    color: var(--color-ink-dark);
+  }
+  .article-prose h3 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .dark .article-prose h3 {
+    color: var(--color-ink-dark);
+  }
+  .article-prose blockquote {
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-accent);
+    font-size: 1.125rem;
+    color: var(--color-ink);
+  }
+  .dark .article-prose blockquote {
+    border-left-color: var(--color-accent-dark);
+    color: var(--color-ink-dark);
+  }
+  .article-prose ul {
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+  .article-prose li + li {
+    margin-top: 0.4rem;
+  }
+  .article-prose pre {
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid var(--color-hairline);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  .dark .article-prose pre {
+    border-color: var(--color-hairline-dark);
+    background-color: var(--color-surface-dark);
+    color: var(--color-ink-dark);
+  }
+  .article-figure {
+    margin: 2.5rem 0;
+    padding: 1rem;
+    border: 1px solid var(--color-hairline);
+    border-radius: 1rem;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+  }
+  .dark .article-figure {
+    border-color: var(--color-hairline-dark);
+    color: var(--color-ink-dark);
+    background-color: var(--color-surface-dark);
+  }
+  .article-figure svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    color: var(--color-accent);
+  }
+  .dark .article-figure svg {
+    color: var(--color-accent-dark);
+  }
+  .article-figure figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-ink-tertiary);
+  }
+  .dark .article-figure figcaption {
+    color: var(--color-ink-tertiary-dark);
+  }
+
   /* ---- Experience timeline (hairline rows, no card boxes) ---- */
   .experience-section {
     display: flex;

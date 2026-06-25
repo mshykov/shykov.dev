@@ -1,5 +1,5 @@
 /**
- * Normalizes a post's `createdAt` — which may be a Firestore Timestamp (has a
+ * Normalizes a post date — which may be a Firestore Timestamp (has a
  * `toDate()` method), a date string/number, or null — into a display string and
  * an ISO string for <time datetime>. Returns iso=null when the value is missing
  * or unparseable, so callers can render plain text without a <time> element.
@@ -20,6 +20,7 @@ const hasToDate = (v: unknown): v is { toDate: () => Date } =>
 
 export const formatPostDate = (
   createdAt: { toDate?: () => Date } | string | number | null | undefined,
+  formatOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' },
 ): FormattedDate => {
   let parsed: Date | null = null;
 
@@ -35,7 +36,7 @@ export const formatPostDate = (
   }
 
   return {
-    display: parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+    display: parsed.toLocaleDateString('en-US', formatOptions),
     iso: parsed.toISOString(),
   };
 };
