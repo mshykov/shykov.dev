@@ -1,13 +1,12 @@
 # Maksym Shykov — Personal Website & Blog
 
 A single-page React app for Maksym Shykov's personal site and blog. It is served
-as static files from Firebase Hosting and reads published posts from Firestore.
-There is no custom backend — the only server-side surface is Firestore (security
-rules in [`firestore.rules`](firestore.rules)).
+as static files from Cloudflare Pages. Public articles are Markdown files committed
+with the app; Firebase is retained for Auth, Analytics, and legacy Firestore rules.
 
 ## Stack
 
-- **React 19** + **react-router-dom v7**, built with **Vite 7**
+- **React 19** + **react-router-dom v7**, built with **Vite 8**
 - **TypeScript** (strict)
 - **Tailwind CSS v4** via the `@tailwindcss/vite` plugin (single stylesheet, `src/index.css`)
 - **Firebase** — Firestore (data), Auth, Analytics; Firebase Hosting (deploy)
@@ -42,9 +41,10 @@ warning naming the missing keys).
 
 ```
 src/
-  components/    Reusable UI (Layout, PostList, PostCard, SocialLinks, Seo, ScrollToTop)
-  pages/         Route views (Home, Experience, Blog, NotFound)
-  lib/           Pure, testable helpers (consent, formatDate) + their *.test.ts
+  components/    Reusable UI (Layout, SocialLinks, Seo, ScrollToTop, article figures)
+  content/       Static Markdown posts + post registry
+  pages/         Route views (Home, Experience, Blog, PostArticle, NotFound)
+  lib/           Pure, testable helpers (consent, formatDate, postContent) + tests
   types/         Shared TypeScript interfaces (Post, User)
   firebase.ts    Firebase init + consent-gated analytics
   index.css      Single stylesheet: @theme tokens, @font-face, component classes
@@ -63,10 +63,9 @@ docs/            Self-contained topic docs (seo, design, developer, security, re
   `/index.html`, so deep links resolve as client-side routes.
 - **Layout** ([`src/components/Layout.tsx`](src/components/Layout.tsx)): header/nav/
   footer around an `<Outlet/>`; owns dark-mode and cookie-consent state.
-- **Data flow**: `Blog` → `PostList` → `PostCard`. `PostList` queries Firestore
-  directly (`where('published','==',true)`, `limit(10)`). No global state library,
-  no data-fetching cache — each component queries Firestore itself. The `Post`/`User`
-  shapes live in [`src/types/index.ts`](src/types/index.ts) and mirror the documents.
+- **Blog content**: `src/content/posts/*.md` → `src/content/posts.ts` →
+  `/blog` and `/blog/:slug`. Markdown is parsed at build time from frontmatter and
+  rendered by the static article route with per-post SEO.
 - **Dark mode** is class-based (`.dark` on `<html>`), persisted in
   `localStorage.theme`. An inline script in `index.html` applies it before React
   mounts to prevent a flash of unstyled content.

@@ -14,7 +14,8 @@
 - `npm run build` runs **`tsc -b` then `vite build`** — type errors fail the build even
   though `vite build` alone would not catch them. This is the project's gate.
 - **`npm test`** runs a minimal **Vitest** smoke suite over the pure helpers in
-  `src/lib/` (consent state, post-date formatting). It is intentionally small —
+  `src/lib/` and the static post registry (consent state, post-date formatting,
+  Markdown post parsing). It is intentionally small —
   component/integration tests are out of scope; `npm run build` stays the primary gate.
   Treat a clean `npm run build` + `npm test` as the bar before shipping.
 
@@ -31,6 +32,17 @@ npm test           # Vitest smoke suite over src/lib/
 Production deploys run via GitHub Actions → Cloudflare Pages (project `shykov-dev`,
 domain `shykov.dev`) on merge to master. `firebase deploy` now only maintains the
 legacy `m-shykov.web.app` 301 redirects + Firestore rules.
+
+## Blog content pipeline
+
+- Public articles are static Markdown files in `src/content/posts/*.md`.
+- `src/content/posts.ts` imports post files with Vite's `?raw` loader and parses
+  frontmatter through `src/lib/postContent.ts`.
+- `/blog` lists the parsed post index; `/blog/:slug` renders the article and injects
+  route-specific SEO plus `BlogPosting` JSON-LD.
+- Use `{{figure:<name>}}` shortcodes inside Markdown for curated SVG figures rendered by
+  `src/components/PostFigures.tsx`.
+- When adding a post, update `public/sitemap.xml` with the new canonical URL.
 
 ## Workflow & CI lessons
 
