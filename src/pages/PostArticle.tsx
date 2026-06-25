@@ -3,14 +3,8 @@ import MarkdownContent from '../components/MarkdownContent';
 import { PostFigure } from '../components/PostFigures';
 import Seo from '../components/Seo';
 import { getPostBySlug } from '../content/posts';
+import { formatPostDate } from '../lib/formatDate';
 import { splitPostContent } from '../lib/postContent';
-
-const formatDate = (date: string) =>
-  new Intl.DateTimeFormat('en', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(`${date}T00:00:00Z`));
 
 const PostArticle = () => {
   const { slug = '' } = useParams();
@@ -35,6 +29,11 @@ const PostArticle = () => {
   }
 
   const path = `/blog/${post.slug}`;
+  const publishedDate = formatPostDate(post.publishedAt, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
   return (
     <article className="py-16 md:py-24">
@@ -69,7 +68,7 @@ const PostArticle = () => {
           {post.excerpt}
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ink-tertiary dark:text-ink-tertiary-dark">
-          <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+          <time dateTime={publishedDate.iso ?? post.publishedAt}>{publishedDate.display}</time>
           <span aria-hidden="true">·</span>
           <span>{post.readingMinutes} min read</span>
         </div>

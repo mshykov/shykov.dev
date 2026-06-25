@@ -106,8 +106,8 @@ const MarkdownContent = ({ content }: MarkdownContentProps) => (
       if (block.type === 'list' && Array.isArray(block.value)) {
         return (
           <ul key={index}>
-            {block.value.map((item) => (
-              <li key={item}>{renderInline(item)}</li>
+            {block.value.map((item, itemIndex) => (
+              <li key={`${index}-${itemIndex}`}>{renderInline(item)}</li>
             ))}
           </ul>
         );

@@ -18,7 +18,7 @@ under `/blog/<slug>`. Canonical domain: `https://shykov.dev`.
 | Descriptive URLs | `/`, `/experience`, `/blog`, `/blog/<slug>` |
 | Alt text | avatar + all company logos |
 | Descriptive anchor text | yes; no "click here" |
-| HTTPS / mobile / fast | Firebase Hosting + Vite build |
+| HTTPS / mobile / fast | Cloudflare Pages + Vite build |
 
 ## Conventions to keep
 

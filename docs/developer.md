@@ -26,7 +26,7 @@ npm run dev        # Vite dev server with HMR
 npm run build      # tsc -b (typecheck) then vite build → dist/
 npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
-npm test           # Vitest smoke suite over src/lib/
+npm test           # Vitest smoke suite over src/lib/ + static post registry
 ```
 
 Production deploys run via GitHub Actions → Cloudflare Pages (project `shykov-dev`,

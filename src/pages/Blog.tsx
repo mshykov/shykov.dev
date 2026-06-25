@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { getAllPosts } from '../content/posts';
+import { formatPostDate } from '../lib/formatDate';
 
 const Blog = () => {
   const posts = getAllPosts();
@@ -24,36 +25,36 @@ const Blog = () => {
 
       <section className="border-t border-hairline dark:border-hairline-dark">
         <div className="posts-grid">
-          {posts.map((post) => (
-            <article key={post.slug} className="post-card">
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">
-                <h2 className="text-xl font-semibold text-ink dark:text-ink-dark leading-snug">
-                  <Link to={`/blog/${post.slug}`} className="hover:underline underline-offset-4">
-                    {post.title}
-                  </Link>
-                </h2>
-                <time
-                  dateTime={post.publishedAt}
-                  className="text-xs text-ink-tertiary dark:text-ink-tertiary-dark whitespace-nowrap"
-                >
-                  {new Intl.DateTimeFormat('en', {
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                  }).format(new Date(`${post.publishedAt}T00:00:00Z`))}
-                </time>
-              </div>
-              <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark leading-relaxed mb-4">
-                {post.excerpt}
-              </p>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-ink-tertiary dark:text-ink-tertiary-dark">
-                <span>{post.readingMinutes} min read</span>
-                {post.tags.map((tag) => (
-                  <span key={tag}>#{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {posts.map((post) => {
+            const publishedDate = formatPostDate(post.publishedAt);
+
+            return (
+              <article key={post.slug} className="post-card">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">
+                  <h2 className="text-xl font-semibold text-ink dark:text-ink-dark leading-snug">
+                    <Link to={`/blog/${post.slug}`} className="hover:underline underline-offset-4">
+                      {post.title}
+                    </Link>
+                  </h2>
+                  <time
+                    dateTime={publishedDate.iso ?? post.publishedAt}
+                    className="text-xs text-ink-tertiary dark:text-ink-tertiary-dark whitespace-nowrap"
+                  >
+                    {publishedDate.display}
+                  </time>
+                </div>
+                <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark leading-relaxed mb-4">
+                  {post.excerpt}
+                </p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-ink-tertiary dark:text-ink-tertiary-dark">
+                  <span>{post.readingMinutes} min read</span>
+                  {post.tags.map((tag) => (
+                    <span key={tag}>#{tag}</span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>

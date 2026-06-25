@@ -13,4 +13,12 @@ describe('post registry', () => {
   it('includes the article in the public post index', () => {
     expect(getAllPosts().map((post) => post.slug)).toContain('the-engineer-changelog');
   });
+
+  it('returns a defensive copy of the public post index', () => {
+    const posts = getAllPosts();
+    posts.length = 0;
+
+    expect(getPostBySlug('the-engineer-changelog')).toBeDefined();
+    expect(getAllPosts().map((post) => post.slug)).toContain('the-engineer-changelog');
+  });
 });

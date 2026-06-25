@@ -41,6 +41,15 @@ describe('post content pipeline', () => {
     expect(post.content).toContain('{{figure:friday-test}}');
   });
 
+  it('parses post sources with a leading BOM and CRLF line endings', () => {
+    const windowsPost = `\uFEFF${samplePost.replace(/\n/g, '\r\n')}`;
+    const post = parsePostSource(windowsPost);
+
+    expect(post.slug).toBe('the-engineer-changelog');
+    expect(post.title).toBe('The Engineer Changelog');
+    expect(post.content).toContain('# The Engineer Changelog');
+  });
+
   it('calculates a minimum one-minute reading time', () => {
     expect(calculateReadingTime('Short post.')).toBe(1);
   });
@@ -67,6 +76,16 @@ describe('post content pipeline', () => {
   it('throws a clear error when required frontmatter is missing', () => {
     expect(() => parsePostSource('---\ntitle: Missing slug\n---\n\nBody')).toThrow(
       'Missing required post frontmatter: description, slug, publishedAt, tags, excerpt',
+    );
+  });
+
+  it('throws a clear error when required frontmatter has the wrong type', () => {
+    const malformedPost = samplePost
+      .replace('tags: ["engineering leadership", "career growth"]', 'tags: "engineering"')
+      .replace('published: true', 'published: "yes"');
+
+    expect(() => parsePostSource(malformedPost)).toThrow(
+      'Invalid post frontmatter types: tags, published',
     );
   });
 

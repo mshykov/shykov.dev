@@ -26,6 +26,14 @@ const REQUIRED_FIELDS = [
   'excerpt',
 ] as const;
 
+const REQUIRED_STRING_FIELDS = [
+  'title',
+  'description',
+  'slug',
+  'publishedAt',
+  'excerpt',
+] as const;
+
 const WORDS_PER_MINUTE = 220;
 
 export const calculateReadingTime = (content: string): number => {
@@ -68,14 +76,37 @@ const parseFrontmatter = (source: string): Record<string, FrontmatterValue> => {
 const asString = (value: FrontmatterValue | undefined): string | undefined =>
   typeof value === 'string' ? value : undefined;
 
-const asStringArray = (value: FrontmatterValue | undefined): string[] =>
-  Array.isArray(value) ? value : [];
+const asStringArray = (value: FrontmatterValue | undefined): string[] | undefined =>
+  Array.isArray(value) ? value : undefined;
 
-const asBoolean = (value: FrontmatterValue | undefined): boolean =>
-  typeof value === 'boolean' ? value : true;
+const asBoolean = (value: FrontmatterValue | undefined): boolean | undefined =>
+  typeof value === 'boolean' ? value : undefined;
+
+const validateFrontmatterTypes = (frontmatter: Record<string, FrontmatterValue>) => {
+  const invalid: string[] = REQUIRED_STRING_FIELDS.filter(
+    (field) => asString(frontmatter[field]) === undefined,
+  );
+
+  if (asStringArray(frontmatter.tags) === undefined) {
+    invalid.push('tags');
+  }
+
+  if (frontmatter.updatedAt !== undefined && asString(frontmatter.updatedAt) === undefined) {
+    invalid.push('updatedAt');
+  }
+
+  if (frontmatter.published !== undefined && asBoolean(frontmatter.published) === undefined) {
+    invalid.push('published');
+  }
+
+  if (invalid.length > 0) {
+    throw new Error(`Invalid post frontmatter types: ${invalid.join(', ')}`);
+  }
+};
 
 export const parsePostSource = (source: string): BlogPost => {
-  const match = source.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  const normalizedSource = source.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+  const match = normalizedSource.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) {
     throw new Error('Post source must start with frontmatter');
   }
@@ -86,6 +117,7 @@ export const parsePostSource = (source: string): BlogPost => {
   if (missing.length > 0) {
     throw new Error(`Missing required post frontmatter: ${missing.join(', ')}`);
   }
+  validateFrontmatterTypes(frontmatter);
 
   const content = markdownSource.trim();
 
@@ -95,9 +127,9 @@ export const parsePostSource = (source: string): BlogPost => {
     slug: asString(frontmatter.slug) ?? '',
     publishedAt: asString(frontmatter.publishedAt) ?? '',
     updatedAt: asString(frontmatter.updatedAt),
-    tags: asStringArray(frontmatter.tags),
+    tags: asStringArray(frontmatter.tags) ?? [],
     excerpt: asString(frontmatter.excerpt) ?? '',
-    published: asBoolean(frontmatter.published),
+    published: asBoolean(frontmatter.published) ?? true,
     readingMinutes: calculateReadingTime(content),
     content,
   };

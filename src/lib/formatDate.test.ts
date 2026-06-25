@@ -15,6 +15,17 @@ describe('formatPostDate', () => {
     expect(iso).toBe('2026-06-22T12:00:00.000Z');
   });
 
+  it('supports custom display formatting', () => {
+    const { display, iso } = formatPostDate('2026-06-22T12:00:00Z', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
+    expect(display).toBe('June 22, 2026');
+    expect(iso).toBe('2026-06-22T12:00:00.000Z');
+  });
+
   it('formats an epoch-millis number', () => {
     const { iso } = formatPostDate(Date.UTC(2026, 0, 1));
     expect(iso).toBe('2026-01-01T00:00:00.000Z');

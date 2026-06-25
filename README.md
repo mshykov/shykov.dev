@@ -9,7 +9,8 @@ with the app; Firebase is retained for Auth, Analytics, and legacy Firestore rul
 - **React 19** + **react-router-dom v7**, built with **Vite 8**
 - **TypeScript** (strict)
 - **Tailwind CSS v4** via the `@tailwindcss/vite` plugin (single stylesheet, `src/index.css`)
-- **Firebase** — Firestore (data), Auth, Analytics; Firebase Hosting (deploy)
+- **Cloudflare Pages** — static hosting/deploy for the Vite build
+- **Firebase** — Auth, Analytics, and legacy Firestore rules/config
 
 ## Commands
 
@@ -19,7 +20,7 @@ npm run dev        # Vite dev server with HMR
 npm run build      # tsc -b (typecheck) then vite build → dist/
 npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
-npm test           # Vitest smoke suite over src/lib/ (consent + date helpers)
+npm test           # Vitest smoke suite over src/lib/ + static post registry
 # Production deploys run via GitHub Actions → Cloudflare Pages (project: shykov-dev)
 # on merge to master. Manual deploy: npx wrangler pages deploy dist --project-name=shykov-dev
 # firebase deploy now only updates the legacy m-shykov.web.app 301 redirects + Firestore rules.
@@ -27,7 +28,7 @@ npm test           # Vitest smoke suite over src/lib/ (consent + date helpers)
 
 `npm run build` is the primary gate — it runs `tsc -b`, so type errors fail the
 build even though Vite alone would not catch them. `npm test` runs a small Vitest
-suite over the pure helpers in `src/lib/`.
+suite over the pure helpers in `src/lib/` and the static post registry.
 
 ## Setup
 
