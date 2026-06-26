@@ -54,4 +54,13 @@ describe('static SEO metadata', () => {
     expect(homeSource).toContain('to="/blog/the-engineer-changelog"');
     expect(homeSource).toContain('weekly changelog template for engineers');
   });
+
+  it('publishes a real security.txt file for vulnerability reporting', () => {
+    const securityTxt = readProjectFile('public/.well-known/security.txt');
+
+    expect(securityTxt).toContain('Contact: mailto:security@shykov.dev');
+    expect(securityTxt).toContain('Expires: 2027-06-26T00:00:00Z');
+    expect(securityTxt).toContain('Canonical: https://shykov.dev/.well-known/security.txt');
+    expect(securityTxt).not.toContain('<!doctype html>');
+  });
 });
