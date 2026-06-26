@@ -1,0 +1,4 @@
+Contact: mailto:security@shykov.dev
+Expires: 2027-06-26T00:00:00Z
+Preferred-Languages: en, uk
+Canonical: https://shykov.dev/.well-known/security.txt
