@@ -2,7 +2,8 @@
 
 A single-page React app for Maksym Shykov's personal site and blog. It is served
 as static files from Cloudflare Pages. Public articles are Markdown files committed
-with the app; Firebase is retained for Auth, Analytics, and legacy Firestore rules.
+with the app; Firebase is retained only for consent-gated Analytics and legacy
+redirect/rules deploy artifacts.
 
 ## Stack
 
@@ -10,7 +11,7 @@ with the app; Firebase is retained for Auth, Analytics, and legacy Firestore rul
 - **TypeScript** (strict)
 - **Tailwind CSS v4** via the `@tailwindcss/vite` plugin (single stylesheet, `src/index.css`)
 - **Cloudflare Pages** — static hosting/deploy for the Vite build
-- **Firebase** — Auth, Analytics, and legacy Firestore rules/config
+- **Firebase** — consent-gated Analytics, plus legacy Hosting redirects and Firestore rules/config
 
 ## Commands
 
@@ -32,11 +33,10 @@ suite over the pure helpers in `src/lib/` and the static post registry.
 
 ## Setup
 
-Copy `.env.example` to `.env` and fill in the `VITE_FIREBASE_*` values (find them
-in the Firebase console → Project settings). They are injected at build time by
-Vite and consumed in [`src/firebase.ts`](src/firebase.ts). Missing vars don't fail
-the build — they surface as Firebase runtime errors in the browser (and a console
-warning naming the missing keys).
+Copy `.env.example` to `.env` and fill in the `VITE_FIREBASE_*` values needed for
+Analytics (find them in the Firebase console → Project settings). They are injected
+at build time by Vite and consumed only after analytics consent. Missing required
+vars don't fail the build — they surface as a browser console warning naming the keys.
 
 ## Project layout
 
@@ -45,9 +45,9 @@ src/
   components/    Reusable UI (Layout, SocialLinks, Seo, ScrollToTop, article figures)
   content/       Static Markdown posts + post registry
   pages/         Route views (Home, Experience, Blog, PostArticle, NotFound)
-  lib/           Pure, testable helpers (consent, formatDate, postContent) + tests
+  lib/           Pure helpers + lazy analytics boundary + tests
   types/         Shared TypeScript interfaces (Post, User)
-  firebase.ts    Firebase init + consent-gated analytics
+  firebase.ts    Analytics-only Firebase init, dynamically imported after consent
   index.css      Single stylesheet: @theme tokens, @font-face, component classes
   App.tsx        Router; main.tsx mounts it; test-setup.ts bootstraps Vitest
 public/          Static assets copied verbatim (icons, fonts, logos, manifest,
