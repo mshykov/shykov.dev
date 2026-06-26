@@ -1,10 +1,11 @@
 /// <reference types="node" />
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const readProjectFile = (path: string) => readFileSync(resolve(process.cwd(), path), 'utf8');
+const projectFileExists = (path: string) => existsSync(resolve(process.cwd(), path));
 
 const getMetaContent = (html: string, selector: string) => {
   const pattern = new RegExp(`<meta\\s+${selector}\\s+content="([^"]+)"`, 'm');
@@ -33,6 +34,7 @@ describe('static SEO metadata', () => {
   it('keeps the OG image source conversion-oriented', () => {
     const ogImageSource = readProjectFile('public/og-image-explore.svg');
 
+    expect(projectFileExists('public/og-image-explore.png')).toBe(true);
     expect(ogImageSource).toContain('Explore articles and projects');
     expect(ogImageSource).toContain('shykov.dev');
     expect(getMetaContent(indexHtml, 'property="og:image"')).toBe(socialImageUrl);
