@@ -1,6 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 import { getAnalytics, isSupported, type Analytics } from "firebase/analytics";
 import { getConsent } from "./lib/consent";
 
@@ -16,7 +14,7 @@ const firebaseConfig = {
 
 // Fail loudly-but-gracefully on misconfiguration: a missing var yields an
 // `undefined` config value that otherwise only surfaces later as an opaque
-// auth/Firestore runtime error. Log an actionable message instead.
+// runtime error. Log an actionable message instead.
 const requiredKeys = ['apiKey', 'projectId', 'appId'] as const;
 const missingKeys = requiredKeys.filter((k) => !firebaseConfig[k]);
 if (missingKeys.length > 0) {
@@ -29,12 +27,7 @@ if (missingKeys.length > 0) {
   );
 }
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Services
-export const db = getFirestore(app);
-export const auth = getAuth(app);
 
 // Analytics is consent-gated (see the cookie banner in components/Layout.tsx)
 // and only initialized when the environment supports it. `getAnalytics` is not

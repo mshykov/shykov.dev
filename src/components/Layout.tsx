@@ -1,7 +1,7 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Sun, Moon, Mail, Copy, Check } from 'lucide-react';
-import { initAnalytics } from '../firebase';
+import { initAnalytics } from '../lib/analytics';
 import { getConsent, setConsent } from '../lib/consent';
 import SocialLinks from './SocialLinks';
 

@@ -6,27 +6,27 @@
 
 - Google Analytics (`gtag` in `index.html`) starts in **Consent Mode v2** with
   `analytics_storage: 'denied'`.
-- Firebase Analytics `initAnalytics()` (`src/firebase.ts`) is **only called on cookie
-  accept** — never at import time.
+- `src/lib/analytics.ts` lazy-loads Firebase Analytics only after cookie accept; the
+  public layout must not statically import `src/firebase.ts`.
 - The consent invariant spans **four places** — keep them in sync when touching
   analytics or consent:
   1. `index.html` (gtag bootstrap + default denied consent)
   2. `Layout`'s accept/decline handlers (consent update + `initAnalytics()`)
-  3. `src/firebase.ts` (`initAnalytics()`)
-  4. the `'cookie-consent'` `localStorage` key (`'accepted'` | `'declined'`)
+  3. `src/lib/analytics.ts` (lazy import boundary)
+  4. `src/firebase.ts` (Analytics-only Firebase init)
+  5. the `'cookie-consent'` `localStorage` key (`'accepted'` | `'declined'`)
 
-## Firestore rules
+## Legacy Firestore rules
 
-- Published posts are **world-readable**; unpublished posts **require auth**.
-- **All client writes are denied** (`allow write: if false`) — posts are authored
-  out-of-band via the Firebase console / Admin SDK, which bypass rules.
-- For an unauthenticated `list` query, Firestore **rejects the whole query** unless it
-  carries `where('published','==',true)`. Keep that filter on **every** anonymous posts
-  query.
+- The live blog uses static Markdown in `src/content/posts/*.md`; the public app should
+  not import Firestore or Auth.
+- `firestore.rules` and `firestore.indexes.json` remain only for the legacy Firebase
+  project/deploy surface. Keep client writes denied unless Firestore usage is
+  intentionally reintroduced.
 
 ## Firebase config / secrets
 
-- Firebase config comes from **`VITE_FIREBASE_*` env vars** (see `.env.example`),
-  injected at build time by Vite.
+- Firebase Analytics config comes from **`VITE_FIREBASE_*` env vars** (see
+  `.env.example`), injected at build time by Vite.
 - **Missing vars do not fail the build** — they surface as runtime warnings
   (`console.error` naming missing required keys: `apiKey`, `projectId`, `appId`).
