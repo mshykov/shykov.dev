@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import MarkdownContent from '../components/MarkdownContent';
 import { PostFigure } from '../components/PostFigures';
-import Seo from '../components/Seo';
+import Seo, { SITE_URL } from '../components/Seo';
 import { getPostBySlug } from '../content/posts';
 import { formatPostDate } from '../lib/formatDate';
 import { splitPostContent } from '../lib/postContent';
@@ -29,6 +29,8 @@ const PostArticle = () => {
   }
 
   const path = `/blog/${post.slug}`;
+  const canonicalUrl = `${SITE_URL}${path}`;
+  const articleImage = `${SITE_URL}/og-image-explore.png`;
   const publishedDate = formatPostDate(post.publishedAt, {
     year: 'numeric',
     month: 'long',
@@ -47,15 +49,21 @@ const PostArticle = () => {
           '@type': 'BlogPosting',
           headline: post.title,
           description: post.description,
+          image: [articleImage],
           datePublished: post.publishedAt,
           dateModified: post.updatedAt ?? post.publishedAt,
           author: {
             '@type': 'Person',
             name: 'Maksym Shykov',
-            url: 'https://shykov.dev/',
+            url: `${SITE_URL}/experience`,
           },
-          mainEntityOfPage: `https://shykov.dev${path}`,
-          url: `https://shykov.dev${path}`,
+          publisher: {
+            '@type': 'Person',
+            name: 'Maksym Shykov',
+            url: SITE_URL,
+          },
+          mainEntityOfPage: canonicalUrl,
+          url: canonicalUrl,
         }}
       />
 
@@ -68,6 +76,14 @@ const PostArticle = () => {
           {post.excerpt}
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ink-tertiary dark:text-ink-tertiary-dark">
+          <span>
+            By{' '}
+            <Link to="/experience" className="text-link">
+              Maksym Shykov
+            </Link>
+            , Engineering Lead
+          </span>
+          <span aria-hidden="true">·</span>
           <time dateTime={publishedDate.iso ?? post.publishedAt}>{publishedDate.display}</time>
           <span aria-hidden="true">·</span>
           <span>{post.readingMinutes} min read</span>

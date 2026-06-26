@@ -1,15 +1,15 @@
 ---
-title: "The Engineer Changelog: A Weekly Habit for Better Reviews"
-description: "A practical weekly reflection habit that helps engineers remember wins, connect work to outcomes, and prepare better performance review conversations."
+title: "Weekly Changelog Template for Engineers: Prepare Better Performance Reviews"
+description: "A weekly changelog template for engineers to capture wins, connect work to outcomes, and prepare better performance review conversations."
 slug: "the-engineer-changelog"
 publishedAt: "2026-06-25"
-updatedAt: "2026-06-25"
-tags: ["engineering leadership", "career growth", "management"]
-excerpt: "A weekly changelog helps engineers decide what is worth doing, capture impact while it is fresh, and walk into review conversations with evidence."
+updatedAt: "2026-06-26"
+tags: ["engineering leadership", "career growth", "management", "performance reviews"]
+excerpt: "A weekly changelog template helps engineers capture impact while it is fresh, build better self-review notes, and walk into performance reviews with evidence."
 published: true
 ---
 
-# The Engineer Changelog: A Weekly Habit for Better Reviews
+# Weekly Changelog Template for Engineers: Prepare Better Performance Reviews
 
 Most engineers do more valuable work than they can remember.
 
@@ -24,10 +24,10 @@ turn into archaeology.
 I do not think this is a review-preparation problem. I think it is a weekly
 habit problem.
 
-The fix I have been testing is simple: a short weekly changelog for engineers.
-Not a status report. Not a performance scorecard. Just a small ritual that helps
-people decide what is worth doing, remember what they actually did, and connect
-their work to outcomes while the context is still fresh.
+The fix I have been testing is simple: a short weekly changelog template for
+engineers. Not a status report. Not a performance scorecard. Just a small ritual
+that helps people decide what is worth doing, remember what they actually did,
+and connect their work to outcomes while the context is still fresh.
 
 ## The Friday Test
 
@@ -72,10 +72,11 @@ reconstruction later.
 Third, it catches learning. The most useful lessons often sit between what we
 planned and what actually happened. If nobody pauses, those lessons disappear.
 
-## The weekly changelog template
+## Weekly self-review template for engineers
 
-The weekly entry should take about 30 minutes. Short is good. Honest is better
-than polished.
+Use this as a weekly self-review template, a lightweight brag document, or the
+raw material for performance review prep. The weekly entry should take about 30
+minutes. Short is good. Honest is better than polished.
 
 {{figure:weekly-template}}
 
@@ -245,3 +246,29 @@ Friday?"
 
 That question is small enough to use every week, and sharp enough to change the
 work.
+
+## Frequently asked questions
+
+### What should engineers write in a weekly changelog?
+
+Engineers should write the few pieces of work that mattered, the outcome they
+supported, the blockers that slowed them down, and one short reflection on what
+they learned. The useful unit is not activity. It is impact plus judgment.
+
+### How is this different from a status report?
+
+A status report is usually for other people to track progress. A weekly
+changelog is primarily for the engineer to preserve evidence, spot patterns, and
+make better decisions before the next week starts.
+
+### Can this replace a brag document?
+
+It can become the raw material for a brag document. A brag document is usually a
+larger career artifact. The weekly changelog is the habit that keeps the
+evidence fresh enough to make that document accurate.
+
+### How should managers use weekly changelogs in one-on-ones?
+
+Managers should use them to ask better questions, not to grade every entry. Look
+for recurring themes: work that lacks a clear outcome, growth areas that never
+get an opportunity, or invisible glue work that deserves recognition.
