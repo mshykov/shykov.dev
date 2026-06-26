@@ -13,6 +13,7 @@ const getMetaContent = (html: string, selector: string) => {
 
 describe('static SEO metadata', () => {
   const indexHtml = readProjectFile('index.html');
+  const socialImageUrl = 'https://shykov.dev/og-image-explore.png';
 
   it('keeps home descriptions short enough for social previews', () => {
     const descriptions = [
@@ -30,9 +31,18 @@ describe('static SEO metadata', () => {
   });
 
   it('keeps the OG image source conversion-oriented', () => {
-    const ogImageSource = readProjectFile('public/og-image.svg');
+    const ogImageSource = readProjectFile('public/og-image-explore.svg');
 
     expect(ogImageSource).toContain('Explore articles and projects');
     expect(ogImageSource).toContain('shykov.dev');
+    expect(getMetaContent(indexHtml, 'property="og:image"')).toBe(socialImageUrl);
+    expect(getMetaContent(indexHtml, 'name="twitter:image"')).toBe(socialImageUrl);
+    expect(getMetaContent(indexHtml, 'property="og:image:alt"')).toBe(
+      'Maksym Shykov - Explore articles and projects',
+    );
+    expect(getMetaContent(indexHtml, 'name="twitter:image:alt"')).toBe(
+      'Maksym Shykov - Explore articles and projects',
+    );
+    expect(indexHtml).toContain(`"image": "${socialImageUrl}"`);
   });
 });
