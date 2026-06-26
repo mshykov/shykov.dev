@@ -175,8 +175,11 @@ const Home = () => {
           ))}
         </ul>
         <p className="mt-10 text-sm">
-          <Link to="/blog" className="text-link inline-flex items-center gap-1.5 font-medium">
-            Read my writing <ArrowRight className="w-3.5 h-3.5" />
+          <Link
+            to="/blog/the-engineer-changelog"
+            className="text-link inline-flex items-center gap-1.5 font-medium"
+          >
+            Read my weekly changelog template for engineers <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </p>
       </section>

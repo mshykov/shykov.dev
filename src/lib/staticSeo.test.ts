@@ -47,4 +47,11 @@ describe('static SEO metadata', () => {
     );
     expect(indexHtml).toContain(`"image": "${socialImageUrl}"`);
   });
+
+  it('links the homepage to the Engineer Changelog article with descriptive text', () => {
+    const homeSource = readProjectFile('src/pages/Home.tsx');
+
+    expect(homeSource).toContain('to="/blog/the-engineer-changelog"');
+    expect(homeSource).toContain('weekly changelog template for engineers');
+  });
 });
