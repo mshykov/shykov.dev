@@ -28,14 +28,28 @@ const highlights = [
   },
 ];
 
-// Things I've built and shipped myself — the "Builder." in the hero.
-const apps = [
+// Public projects and tools — the "Builder." in the hero.
+const projects = [
   {
-    name: 'CoffeeSlack',
-    url: 'https://www.coffeeslack.com/',
-    label: 'Free',
+    name: 'CV Toolkit',
+    url: 'https://cv.shykov.dev/',
+    label: 'Career tools',
     description:
-      'Random coffee for Slack — pairs teammates for casual 1:1 chats with a /coffee command.',
+      'Privacy-first resume toolkit for tailoring, sharing, and maintaining a structured engineering CV.',
+  },
+  {
+    name: 'Zero to Moat',
+    url: 'https://moat.shykov.dev/',
+    label: 'Product strategy',
+    description:
+      'A practical moat-building analysis of local-review, CoffeeSlack, and Alotno as real product cases.',
+  },
+  {
+    name: 'local-review',
+    url: 'https://local-review.shykov.dev/',
+    label: 'Free · Open source',
+    description:
+      'Privacy-first AI code reviews from your terminal with multi-LLM support, shipped as a single Go binary.',
   },
   {
     name: 'Alotno',
@@ -45,11 +59,11 @@ const apps = [
       'PNG-to-vector converter that runs entirely in your browser — SVG, PDF, EPS, DXF. No uploads, no accounts.',
   },
   {
-    name: 'local-review',
-    url: 'https://mshykov.github.io/local-review/',
-    label: 'Free · Open source',
+    name: 'CoffeeSlack',
+    url: 'https://www.coffeeslack.com/',
+    label: 'Free',
     description:
-      'Privacy-first AI code reviews from your terminal with multi-LLM support, shipped as a single Go binary.',
+      'Random coffee for Slack — pairs teammates for casual 1:1 chats with a /coffee command.',
   },
 ];
 
@@ -125,11 +139,11 @@ const Home = () => {
         </ul>
       </section>
 
-      {/* Apps — shipped solo, proof of the "Builder." */}
+      {/* Projects — shipped solo, proof of the "Builder." */}
       <section className="py-14 border-t border-hairline dark:border-hairline-dark">
-        <h2 className="section-label mb-8">Apps I've built</h2>
+        <h2 className="section-label mb-8">Projects</h2>
         <ul>
-          {apps.map(({ name, url, label, description }) => (
+          {projects.map(({ name, url, label, description }) => (
             <li
               key={name}
               className="py-4 first:pt-0 last:pb-0 border-b border-hairline dark:border-hairline-dark last:border-b-0 md:grid md:grid-cols-[1fr_1.2fr] md:gap-8"

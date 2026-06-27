@@ -55,6 +55,20 @@ describe('static SEO metadata', () => {
     expect(homeSource).toContain('weekly changelog template for engineers');
   });
 
+  it('links the homepage to all public projects', () => {
+    const homeSource = readProjectFile('src/pages/Home.tsx');
+    const projectUrls = [
+      'https://cv.shykov.dev/',
+      'https://moat.shykov.dev/',
+      'https://local-review.shykov.dev/',
+      'https://alotno.app/',
+      'https://www.coffeeslack.com/',
+    ];
+
+    expect(homeSource).toContain('Projects');
+    projectUrls.forEach((url) => expect(homeSource).toContain(`url: '${url}'`));
+  });
+
   it('publishes a real security.txt file for vulnerability reporting', () => {
     const securityTxt = readProjectFile('public/.well-known/security.txt');
 
