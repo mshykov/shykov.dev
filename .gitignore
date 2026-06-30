@@ -36,3 +36,26 @@ _do_not_commit/
 
 # Exclude raw generated images
 public/Gemini_Generated_Image_*.png
+
+# AI coding assistant local artifacts (per-developer, never committed).
+# .claude/ is intentionally NOT ignored — its skills/ are project config.
+.AGENT.md
+.antigravitycli/
+.antigravity/
+.codex/
+.openai/
+.openAI/
+.aider*
+.continue/
+.windsurf/
+.windsurfrules
+.gemini/
+.copilot/
+.github/copilot-instructions.md
+.cline/
+.clinerules
+.roo/
+.qodo/
+.tabnine/
+.sourcegraph/
+.cody/
