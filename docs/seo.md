@@ -1,10 +1,22 @@
 # SEO — shykov.dev
 
-> Baseline: `MSH/docs/seo.md` (org common rules). Below: shykov.dev-specific rules.
-
 This site (Maksym Shykov's personal site/blog) is a client-rendered React + Vite SPA on
 Cloudflare Pages; routes are `/`, `/experience`, `/blog`, and static article routes
 under `/blog/<slug>`. Canonical domain: `https://shykov.dev`.
+
+## SPA SEO checklist (the pattern this site follows)
+
+- **Per-route metadata.** A single component sets a unique title, description, and
+  `rel="canonical"` per route. Non-indexable routes (404) set `noindex`.
+- **Crawlability.** Ship static `robots.txt` (with a `Sitemap:` line) and
+  `sitemap.xml`; never block CSS/JS. Adding a route → add it to the sitemap in the
+  same change.
+- **Structured data.** Keep JSON-LD (`WebSite` / `Person`) in the document head; update
+  it when role/employer/social profiles change.
+- **SPA social-preview caveat.** Google renders JS, but non-JS social unfurlers read
+  only the static initial HTML. Without SSR/prerender, per-route OG previews fall back
+  to the home page's tags — see the limitation below.
+- **Verify post-deploy** with Search Console URL Inspection + the Rich Results Test.
 
 ## What's implemented
 
