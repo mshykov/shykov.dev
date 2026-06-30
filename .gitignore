@@ -39,7 +39,7 @@ public/Gemini_Generated_Image_*.png
 
 # AI coding assistant local artifacts (per-developer, never committed).
 # .claude/ is intentionally NOT ignored — its skills/ are project config.
-.AGENT.md
+AGENTS.md
 .antigravitycli/
 .antigravity/
 .codex/
