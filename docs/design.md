@@ -1,6 +1,18 @@
 # Design — shykov.dev
 
-> Baseline: `MSH/docs/design.md` (org common rules). Below: shykov.dev-specific rules.
+## Baseline conventions
+
+- **Accessibility:** color contrast meets **WCAG AA**; keyboard navigable with visible
+  focus states; semantic HTML; images carry meaningful `alt`.
+- **Tokens are the single source of truth.** Define color/type/spacing/radius/motion as
+  design tokens **once** (here, the CSS `@theme` block) and propagate everywhere — no
+  hardcoded colors or sizes in components. A brand mark / glyph lives in one source file
+  imported by header, favicon, and OG image so they never drift.
+- **Responsive & theming:** mobile-first; test both light and dark themes. Set
+  `theme-color` to a brand color that reads on both UI variants.
+- **Assets:** prefer SVG for icons/logos with PNG fallbacks where required (e.g. iOS);
+  optimize raster assets.
+- **Voice:** plain, calm, human, unhyped. Errors are blameless and specific.
 
 ## Tailwind CSS v4
 

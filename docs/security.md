@@ -1,6 +1,17 @@
 # Security — shykov.dev
 
-> Baseline: `MSH/docs/security.md` (org common rules). Below: shykov.dev-specific rules.
+## Secrets & credentials
+
+- **Never commit secrets.** No real tokens, API keys, passwords, private keys, or
+  connection strings — not in source, config, comments, fixtures, or docs.
+- Keep secrets in `.env` / `_do-not-commit/` locally (both gitignored), and in the
+  deployment platform's secret store in production — never in git. Only `.env.example`
+  is committed.
+- No real PII (IPs, hostnames, emails, names) in the repo, even in tests — use neutral
+  placeholders (`example.com`, `test@example.com`).
+- A missing optional secret should degrade gracefully (feature off), not crash boot.
+- Don't log sensitive auth data; validate untrusted input at the boundary; HTTPS
+  everywhere.
 
 ## Consent-gated analytics
 

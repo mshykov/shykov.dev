@@ -1,6 +1,21 @@
 # Developer — shykov.dev
 
-> Baseline: `MSH/docs/developer.md` (org common rules). Below: shykov.dev-specific rules.
+## Operating rules (how to make changes)
+
+- **Surgical changes only.** Touch only what the task requires — no drive-by
+  formatting or "while I'm here" refactors. Spotted something worth fixing? Surface it
+  separately rather than folding it in.
+- **Read before you write.** Before changing a shared helper, contract, or
+  user-visible string, grep all callers in the same pass — sibling code, doc comments,
+  README, tests. Cross-file drift is the most common review finding.
+- **Keep comments & doc strings current**; comment the **why**, not the **what**. A
+  comment describing behavior you just changed is a bug — fix it in the same edit.
+- **Fail loud, fail closed.** Refuse invalid input rather than silently passing it
+  through; check error/exit codes explicitly.
+- **Match the codebase's conventions** even where you'd choose differently;
+  conformance beats taste.
+- **Definition of done:** builds clean, no secrets committed, docs updated when
+  behavior changes. If you skipped a check or made an assumption, say so.
 
 ## TypeScript & components
 
