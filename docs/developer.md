@@ -48,6 +48,17 @@ Production deploys run via GitHub Actions → Cloudflare Pages (project `shykov-
 domain `shykov.dev`) on merge to master. `firebase deploy` now only maintains the
 legacy `m-shykov.web.app` 301 redirects + Firestore rules.
 
+## Static analysis (SonarCloud)
+
+- `.github/workflows/sonarcloud.yml` runs `SonarSource/sonarqube-scan-action` on push
+  to master and on every PR, using `sonar-project.properties` (org `mshykov`, project
+  key `mshykov_shykov.dev`). It requires the `SONAR_TOKEN` repo secret.
+- This is static analysis only (bugs, code smells, duplication) — no coverage is wired
+  in, since `npm test` is an intentionally minimal smoke suite, not a coverage-driving
+  suite.
+- `sonar.tests`/`sonar.test.inclusions` route `*.test.ts` files to Sonar's test rule
+  profile so they aren't flagged under main-code rules.
+
 ## Blog content pipeline
 
 - Public articles are static Markdown files in `src/content/posts/*.md`.

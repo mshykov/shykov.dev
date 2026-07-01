@@ -53,7 +53,8 @@ src/
 public/          Static assets copied verbatim (icons, fonts, logos, manifest,
                  robots.txt, sitemap.xml, _redirects)
 docs/            Self-contained topic docs (seo, design, developer, security, retro)
-.github/workflows/  cloudflare-pages-merge (deploy), lighthouse-ci (PR gate)
+.github/workflows/  cloudflare-pages-merge (deploy), lighthouse-ci (PR gate),
+                    sonarcloud (static analysis, push + PR)
 ```
 
 ## Architecture
