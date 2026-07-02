@@ -1,0 +1,14 @@
+# Cloudflare Pages security headers (served on every response).
+#
+# The two CSP script hashes cover the executable inline scripts in index.html
+# (gtag consent bootstrap + dark-mode FOUC guard). Vite copies inline scripts
+# into dist verbatim, so hashes computed from the source file hold in
+# production — src/lib/securityHeaders.test.ts keeps them in sync: if you edit
+# either inline script, that test fails and prints the new hash to paste here.
+# The JSON-LD block is non-executable (type="application/ld+json") and needs
+# no hash.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-4zNhc1HlmjwXaOZBj+USNsGb9U6MZl9rWvRG32/avQg=' 'sha256-iLbIMIrQIZTkxEPa+rYuuJ/xOZG2G8FBnyHES0ItUzg=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
