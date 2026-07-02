@@ -48,7 +48,10 @@ this file is the narrative.
 ## Carry-forward
 
 - Keep the test-gated production deploy and Lighthouse-on-PR gate.
-- **Outstanding:** external uptime monitor (Cloudflare Health Checks / UptimeRobot
-  on `https://shykov.dev/`) — can't live in the repo.
+- ~~Outstanding: external uptime monitor~~ **Done (July 2026):** UptimeRobot keyword
+  monitor on `https://shykov.dev/` (keyword "Maksym Shykov", incident when absent,
+  5-min interval, e-mail alerts). Keyword-based rather than HTTP-200 because the
+  SPA fallback answers 200 for everything — a broken deploy would still "pass" a
+  status check. Lives in the UptimeRobot account, not the repo.
 - The remaining lever is off-platform: brand-consistent profile captions and
   inbound links to `shykov.dev`. In-repo, the site is in strong shape.
