@@ -1,5 +1,29 @@
 # Security — shykov.dev
 
+## Edge security headers
+
+- `public/_headers` sets the security headers Cloudflare Pages serves on every
+  response: HSTS, `X-Frame-Options: DENY`, a `Permissions-Policy`, and a
+  Content-Security-Policy with `frame-ancestors 'none'` and hash-allowlisted
+  inline scripts (no `unsafe-inline` for scripts).
+- **The CSP script hashes must match the executable inline scripts in
+  `index.html`** (gtag consent bootstrap + dark-mode FOUC guard).
+  `src/lib/securityHeaders.test.ts` enforces this: editing either inline script
+  fails the test, which prints the new hash to paste into `public/_headers`.
+- New third-party origins (scripts, beacons, fetches) must be added to the
+  matching CSP directive or they will be silently blocked in production.
+- CI supply chain: workflow actions are **pinned to commit SHAs** (with the
+  version in a trailing comment). Dependabot's `github-actions` ecosystem keeps
+  the pins fresh; don't revert them to floating tags.
+
+## Legacy domain redirects
+
+- `firebase.json` redirects `m-shykov.web.app` → `shykov.dev` with 301s. The
+  bare root `/` needs its own redirect entry — the `/:path*` pattern does not
+  match it (this gap once left the old domain serving a stale copy of the
+  homepage). After changing redirects, run `firebase deploy --only hosting` and
+  verify: `curl -sI https://m-shykov.web.app/ | grep -iE 'HTTP|location'`.
+
 ## Secrets & credentials
 
 - **Never commit secrets.** No real tokens, API keys, passwords, private keys, or
