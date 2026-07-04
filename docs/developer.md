@@ -55,7 +55,10 @@ legacy `m-shykov.web.app` 301 redirects + Firestore rules.
   key `mshykov_shykov.dev`). It requires the `SONAR_TOKEN` repo secret.
 - This is static analysis only (bugs, code smells, duplication) — no coverage is wired
   in, since `npm test` is an intentionally minimal smoke suite, not a coverage-driving
-  suite.
+  suite. `sonar.coverage.exclusions=**/*` makes the default quality gate's
+  coverage-on-new-code condition not applicable; without it the gate fails every PR
+  at "0% coverage" because no lcov report is uploaded. If coverage is ever wired in
+  (vitest `--coverage` + `sonar.javascript.lcov.reportPaths`), remove that exclusion.
 - `sonar.tests`/`sonar.test.inclusions` route `*.test.ts` files to Sonar's test rule
   profile so they aren't flagged under main-code rules.
 
