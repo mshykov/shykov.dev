@@ -59,6 +59,21 @@ legacy `m-shykov.web.app` 301 redirects + Firestore rules.
 - `sonar.tests`/`sonar.test.inclusions` route `*.test.ts` files to Sonar's test rule
   profile so they aren't flagged under main-code rules.
 
+### Quality-gate conventions (learned from real findings)
+
+Rules distilled from issues Sonar has actually flagged here — follow them when
+writing new code so the dashboard stays clean:
+
+- **Keep cognitive complexity ≤ 15 per function** (Sonar default). A long loop with
+  many `if/continue` branches trips this fast — extract each case into a named
+  helper and keep the loop as a thin dispatcher (see `parseBlockLine` /
+  `appendListItem` in `MarkdownContent.tsx` for the pattern).
+- **Never `export let`.** An exported mutable binding lets any importer reassign
+  module state. Keep mutable state module-private and export functions that read
+  or update it (see the `analytics` cache in `src/firebase.ts`).
+- Check the [SonarCloud dashboard](https://sonarcloud.io/project/overview?id=mshykov_shykov.dev)
+  after merging; treat High findings as fix-now, not backlog.
+
 ## Blog content pipeline
 
 - Public articles are static Markdown files in `src/content/posts/*.md`.

@@ -16,13 +16,51 @@ const flushParagraph = (lines: string[], blocks: MarkdownBlock[]) => {
   lines.length = 0;
 };
 
+const appendListItem = (blocks: MarkdownBlock[], item: string) => {
+  const last = blocks.at(-1);
+  if (last?.type === 'list' && Array.isArray(last.value)) {
+    last.value.push(item);
+  } else {
+    blocks.push({ type: 'list', value: [item] });
+  }
+};
+
+// Handles a single line outside a code fence: blank, heading, blockquote,
+// list item, or paragraph text.
+const parseBlockLine = (line: string, blocks: MarkdownBlock[], paragraph: string[]) => {
+  if (line.trim() === '') {
+    flushParagraph(paragraph, blocks);
+    return;
+  }
+
+  const heading = line.match(/^(#{1,3})\s+(.+)$/);
+  if (heading) {
+    flushParagraph(paragraph, blocks);
+    blocks.push({ type: 'heading', level: heading[1].length, value: heading[2] });
+    return;
+  }
+
+  if (line.startsWith('> ')) {
+    flushParagraph(paragraph, blocks);
+    blocks.push({ type: 'blockquote', value: line.slice(2) });
+    return;
+  }
+
+  if (line.startsWith('- ')) {
+    flushParagraph(paragraph, blocks);
+    appendListItem(blocks, line.slice(2));
+    return;
+  }
+
+  paragraph.push(line.trim());
+};
+
 const parseMarkdownBlocks = (content: string): MarkdownBlock[] => {
   const blocks: MarkdownBlock[] = [];
   const paragraph: string[] = [];
-  const lines = content.split('\n');
   let codeFence: string[] | null = null;
 
-  for (const line of lines) {
+  for (const line of content.split('\n')) {
     if (line.startsWith('```')) {
       if (codeFence) {
         blocks.push({ type: 'code', value: codeFence.join('\n') });
@@ -31,44 +69,11 @@ const parseMarkdownBlocks = (content: string): MarkdownBlock[] => {
         flushParagraph(paragraph, blocks);
         codeFence = [];
       }
-      continue;
-    }
-
-    if (codeFence) {
+    } else if (codeFence) {
       codeFence.push(line);
-      continue;
+    } else {
+      parseBlockLine(line, blocks, paragraph);
     }
-
-    if (line.trim() === '') {
-      flushParagraph(paragraph, blocks);
-      continue;
-    }
-
-    const heading = line.match(/^(#{1,3})\s+(.+)$/);
-    if (heading) {
-      flushParagraph(paragraph, blocks);
-      blocks.push({ type: 'heading', level: heading[1].length, value: heading[2] });
-      continue;
-    }
-
-    if (line.startsWith('> ')) {
-      flushParagraph(paragraph, blocks);
-      blocks.push({ type: 'blockquote', value: line.slice(2) });
-      continue;
-    }
-
-    if (line.startsWith('- ')) {
-      flushParagraph(paragraph, blocks);
-      const last = blocks.at(-1);
-      if (last?.type === 'list' && Array.isArray(last.value)) {
-        last.value.push(line.slice(2));
-      } else {
-        blocks.push({ type: 'list', value: [line.slice(2)] });
-      }
-      continue;
-    }
-
-    paragraph.push(line.trim());
   }
 
   flushParagraph(paragraph, blocks);
