@@ -32,7 +32,8 @@ const app = initializeApp(firebaseConfig);
 // Analytics is consent-gated (see the cookie banner in components/Layout.tsx)
 // and only initialized when the environment supports it. `getAnalytics` is not
 // called at import time so no GA cookie is set before the visitor accepts.
-export let analytics: Analytics | null = null;
+// Module-private cache — consumers go through initAnalytics().
+let analytics: Analytics | null = null;
 
 export const initAnalytics = async (): Promise<Analytics | null> => {
   if (analytics) return analytics;
