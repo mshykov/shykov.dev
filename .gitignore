@@ -37,6 +37,10 @@ _do_not_commit/
 # wrangler pages dev local state (see .claude/launch.json pages-preview)
 .wrangler/
 
+# firebase deploy cache — machine-local hash artifact, rewritten on every
+# `firebase deploy`; never belongs in version control.
+.firebase/
+
 # Exclude raw generated images
 public/Gemini_Generated_Image_*.png
 
