@@ -17,6 +17,13 @@ updates:
       - dependency-name: lucide-react
         update-types:
           - version-update:semver-major
+      # typescript v7 conflicts with typescript-eslint's supported peer range
+      # (npm ci fails with ERESOLVE), so a major bump breaks CI before the build
+      # runs. Held at 6.x until the ESLint toolchain supports TS 7. Minor/patch
+      # updates still flow through the group above.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
   - package-ecosystem: github-actions
     directory: /
     schedule:
