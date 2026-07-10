@@ -1,0 +1,35 @@
+# Maksym Shykov
+
+> Engineering leader and hands-on builder focused on AI product development,
+> engineering leadership, quality engineering, and practical software delivery.
+
+Maksym Shykov runs engineering teams at Headway, mentors engineers, and builds
+AI-powered products hands-on. The site contains experience notes, writing, and
+links to public projects.
+
+## Core Pages
+
+- Home: https://shykov.dev/
+- Experience: https://shykov.dev/experience
+- Writing: https://shykov.dev/blog
+- The Engineer Changelog: https://shykov.dev/blog/the-engineer-changelog
+
+## Projects
+
+- CV Toolkit: https://cv.shykov.dev/
+- Zero to Moat: https://moat.shykov.dev/
+- local-review: https://local-review.shykov.dev/
+- Alotno: https://alotno.app/
+- CoffeeSlack: https://www.coffeeslack.com/
+
+## Profiles
+
+- GitHub: https://github.com/mshykov
+- LinkedIn: https://www.linkedin.com/in/maksym-shykov/
+- X: https://x.com/Shykov
+
+## Crawling
+
+Robots policy: https://shykov.dev/robots.txt
+Sitemap: https://shykov.dev/sitemap.xml
+

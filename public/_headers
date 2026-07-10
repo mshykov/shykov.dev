@@ -12,3 +12,6 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-4zNhc1HlmjwXaOZBj+USNsGb9U6MZl9rWvRG32/avQg=' 'sha256-iLbIMIrQIZTkxEPa+rYuuJ/xOZG2G8FBnyHES0ItUzg=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+https://www.shykov.dev/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
