@@ -86,33 +86,63 @@
         },
         {
           "@type": "SoftwareApplication",
+          "@id": "https://shykov.dev/#local-review",
           "name": "local-review",
-          "url": "https://mshykov.github.io/local-review/",
+          "url": "https://local-review.shykov.dev/",
+          "image": "https://shykov.dev/og-image-explore.png",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "macOS, Linux, Windows",
           "description": "Privacy-first AI code reviews from your terminal with multi-LLM support, shipped as a single Go binary.",
           "author": { "@id": "https://shykov.dev/#person" },
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          "creator": { "@id": "https://shykov.dev/#person" },
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "url": "https://local-review.shykov.dev/",
+            "price": "0.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
         },
         {
           "@type": "SoftwareApplication",
+          "@id": "https://shykov.dev/#alotno",
           "name": "Alotno",
           "url": "https://alotno.app/",
+          "image": "https://shykov.dev/og-image-explore.png",
           "applicationCategory": "DesignApplication",
-          "operatingSystem": "Any (web-based)",
+          "operatingSystem": "Web",
           "description": "PNG-to-vector converter that runs entirely in your browser — SVG, PDF, EPS, DXF. No uploads, no accounts.",
           "author": { "@id": "https://shykov.dev/#person" },
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          "creator": { "@id": "https://shykov.dev/#person" },
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "url": "https://alotno.app/",
+            "price": "0.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
         },
         {
           "@type": "SoftwareApplication",
+          "@id": "https://shykov.dev/#coffeeslack",
           "name": "CoffeeSlack",
           "url": "https://www.coffeeslack.com/",
+          "image": "https://shykov.dev/og-image-explore.png",
           "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Any (Slack)",
+          "operatingSystem": "Web",
           "description": "Random coffee for Slack — pairs teammates for casual 1:1 chats with a /coffee command.",
           "author": { "@id": "https://shykov.dev/#person" },
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          "creator": { "@id": "https://shykov.dev/#person" },
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.coffeeslack.com/",
+            "price": "0.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
         }
       ]
     }
@@ -148,6 +178,20 @@
     </script>
   </head>
   <body>
+    <noscript>
+      <main>
+        <h1>Maksym Shykov | Engineering Lead</h1>
+        <p>
+          Engineering leader and hands-on builder. I help teams ship AI products
+          and share practical software leadership notes.
+        </p>
+        <nav aria-label="Primary pages">
+          <a href="/experience">Experience</a>
+          <a href="/blog">Writing</a>
+          <a href="/blog/the-engineer-changelog">The Engineer Changelog</a>
+        </nav>
+      </main>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
