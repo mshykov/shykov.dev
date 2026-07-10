@@ -9,6 +9,14 @@ updates:
         update-types:
           - minor
           - patch
+    ignore:
+      # lucide-react v1 removed the brand glyphs this site uses (Github,
+      # Linkedin, Twitter in SocialLinks.tsx), so a major bump breaks the
+      # build. Held at 0.x by decision (see docs/retro.md). Minor/patch
+      # updates still flow through the group above.
+      - dependency-name: lucide-react
+        update-types:
+          - version-update:semver-major
   - package-ecosystem: github-actions
     directory: /
     schedule:
