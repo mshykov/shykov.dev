@@ -53,10 +53,31 @@ It is also where most strong engineers plateau, because everything around them
 rewards staying here. Tickets arrive pre-chewed. Success is defined as "done as
 specified." The feedback loop measures delivery, not outcomes.
 
-I spent my first years in engineering inside this stage, in testing roles. The
-job description was literally "verify it matches the spec." _[TODO: one
-concrete early-career moment — a thing you tested/built that matched the spec
-perfectly and still failed users or got thrown away.]_
+I spent my first years in engineering in testing roles, where the job
+description was literally "verify it matches the spec." I got good at the narrow
+version of that job before I understood how narrow it was.
+
+My first month as a manual QA, back in 2010, the developers handed me a new
+feature: transfer the product's internal currency from one account to another.
+I checked that it worked and went home.
+
+The next morning: *who tested this?* If you transferred a **negative** amount,
+it was not deducted — it was added to your balance. Someone had already credited
+themselves an astronomical sum. We rolled back the database, shipped the fix,
+and I was fined a quarter of my salary. That night I finally read some testing
+theory and realized every test I had ever run was a single happy path straight
+down the middle — no negative cases, no stepping off the road.
+
+That taught me thoroughness. The deeper lesson took years longer, and it arrived
+from the opposite direction: work that was thorough, correct, and completely
+wasted. At Samsung I spent months testing a homomorphic-encryption library that
+was dead on arrival — the math fell apart the moment you passed it `-1`. I
+tested phones running an operating system that never shipped. The engineering
+was fine. The outcome was zero.
+
+That is stage 1 in one sentence: you can do correct work perfectly and still
+deliver nothing, because "correct" and "matters" are different questions — and
+in stage 1 you are only paid to ask the first one.
 
 The signal that you are ready to leave stage 1 is not a skill gap. It is an
 itch: you start asking why the ticket exists, and the answer "because it is in
@@ -81,9 +102,24 @@ decisions differently: what to log, which edge case deserves a week, when
 "good enough" genuinely is, which refactor supports the metric that matters
 this quarter and which one is just comfortable.
 
-_[TODO: your Headway/MacPaw moment — the first time a metric or funnel view
-changed a technical decision you made. What was the decision, what would the
-"stage 1 you" have done instead?]_
+At MacPaw we had several sprints planned to build out and polish a desktop
+feature. We shipped the first version, looked at the numbers, and adoption came
+in at low single digits. The stage 1 move — the one I would have made a few
+years earlier — is to keep executing the plan, because the plan said so and the
+tickets were right there. Instead we stopped and moved the same engineers to a
+feature people actually used, adopted by a strong majority of users. Same team,
+same sprint budget, completely different outcome — the decision made by one
+number.
+
+Later, at Headway, I made the same call in the other direction: we postponed a
+monthly-feedback feature because the 7-day version's engagement was already
+weak. There is no point generating richer 30-day feedback if people do not come
+back on day 7. The metric did not just reorder the backlog; it told us the work
+should not exist yet.
+
+The "stage 1 me" would have treated both as execution problems — build it
+better, ship it faster. The number reframed them as *should we build this at
+all* problems.
 
 How to practice it: pick one metric your team is trying to move this quarter.
 Look at it every Monday. That is the entire exercise. Within a month you will
@@ -108,34 +144,41 @@ In practice this looks like:
 - Comfort with being wrong. Half your bets will not pay off. In an experiment
   mindset that is tuition, not failure.
 
-The fastest way I know to learn this stage is not at work, where the feedback
-loops are long and shared. It is to own a tiny product end to end.
+The clearest way I know to feel this stage — and everything it does not cover —
+is to own a tiny product end to end.
 
-## Side products: the lab where product sense grows fastest
+## Side products taught me the opposite lesson I expected
 
-I run a few small products alongside my job: an open-source code review tool,
-a Slack app that pairs teammates for coffee chats, and a browser-based image
-converter. None of them is a business. All of them are laboratories.
+I run a few small products alongside my job: an open-source code review tool, a
+Slack app that pairs teammates for coffee chats, a browser-based image
+converter. I will be honest about the results, because the honesty is the whole
+point: between them they have roughly zero users. I do not pay for ads. I do not
+post about them. I built each one to solve a problem I personally had, and the
+most distribution any of them has seen is me handing free access to a few
+friends.
 
-Here is what a side product teaches that no course and no sprint ever will:
-nobody writes your tickets. There is no PM to pre-chew the decisions, no
-designer to hand you the flow, no analyst to read the numbers for you. You
-write the landing page copy and watch people not click. You build the feature
-you were sure users wanted and watch nobody use it. You feel a funnel leak as
-your own problem, because it is.
+For a long time I read that as failure. It is actually the most useful product
+lesson I own — precisely because of *which* half is missing.
 
-_[TODO: one concrete lesson per product — e.g., what local-review taught you
-about positioning, what CoffeeSlack taught you about retention/habits, what
-Alotno taught you about conversion. One sentence each is enough; specifics
-beat theory.]_
+The engineering half is done. The products work, they are clean, they solve the
+problem I built them for. And that turns out to be the *easy* half — the half I
+was already good at from the day job. The half I skipped is the entire other
+side of product: deciding exactly who it is for, telling those people it exists,
+making them care enough to change what they already do. Zero users is not a
+verdict on the code. It is a verdict on everything that is not code — and that
+everything is what product engineering is actually about.
 
-Every one of those lessons transferred back to my day job within weeks. When
-you have personally watched your own conversion rate ignore a feature you
-loved, you ask very different questions about the next big ticket at work.
+Building something and watching *no one arrive* taught me more about product
+than a smooth launch would have, because it isolated the variable. At work your
+employer hands you distribution: an existing user base, a brand, a PM who
+already found the audience. You never feel how much of a product's success lives
+outside the repository. Ship something into a vacuum and you feel it on day one.
 
-You do not need users or revenue for this to work. You need something you own
-completely, shipped to at least a handful of real people, with one number you
-care about.
+That reframed how I read tickets at work. A feature is not "done" when it is
+correct and deployed — that is the part I can already do in my sleep. It is done
+when it reaches someone and changes what they do. The gap between those two
+definitions is the one I keep failing to close on my own products, and the exact
+gap product engineers get paid to close on real ones.
 
 ## Stage 4: ownership
 
@@ -152,9 +195,21 @@ better, not worse. A PM with a stage 4 engineer across the table has a partner
 who stress-tests ideas before they get expensive, not a vending machine for
 features.
 
-_[TODO: a moment you pushed back on or reshaped a task because the outcome was
-missing or wrong — and it turned out to matter. The Setapp Mobile / DMA story
-may fit here: business constraint as the engineering constraint.]_
+The sharpest lesson I have in why this stage matters came from a project where
+the outcome question was answered wrong long before anyone wrote a line of code. At MacPaw I worked on Setapp Mobile — the first alternative iOS app
+marketplace in the EU, built into the window the Digital Markets Act opened. The
+engineering was genuinely hard, and we did it. The business model was the
+problem: almost nobody in the EU wanted to pay a monthly fee for a mobile
+"store" that bundled a few dozen apps they had not chosen. No amount of
+engineering quality rescues a proposition users do not want.
+
+I am not going to claim I saw it coming and was overruled — a lot of this is
+clearer in hindsight, and that is exactly the point. The outcome question is
+cheap when you ask it at the start of a ticket and ruinously expensive when the
+market asks it for you after launch. The real job at this stage is to drag that
+question as early as you can reach — into the sprint, into the spec, into the
+business model itself if you can get a seat at that table — because the earlier
+it is asked, the less it costs to be wrong.
 
 Sixteen years in, this is the stage I would hire for above almost anything
 else, and the one I try hardest to grow in the engineers I manage.
