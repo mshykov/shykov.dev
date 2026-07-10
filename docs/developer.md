@@ -53,6 +53,12 @@ legacy `m-shykov.web.app` 301 redirects + Firestore rules.
 - `.github/workflows/sonarcloud.yml` runs `SonarSource/sonarqube-scan-action` on push
   to master and on every PR, using `sonar-project.properties` (org `mshykov`, project
   key `mshykov_shykov.dev`). It requires the `SONAR_TOKEN` repo secret.
+- **`sonarcloud` is a required status check, but GitHub withholds repo secrets from
+  Dependabot- and fork-triggered runs** — so the scan step is guarded with
+  `if: env.SONAR_TOKEN != ''`. Without that guard the token is empty, the scan fails
+  with "Not authorized", and every Dependabot PR is permanently blocked. When the
+  token is absent the job skips the scan and still passes; the post-merge push to
+  master re-scans with the token present. Do not remove the guard.
 - This is static analysis only (bugs, code smells, duplication) — no coverage is wired
   in, since `npm test` is an intentionally minimal smoke suite, not a coverage-driving
   suite. `sonar.coverage.exclusions=**/*` makes the default quality gate's
