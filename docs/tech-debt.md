@@ -100,8 +100,8 @@ revisit only if CI images stop shipping Chrome.
 
 - **TypeScript held at 6.x.** `typescript@7` conflicts with
   `typescript-eslint`'s peer range (checked 2026-08-10: latest is 8.66.0,
-  still `<6.1.0`), so `npm ci` fails with ERESOLVE. Ignore rule is in
-  `.github/dependabot.yml`; re-check the peer range before unlocking.
+  still `<6.1.0`), so `npm ci` fails with ERESOLVE. The monthly dependency
+  sweep keeps it on 6.x; re-check the peer range before unlocking.
 
 ## Phased plan
 

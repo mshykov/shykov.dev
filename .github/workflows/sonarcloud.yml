@@ -6,8 +6,10 @@ name: SonarCloud
   pull_request:
     branches:
       - main
-# One run per ref: a new push to a PR cancels the superseded run; runs on
-# main are never cancelled.
+# One run per ref. On a PR a new push cancels the superseded run. On main a
+# running analysis is never cancelled, but a newer push replaces one still
+# *queued* — intended: the newest main analysis covers the skipped commit, and
+# analysing each intermediate one would only spend minutes.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
