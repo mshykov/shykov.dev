@@ -6,9 +6,16 @@ name: SonarCloud
   pull_request:
     branches:
       - main
+# One run per ref: a new push to a PR cancels the superseded run; runs on
+# main are never cancelled.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'
     steps:

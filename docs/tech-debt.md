@@ -80,9 +80,9 @@ ship / kill / restart-from-main decision, not engineering.
 
 **8 — `lucide-react` held at 0.x.**
 v1 removed the brand glyphs used in `SocialLinks.tsx` (`Github`, `Linkedin`,
-`Twitter`), so majors are ignored in `.github/dependabot.yml`. They are not
+`Twitter`), so the monthly dependency sweep keeps it on 0.x. They are not
 coming back upstream. The durable fix is inlining three self-hosted SVGs and
-then dropping the ignore rule.
+then taking the major.
 
 **9 — No feed.**
 With a static post registry, generating `feed.xml` at build time (alongside the
