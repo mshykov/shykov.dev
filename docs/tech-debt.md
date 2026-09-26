@@ -80,9 +80,9 @@ ship / kill / restart-from-main decision, not engineering.
 
 **8 — `lucide-react` held at 0.x.**
 v1 removed the brand glyphs used in `SocialLinks.tsx` (`Github`, `Linkedin`,
-`Twitter`), so majors are ignored in `.github/dependabot.yml`. They are not
+`Twitter`), so the monthly dependency sweep keeps it on 0.x. They are not
 coming back upstream. The durable fix is inlining three self-hosted SVGs and
-then dropping the ignore rule.
+then taking the major.
 
 **9 — No feed.**
 With a static post registry, generating `feed.xml` at build time (alongside the
@@ -100,8 +100,8 @@ revisit only if CI images stop shipping Chrome.
 
 - **TypeScript held at 6.x.** `typescript@7` conflicts with
   `typescript-eslint`'s peer range (checked 2026-08-10: latest is 8.66.0,
-  still `<6.1.0`), so `npm ci` fails with ERESOLVE. Ignore rule is in
-  `.github/dependabot.yml`; re-check the peer range before unlocking.
+  still `<6.1.0`), so `npm ci` fails with ERESOLVE. The monthly dependency
+  sweep keeps it on 6.x; re-check the peer range before unlocking.
 
 ## Phased plan
 

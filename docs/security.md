@@ -13,8 +13,9 @@
 - New third-party origins (scripts, beacons, fetches) must be added to the
   matching CSP directive or they will be silently blocked in production.
 - CI supply chain: workflow actions are **pinned to commit SHAs** (with the
-  version in a trailing comment). Dependabot's `github-actions` ecosystem keeps
-  the pins fresh; don't revert them to floating tags.
+  version in a trailing comment). The monthly dependency sweep bumps them (one
+  PR, validated locally — Dependabot alerts still flag vulnerable versions);
+  don't revert them to floating tags.
 
 ## Legacy domain redirects
 
