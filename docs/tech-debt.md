@@ -76,7 +76,7 @@ work).
 `redesign/micrographics-portfolio` (1 commit, 18 files, +1091/−476) has been
 open since 2026-06-24. Master has since gained prerendering, two posts, and a
 security-header layer, so the rebase cost grows with every merge. This needs a
-ship / kill / restart-from-master decision, not engineering.
+ship / kill / restart-from-main decision, not engineering.
 
 **8 — `lucide-react` held at 0.x.**
 v1 removed the brand glyphs used in `SocialLinks.tsx` (`Github`, `Linkedin`,

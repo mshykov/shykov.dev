@@ -48,20 +48,20 @@ npm test           # Vitest smoke suite over src/lib/ + static post registry
 ```
 
 Production deploys run via GitHub Actions → Cloudflare Pages (project `shykov-dev`,
-domain `shykov.dev`) on merge to master. `firebase deploy` now only pushes Firestore
+domain `shykov.dev`) on merge to main. `firebase deploy` now only pushes Firestore
 rules — the legacy `m-shykov.web.app` hosting site is retired.
 
 ## Static analysis (SonarCloud)
 
 - `.github/workflows/sonarcloud.yml` runs `SonarSource/sonarqube-scan-action` on push
-  to master and on every PR, using `sonar-project.properties` (org `mshykov`, project
+  to main and on every PR, using `sonar-project.properties` (org `mshykov`, project
   key `mshykov_shykov.dev`). It requires the `SONAR_TOKEN` repo secret.
 - **`sonarcloud` is a required status check, but GitHub withholds repo secrets from
   Dependabot- and fork-triggered runs** — so the scan step is guarded with
   `if: env.SONAR_TOKEN != ''`. Without that guard the token is empty, the scan fails
   with "Not authorized", and every Dependabot PR is permanently blocked. When the
   token is absent the job skips the scan and still passes; the post-merge push to
-  master re-scans with the token present. Do not remove the guard.
+  main re-scans with the token present. Do not remove the guard.
 - This is static analysis only (bugs, code smells, duplication) — no coverage is wired
   in, since `npm test` is an intentionally minimal smoke suite, not a coverage-driving
   suite. `sonar.coverage.exclusions=**/*` makes the default quality gate's
@@ -102,12 +102,12 @@ writing new code so the dashboard stays clean:
 Durable rules distilled from past sessions (see [retro.md](retro.md) for the story):
 
 - **Branch before the first edit.** Start every change on a feature branch off a
-  freshly fetched `origin/master` — don't edit on `master` and move it later.
+  freshly fetched `origin/main` — don't edit on `main` and move it later.
 - **One PR per logical change; verify, then merge.** branch → `npm run build` + `npm test`
   → preview-verify → PR → watch the deploy → confirm live (`curl -sI https://shykov.dev/`).
-- **Sync with `git fetch` + `git reset --hard origin/master`** after merges. A bare
+- **Sync with `git fetch` + `git reset --hard origin/main`** after merges. A bare
   `git pull --ff-only` can report "Already up to date" on a stale ref and hide that
-  master advanced.
+  main advanced.
 - **Verify a version/identifier exists before pinning it.** `npm view <pkg> version`
   before pinning a CI action or dep; confirm an export still exists before a major bump
   (e.g. lucide v1 removed brand icons; `@lhci/cli@0.16` never existed).
