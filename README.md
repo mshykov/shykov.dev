@@ -23,7 +23,7 @@ npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
 npm test           # Vitest smoke suite over src/lib/ + static post registry
 # Production deploys run via GitHub Actions → Cloudflare Pages (project: shykov-dev)
-# on merge to master. Manual deploy: npx wrangler pages deploy dist --project-name=shykov-dev
+# on merge to main. Manual deploy: npx wrangler pages deploy dist --project-name=shykov-dev
 # firebase deploy only pushes Firestore rules now — there is no Firebase Hosting surface.
 ```
 
