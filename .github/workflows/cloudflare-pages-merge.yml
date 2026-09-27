@@ -16,6 +16,10 @@ name: Deploy to Cloudflare Pages on merge
   workflow_dispatch: {}
 jobs:
   build_and_deploy:
+    # Production deploys only from main. A manual run on another branch would
+    # otherwise publish unreviewed code to production; skipped, not failed, so
+    # it costs no runner minutes.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
