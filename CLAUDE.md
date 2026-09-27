@@ -33,7 +33,8 @@ npm run lint       # ESLint over the repo
 npm run preview    # serve the production build locally
 npm test           # Vitest smoke suite over src/lib/ + static post registry
 # Production hosting is Cloudflare Pages (project: shykov-dev, domain: shykov.dev),
-# deployed by GitHub Actions on merge to main (.github/workflows/cloudflare-pages-merge.yml).
+# deployed by GitHub Actions on merge to main (.github/workflows/cloudflare-pages-merge.yml);
+# docs/config-only merges skip the deploy (paths-ignore), manual run via workflow_dispatch.
 # firebase deploy only pushes Firestore rules now — there is no Firebase Hosting surface.
 ```
 
