@@ -24,9 +24,9 @@ describe('static SEO metadata', () => {
     ];
 
     expect(descriptions).toEqual([
-      'Engineering leader and hands-on builder. I help teams ship AI products and share practical software leadership notes.',
-      'Engineering leader and hands-on builder. I help teams ship AI products and share practical software leadership notes.',
-      'Engineering leader and hands-on builder. I help teams ship AI products and share practical software leadership notes.',
+      'Engineering Manager who still ships. 15 years from QA to EM at MacPaw and Headway, and the builder of four side products.',
+      'Engineering Manager who still ships. 15 years from QA to EM at MacPaw and Headway, and the builder of four side products.',
+      'Engineering Manager who still ships. 15 years from QA to EM at MacPaw and Headway, and the builder of four side products.',
     ]);
     descriptions.forEach((description) => expect(description.length).toBeLessThanOrEqual(125));
   });
@@ -58,11 +58,12 @@ describe('static SEO metadata', () => {
   it('links the homepage to all public projects', () => {
     const homeSource = readProjectFile('src/pages/Home.tsx');
     const projectUrls = [
-      'https://cv.shykov.dev/',
-      'https://moat.shykov.dev/',
-      'https://local-review.shykov.dev/',
-      'https://alotno.app/',
+      'https://aploma.dev/',
       'https://www.coffeeslack.com/',
+      'https://local-review.shykov.dev/',
+      'https://cv.shykov.dev/',
+      'https://alotno.app/',
+      'https://moat.shykov.dev/',
     ];
 
     expect(homeSource).toContain('Projects');

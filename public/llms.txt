@@ -1,11 +1,13 @@
 # Maksym Shykov
 
-> Engineering leader and hands-on builder focused on AI product development,
-> engineering leadership, quality engineering, and practical software delivery.
+> Engineering Manager who still ships. 15 years in software, from QA engineer
+> to Engineering Manager at MacPaw (Setapp) and Headway.
 
-Maksym Shykov runs engineering teams at Headway, mentors engineers, and builds
-AI-powered products hands-on. The site contains experience notes, writing, and
-links to public projects.
+Maksym Shykov is an Engineering Manager based in Lisbon, open to new roles
+(Lisbon or remote). He has led cross-functional teams since 2022, and managed
+people since 2021. He still writes code and builds side products for the people
+an engineering manager works with. The site contains his experience, writing on
+engineering management, and links to those products.
 
 ## Core Pages
 
@@ -17,11 +19,11 @@ links to public projects.
 
 ## Projects
 
-- CV Toolkit: https://cv.shykov.dev/
-- Zero to Moat: https://moat.shykov.dev/
-- local-review: https://local-review.shykov.dev/
-- Alotno: https://alotno.app/
-- CoffeeSlack: https://www.coffeeslack.com/
+- Aploma (for managers, private preview): https://aploma.dev/ — turns weekly 1:1 notes into the evidence behind reviews, development plans and salary decisions
+- CoffeeSlack (for teams): https://www.coffeeslack.com/ — random coffee for Slack that reports whether people actually met
+- local-review (for engineers, open source): https://local-review.shykov.dev/ — privacy-first multi-LLM code review in the terminal
+- ATS Resume Toolkit (for candidates, open source): https://cv.shykov.dev/ — resume checker and builder that runs entirely in the browser
+- Also: Alotno https://alotno.app/, Zero to Moat https://moat.shykov.dev/
 
 ## Profiles
 
