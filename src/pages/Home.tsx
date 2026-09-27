@@ -184,11 +184,11 @@ const Home = () => {
               </a>
             </span>
           ))}
-          , and more on{' '}
+          {', and more on '}
           <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" className="text-link">
             GitHub
           </a>
-          .
+          {'.'}
         </p>
       </section>
 
