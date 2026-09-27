@@ -3,6 +3,17 @@ name: Deploy to Cloudflare Pages on merge
   push:
     branches:
       - main
+    # Docs/config-only merges change nothing that ships — don't redeploy for them.
+    # Root-level *.md only: markdown under src/ or apps/ can be site content.
+    # Manual redeploy stays available via workflow_dispatch.
+    paths-ignore:
+      - "*.md"
+      - "docs/**"
+      - ".gitignore"
+      - "LICENSE"
+      - ".claude/**"
+      - ".agents/**"
+  workflow_dispatch: {}
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
