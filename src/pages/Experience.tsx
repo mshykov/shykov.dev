@@ -31,15 +31,15 @@ const Experience = () => {
       ...HEADWAY,
       role: 'Engineering Manager',
       project: 'Goodly',
-      period: 'Apr 2026 – Present',
+      period: 'Apr 2026 – Sep 2026',
       description: 'One of three people on the product leadership team, owning every engineering decision. Authored 200+ merged changes across eight repositories in a quarter — web, iOS, Android, Go services, GCP infrastructure — and shipped the releases end to end. Replaced magic-link sign-in with email and a one-time code. Stood up thegoodly.com as a full mirror of the Shopify storefront, then made it the primary site. Built the product analytics from nothing, and set commit, release and review conventions across every repository.',
     },
     {
       ...HEADWAY,
       role: 'Engineering Manager',
       project: 'Headway app, Foundation team',
-      period: 'Feb 2025 – Apr 2026',
-      description: 'Led a cross-functional team of eight engineers on the iOS and Android clients. Raised iOS crash-free sessions from 95% to 99.5% over two quarters. Guided three backend engineers through moving 60%+ of a seven-year-old Cloud Functions backend onto a REST API. Shipped an ML recommendation system and an AI paywall MVP to production; the paywall picked the right price 65% of the time, above chance and short of our 85% bar, and the work was paused when the payback period came out too long. Ran one engineering team against three PM stakeholders from separate product teams.',
+      period: 'Jan 2025 – Apr 2026',
+      description: 'Led a cross-functional team of eight engineers behind the Headway app: three backend, two Android, one iOS and two ML. Raised iOS crash-free sessions from ~96% to 99.95% over two quarters. Guided three backend engineers through moving ~65% of a seven-year-old Cloud Functions backend onto a REST API. Shipped an ML recommendation system and an AI paywall MVP to production; the paywall picked the right price 65% of the time, above chance and short of our 85% bar. The model still runs in shadow mode on all traffic to keep learning, and the work was paused when the payback period came out too long. Ran one engineering team against three PM stakeholders from separate product teams.',
     },
     {
       ...MACPAW,
@@ -53,7 +53,7 @@ const Experience = () => {
       role: 'Area Lead / Senior QA Engineer',
       project: 'Setapp',
       period: 'Apr 2020 – Oct 2022',
-      description: 'Managed a team of five QA engineers, ensuring transparent promotion processes and creating development plans. Led the interview stages behind seven hires. As an engineer, implemented integration testing that reduced bugs by ~30%, rebuilt the Setapp Desktop release process to cut release time 2.5× and make weekly releases routine, and created UI, functional, and backend tests in JavaScript and Kotlin.',
+      description: 'From January 2021, line manager of five QA engineers, with transparent promotion processes and individual development plans. Led the interview stages behind seven hires. As an engineer, implemented integration testing that reduced bugs by ~30%, rebuilt the Setapp Desktop release process to cut release time 2.5× and make weekly releases routine, and created UI, functional, and backend tests in JavaScript and Kotlin.',
     },
     {
       ...MACPAW,
@@ -63,7 +63,7 @@ const Experience = () => {
       description: 'Responsible for testing and releases of the B2C web cabinet. Created and maintained UI and functional tests using JavaScript and WebdriverIO.',
     },
     {
-      role: 'Automation Test Engineer',
+      role: 'Test Automation Engineer',
       company: 'Revenue Grid',
       companyUrl: 'https://revenuegrid.com',
       logoUrl: '/logos/revenue_grid.jpeg',

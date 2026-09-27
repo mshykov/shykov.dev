@@ -11,12 +11,12 @@ const highlights = [
     context: 'Shipped Setapp Mobile at MacPaw under the Digital Markets Act window',
   },
   {
-    metric: '99.5% crash-free sessions',
-    context: 'Up from 95% on the Headway app iOS client, as EM of the Foundation team',
+    metric: '99.95% crash-free sessions',
+    context: 'Up from ~96% on the Headway app iOS client, as EM of the Foundation team',
   },
   {
-    metric: 'AI paywalls & ML recommendations in production',
-    context: 'Shipped both on the Headway app; the paywall MVP predicted the right price 65% of the time',
+    metric: 'AI paywall & ML recommendations in production',
+    context: 'Shipped both on the Headway app; the paywall MVP picked the right price 65% of the time and still learns in shadow mode',
   },
   {
     metric: '95% availability at 0.2s response time',
@@ -32,43 +32,44 @@ const highlights = [
   },
 ];
 
-// Public projects and tools — the "Builder." in the hero.
+// The four flagship products, one for each group an engineering manager works
+// with. Same order and wording as the CV and LinkedIn profile:
+// change them together.
 const projects = [
   {
-    name: 'CV Toolkit',
-    url: 'https://cv.shykov.dev/',
-    label: 'Career tools',
+    name: 'Aploma',
+    url: 'https://aploma.dev/',
+    label: 'For managers · Private preview',
     description:
-      'Privacy-first resume toolkit for tailoring, sharing, and maintaining a structured engineering CV.',
-  },
-  {
-    name: 'Zero to Moat',
-    url: 'https://moat.shykov.dev/',
-    label: 'Product strategy',
-    description:
-      'A practical moat-building analysis of local-review, CoffeeSlack, and Alotno as real product cases.',
-  },
-  {
-    name: 'local-review',
-    url: 'https://local-review.shykov.dev/',
-    label: 'Free · Open source',
-    description:
-      'Privacy-first AI code reviews from your terminal with multi-LLM support, shipped as a single Go binary.',
-  },
-  {
-    name: 'Alotno',
-    url: 'https://alotno.app/',
-    label: 'Free · Open source',
-    description:
-      'PNG-to-vector converter that runs entirely in your browser — SVG, PDF, EPS, DXF. No uploads, no accounts.',
+      'Turns weekly 1:1 notes into the evidence behind reviews, development plans and salary decisions.',
   },
   {
     name: 'CoffeeSlack',
     url: 'https://www.coffeeslack.com/',
-    label: 'Free',
+    label: 'For teams · Free',
     description:
-      'Random coffee for Slack — pairs teammates for casual 1:1 chats with a /coffee command.',
+      'Random coffee for Slack. Pairs teammates for 1:1 chats and reports whether they actually met.',
   },
+  {
+    name: 'local-review',
+    url: 'https://local-review.shykov.dev/',
+    label: 'For engineers · Free · Open source',
+    description:
+      'Privacy-first AI code review from your terminal with multi-LLM support, shipped as a single Go binary.',
+  },
+  {
+    name: 'ATS Resume Toolkit',
+    url: 'https://cv.shykov.dev/',
+    label: 'For candidates · Free · Open source',
+    description:
+      'Resume checker and builder that runs entirely in your browser. No upload, no account.',
+  },
+];
+
+// Smaller experiments, listed in one line under the flagships.
+const moreProjects = [
+  { name: 'Alotno', url: 'https://alotno.app/' },
+  { name: 'Zero to Moat', url: 'https://moat.shykov.dev/' },
 ];
 
 const focusAreas = [
@@ -94,22 +95,22 @@ const Home = () => {
   return (
     <div className="flex flex-col pb-8">
       <Seo
-        title="Maksym Shykov | Engineering Lead"
-        description="Engineering leader and hands-on builder. I help teams ship AI products and share practical software leadership notes."
+        title="Maksym Shykov | Engineering Manager"
+        description="Engineering Manager who still ships. 15 years from QA to EM at MacPaw and Headway, and the builder of four side products."
         path="/"
       />
 
       {/* Hero — typography-led, no decoration */}
       <section className="pt-20 md:pt-28 pb-16 md:pb-20">
-        <p className="section-label mb-5">Engineering Manager · Goodly, Headway Inc.</p>
+        <p className="section-label mb-5">Engineering Manager · Open to new roles, Lisbon or remote</p>
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink dark:text-ink-dark leading-[1.15] mb-6 text-balance">
-          Leader. Mentor. Builder.
+          Engineering Manager who still ships.
         </h1>
         <p className="text-lg text-ink-secondary dark:text-ink-secondary-dark leading-relaxed max-w-xl mb-10">
-          I own engineering on Goodly at Headway Inc., mentor engineers, and
-          build AI-powered products hands-on. Fifteen years in software — from
-          QA engineer at Samsung to engineering management at MacPaw and
-          Headway.
+          Fifteen years in software, from QA engineer at Samsung to
+          Engineering Manager at MacPaw and Headway. I lead cross-functional
+          teams, mentor engineers, and still write code: 200+ merged changes
+          across eight repositories in my last quarter at Headway.
         </p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <Link to="/experience" className="btn-ink">
@@ -144,7 +145,7 @@ const Home = () => {
         </ul>
       </section>
 
-      {/* Projects — shipped solo, proof of the "Builder." */}
+      {/* Projects — shipped solo, proof of the "still ships" */}
       <section className="py-14 border-t border-hairline dark:border-hairline-dark">
         <h2 className="section-label mb-8">Projects</h2>
         <ul>
@@ -173,6 +174,22 @@ const Home = () => {
             </li>
           ))}
         </ul>
+        <p className="mt-6 text-sm text-ink-secondary dark:text-ink-secondary-dark">
+          Also:{' '}
+          {moreProjects.map(({ name, url }, index) => (
+            <span key={name}>
+              {index > 0 && ', '}
+              <a href={url} target="_blank" rel="noopener noreferrer" className="text-link">
+                {name}
+              </a>
+            </span>
+          ))}
+          , and more on{' '}
+          <a href="https://github.com/mshykov" target="_blank" rel="noopener noreferrer" className="text-link">
+            GitHub
+          </a>
+          .
+        </p>
       </section>
 
       {/* Focus */}

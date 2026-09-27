@@ -20,7 +20,7 @@ describe('article SEO surface', () => {
   it('renders an author byline on article pages', () => {
     expect(postArticleSource).toContain("By{' '}");
     expect(postArticleSource).toContain('Maksym Shykov');
-    expect(postArticleSource).toContain('Engineering Lead');
+    expect(postArticleSource).toContain('Engineering Manager');
     expect(postArticleSource).toContain('to="/experience"');
   });
 });

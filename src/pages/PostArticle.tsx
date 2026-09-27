@@ -81,7 +81,7 @@ const PostArticle = () => {
             <Link to="/experience" className="text-link">
               Maksym Shykov
             </Link>
-            , Engineering Lead
+            , Engineering Manager
           </span>
           <span aria-hidden="true">·</span>
           <time dateTime={publishedDate.iso ?? post.publishedAt}>{publishedDate.display}</time>
