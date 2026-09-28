@@ -47,6 +47,13 @@ describe('parseMarkdownBlocks', () => {
     ]);
   });
 
+  it('keeps the lines of a fence that is never closed', () => {
+    expect(parseMarkdownBlocks('Intro\n\n```\nconst a = 1;\nconst b = 2;')).toEqual([
+      { type: 'paragraph', text: 'Intro' },
+      { type: 'code', value: 'const a = 1;\nconst b = 2;' },
+    ]);
+  });
+
   it('keeps fenced code verbatim, including table and list syntax', () => {
     expect(parseMarkdownBlocks('```md\n| a | b |\n- item\n```')).toEqual([
       { type: 'code', value: '| a | b |\n- item' },

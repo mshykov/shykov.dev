@@ -139,6 +139,8 @@ export const parseMarkdownBlocks = (content: string): Block[] => {
     }
   }
 
+  // An unclosed fence keeps its lines rather than dropping the rest of the post.
+  if (codeFence) state.blocks.push({ type: 'code', value: codeFence.join('\n') });
   flushTable(state);
   flushParagraph(state);
   return state.blocks;
