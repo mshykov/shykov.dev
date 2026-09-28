@@ -2,10 +2,10 @@
 title: "Professional Development Plan for Engineers: Template and Real Examples"
 description: "What a professional development plan (PDP) is, who owns it, a copy-ready template, and real example plans for junior, middle, and senior engineers."
 slug: "professional-development-plan-for-engineers"
-publishedAt: "2026-08-15"
+publishedAt: "2026-10-01"
 tags: ["career growth", "personal development plan", "engineering leadership", "mentoring"]
 excerpt: "After two years of lecturing at an engineering school, the most common feedback was not about theory. It was: show us a real PDP. Here it is — the template, real examples per level, and the loop that keeps it alive."
-published: false
+published: true
 ---
 
 # Professional Development Plan for Engineers: Template and Real Examples
