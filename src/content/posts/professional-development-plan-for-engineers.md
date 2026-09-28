@@ -170,10 +170,10 @@ benchmarked it against 25 direct competitors in the book-summary category and
 Store. I wrote down how each of them handles search, how ours compared, and a
 three-iteration plan to bring ours up to the best practice on the market in
 autumn 2025. Another team, one focused on engagement metrics, picked up the
-research and built it.
+research and built part of it.
 
 The evidence column for that goal was not "understands product." It was a
-document another team used to ship. The same shape worked when I moved to a
+document another team used to decide what to build. The same shape worked when I moved to a
 new product and my own PDP had a goal to make every engineer on the team, iOS,
 Android and backend, work as a product engineer: code written with AI agents,
 and every task looked at through the product problem it solves. None of that
