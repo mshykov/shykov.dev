@@ -68,7 +68,7 @@ const Experience = () => {
       companyUrl: 'https://revenuegrid.com',
       logoUrl: '/logos/revenue_grid.jpeg',
       period: 'Apr 2013 – Jul 2019',
-      description: 'Developed automated tests for web using Oracle Automation Test Suite (Java) and Windows desktop applications using TestComplete (JScript) and coded UI tests (C#). Tested MS Outlook add-ins for CRM data access.',
+      description: 'Developed automated tests for web using Oracle Application Testing Suite (Java) and Windows desktop applications using TestComplete (JScript) and coded UI tests (C#). Tested MS Outlook add-ins for CRM data access.',
     },
     {
       role: 'QA Engineer',
