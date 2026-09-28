@@ -2,10 +2,10 @@
 title: "How to Build Your Network at Work: What 60+ Coffee Chats Taught Me"
 description: "What more than 60 coffee chats at a remote-first company taught me about building a network at work and beyond it, and how to run random coffee."
 slug: "how-to-build-your-network-at-work"
-publishedAt: "2026-10-01"
+publishedAt: "2026-09-30"
 tags: ["networking", "engineering leadership", "remote work", "onboarding"]
 excerpt: "About 15 coffee chats in my first month, around 30 by the end of probation, more than 60 by the time I left. Why that habit did more for me than any onboarding doc, and why it matters even more outside your company."
-published: false
+published: true
 ---
 
 # How to Build Your Network at Work: What 60+ Coffee Chats Taught Me
