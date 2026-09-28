@@ -357,8 +357,50 @@
     padding-left: 1.25rem;
     list-style: disc;
   }
+  .article-prose ol {
+    padding-left: 1.5rem;
+    list-style: decimal;
+  }
   .article-prose li + li {
     margin-top: 0.4rem;
+  }
+  .article-prose :not(pre) > code {
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.375rem;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-size: 0.875em;
+  }
+  .dark .article-prose :not(pre) > code {
+    background-color: var(--color-surface-dark);
+    color: var(--color-ink-dark);
+  }
+  .article-table {
+    overflow-x: auto;
+  }
+  .article-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .article-table th,
+  .article-table td {
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-hairline);
+    text-align: left;
+    vertical-align: top;
+  }
+  .article-table th {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .dark .article-table th,
+  .dark .article-table td {
+    border-bottom-color: var(--color-hairline-dark);
+  }
+  .dark .article-table th {
+    color: var(--color-ink-dark);
   }
   .article-prose pre {
     overflow-x: auto;
