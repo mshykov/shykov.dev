@@ -6,11 +6,13 @@ import productEngineerSource from './posts/software-engineer-to-product-engineer
 // public index until the flag flips. To publish: set published: true, set the
 // real publishedAt, and add the route to public/sitemap.xml.
 import pdpSource from './posts/professional-development-plan-for-engineers.md?raw';
+import networkingSource from './posts/how-to-build-your-network-at-work.md?raw';
 
 const posts = createPostIndex([
   parsePostSource(engineerChangelogSource),
   parsePostSource(productEngineerSource),
   parsePostSource(pdpSource),
+  parsePostSource(networkingSource),
 ]) as readonly BlogPost[];
 
 export const getAllPosts = (): BlogPost[] => [...posts];
