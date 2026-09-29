@@ -102,7 +102,7 @@ const renderBlock = (block: Block, key: number): ReactNode => {
 };
 
 const MarkdownContent = ({ content }: MarkdownContentProps) => (
-  <div className="article-prose">{parseMarkdownBlocks(content).map(renderBlock)}</div>
+  <div className="article-prose">{parseMarkdownBlocks(content).map((block, index) => renderBlock(block, index))}</div>
 );
 
 export default MarkdownContent;

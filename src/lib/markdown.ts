@@ -82,7 +82,7 @@ const parseListLine = (state: ParseState, line: string): boolean => {
     appendListItem(state, line.slice(2), false, 1);
     return true;
   }
-  const ordered = line.match(ORDERED_ITEM);
+  const ordered = ORDERED_ITEM.exec(line);
   if (ordered) {
     flushParagraph(state);
     appendListItem(state, ordered[2], true, Number(ordered[1]));
@@ -103,7 +103,7 @@ const parseBlockLine = (state: ParseState, line: string) => {
     flushParagraph(state);
     return;
   }
-  const heading = line.match(/^(#{1,3})\s+(.+)$/);
+  const heading = /^(#{1,3})\s+(.+)$/.exec(line);
   if (heading) {
     flushParagraph(state);
     state.blocks.push({ type: 'heading', level: heading[1].length, text: heading[2] });
