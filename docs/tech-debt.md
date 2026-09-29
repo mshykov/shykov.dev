@@ -82,8 +82,9 @@ Fixed in two layers:
   HTTP 200 + a keyword per site, and every certificate valid > 14 days. A failure
   opens one "Site check failing" issue (comments on it while it stays red); the
   first green run closes it. Details in [developer.md](developer.md#site-monitor).
-- **5-minute alerts** — one UptimeRobot keyword monitor per site (dashboard work,
-  owner; the six non-apex monitors were still to be added as of 2026-09-28).
+- **5-minute alerts** — one UptimeRobot monitor per site, all in place 2026-09-29:
+  the apex keeps its Keyword monitor; the six others are HTTP(s), because the free
+  plan no longer lets you create Keyword monitors.
 
 Behind the Cloudflare proxy the public certificate is Cloudflare's own, so the
 expiry check can't see the origin cert; an expired origin shows up as a 526,

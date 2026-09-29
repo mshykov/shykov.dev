@@ -1,8 +1,10 @@
 name: Site monitor
 # Daily availability + TLS-expiry check of every public site (list and rules in
-# scripts/site-check.sh). Complements the 5-minute UptimeRobot keyword monitors:
-# this one gives advance warning on certificates that are about to expire, and it
-# lives in the repo, so it can't quietly go missing from a dashboard.
+# scripts/site-check.sh). Complements the 5-minute UptimeRobot monitors — one
+# Keyword monitor (shykov.dev) and six HTTP(s) ones, which can't see content, so for
+# those sites this keyword check is the only content check. It also gives advance
+# warning on certificates about to expire, and it lives in the repo, so it can't
+# quietly go missing from a dashboard.
 #
 # Failure → opens one "Site check failing" issue (or comments on the open one);
 # the first green run closes it. Public repo, so the minutes are free — but keep
