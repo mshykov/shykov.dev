@@ -11,7 +11,7 @@ they outrank cosmetic cleanups.
 
 | # | Item | Category | I | R | E | **P** | Status |
 |---|------|----------|---|---|---|-------|--------|
-| 1 | Markdown renderer has no unit tests | Test | 3 | 3 | 1 | **30** | open |
+| 1 | Markdown renderer has no unit tests | Test | 3 | 3 | 1 | **30** | resolved |
 | 2 | Legacy `m-shykov.web.app` redirects unwatched + hand-deployed | Infra | 2 | 3 | 1 | **25** | retired |
 | 3 | Prerender asserts titles but not body content | Test | 3 | 4 | 3 | **21** | open |
 | 4 | Double analytics pipeline (gtag + Firebase Analytics) | Architecture | 3 | 2 | 2 | **20** | open |
@@ -24,7 +24,11 @@ they outrank cosmetic cleanups.
 
 ## Detail
 
-**1 — Markdown renderer has no unit tests.**
+**1 — Markdown renderer has no unit tests.** *Resolved 2026-09-28.* The
+parser moved to `src/lib/markdown.ts` with table-driven tests in
+`markdown.test.ts`. The debt had already bitten: links, inline code, ordered
+lists and tables rendered as raw Markdown, and a published post showed
+`[Engineer Changelog](/blog/the-engineer-changelog)` literally. Original entry:
 `src/components/MarkdownContent.tsx` is a hand-rolled parser (code fences,
 lists, headings, blockquotes, inline `**bold**` / `"quotes"`) that every article
 depends on. It was already refactored once (July, to cut cognitive complexity
