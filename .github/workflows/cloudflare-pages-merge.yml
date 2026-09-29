@@ -13,6 +13,9 @@ name: Deploy to Cloudflare Pages on merge
       - "LICENSE"
       - ".claude/**"
       - ".agents/**"
+      # The site monitor ships nothing either.
+      - ".github/workflows/site-monitor.yml"
+      - "scripts/site-check.sh"
   workflow_dispatch: {}
 jobs:
   build_and_deploy:

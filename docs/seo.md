@@ -27,7 +27,7 @@ domain: `https://shykov.dev`.
 | Canonical per route | set by `Seo.tsx`; static base in `index.html` |
 | Crawlability | `public/robots.txt` (+ `Sitemap:` line), `public/sitemap.xml`; CSS/JS not blocked |
 | Soft-404s | `*` route → `src/pages/NotFound.tsx` renders `noindex` |
-| Structured data | `WebSite` + `Person` JSON-LD `@graph` in `index.html`; article routes add `BlogPosting` JSON-LD via `Seo` |
+| Structured data | `WebSite` + `Person` JSON-LD `@graph` in `index.html`; article routes add `BlogPosting` (tied to `#person`), `BreadcrumbList` and `FAQPage` from `src/lib/postSeo.ts`, plus `article:*` meta and a per-post card `public/og/<slug>.png` (`npm run og`) |
 | Descriptive URLs | `/`, `/experience`, `/blog`, `/blog/<slug>` |
 | Alt text | avatar + all company logos |
 | Descriptive anchor text | yes; no "click here" |

@@ -5,6 +5,7 @@ import Seo, { SITE_URL } from '../components/Seo';
 import { getPostBySlug } from '../content/posts';
 import { formatPostDate } from '../lib/formatDate';
 import { splitPostContent } from '../lib/postContent';
+import { buildPostJsonLd, postOgImagePath } from '../lib/postSeo';
 
 const PostArticle = () => {
   const { slug = '' } = useParams();
@@ -28,9 +29,6 @@ const PostArticle = () => {
     );
   }
 
-  const path = `/blog/${post.slug}`;
-  const canonicalUrl = `${SITE_URL}${path}`;
-  const articleImage = `${SITE_URL}/og-image-explore.png`;
   const publishedDate = formatPostDate(post.publishedAt, {
     year: 'numeric',
     month: 'long',
@@ -42,29 +40,16 @@ const PostArticle = () => {
       <Seo
         title={`${post.title} — Maksym Shykov`}
         description={post.description}
-        path={path}
+        path={`/blog/${post.slug}`}
         type="article"
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: post.title,
-          description: post.description,
-          image: [articleImage],
-          datePublished: post.publishedAt,
-          dateModified: post.updatedAt ?? post.publishedAt,
-          author: {
-            '@type': 'Person',
-            name: 'Maksym Shykov',
-            url: `${SITE_URL}/experience`,
-          },
-          publisher: {
-            '@type': 'Person',
-            name: 'Maksym Shykov',
-            url: SITE_URL,
-          },
-          mainEntityOfPage: canonicalUrl,
-          url: canonicalUrl,
+        image={`${SITE_URL}${postOgImagePath(post.slug)}`}
+        imageAlt={`${post.title} — an article by Maksym Shykov`}
+        article={{
+          publishedTime: post.publishedAt,
+          modifiedTime: post.updatedAt ?? post.publishedAt,
+          tags: post.tags,
         }}
+        jsonLd={buildPostJsonLd(post)}
       />
 
       <header className="mb-12">

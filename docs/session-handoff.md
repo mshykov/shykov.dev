@@ -108,8 +108,10 @@ while it stays invisible on the site (not on `/blog`, its slug 404s with
 
 1. Fill any `_[TODO: …]_` blocks in the Markdown.
 2. Set `published: true` and a real `publishedAt`.
-3. Add the route to `public/sitemap.xml` — **this is also what makes it
-   prerender**.
+3. Add the route to `public/sitemap.xml` with `<lastmod>` = `updatedAt ??
+   publishedAt` — **this is also what makes it prerender**. Run `npm run og`
+   and commit `public/og/<slug>.png`, the post's LinkedIn/X card. Tests fail
+   if either is missing.
 4. Remove the "Draft" comment above its import in `src/content/posts.ts`
    (a stale comment is a bug in this repo).
 5. `npm run build && npm test`, verify in the Pages preview, PR, merge.
@@ -119,7 +121,10 @@ while it stays invisible on the site (not on `/blog`, its slug 404s with
    then `curl` the live URL to confirm. **`firebase deploy` is not the
    production path** — it only pushes Firestore rules now, by hand; the legacy
    `m-shykov.web.app` hosting site is retired.
-7. After deploy: request indexing in Search Console for the new URL.
+7. After deploy: `npm run indexnow -- <post URL> https://shykov.dev/blog`
+   (Bing, and through it ChatGPT/Copilot), then Search Console URL Inspection →
+   Request indexing for the post. If the link was already shared on LinkedIn,
+   refresh the card with LinkedIn's Post Inspector.
 
 ## Open threads
 

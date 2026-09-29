@@ -16,6 +16,7 @@ engineering management, and links to those products.
 - Writing: https://shykov.dev/blog
 - The Engineer Changelog: https://shykov.dev/blog/the-engineer-changelog
 - From Software Engineer to Product Engineer: https://shykov.dev/blog/software-engineer-to-product-engineer
+- How to Build Your Network at Work (60+ coffee chats): https://shykov.dev/blog/how-to-build-your-network-at-work
 - Professional Development Plan for Engineers (template and real examples): https://shykov.dev/blog/professional-development-plan-for-engineers
 
 ## Projects
