@@ -51,6 +51,27 @@ Production deploys run via GitHub Actions → Cloudflare Pages (project `shykov-
 domain `shykov.dev`) on merge to main. `firebase deploy` now only pushes Firestore
 rules — the legacy `m-shykov.web.app` hosting site is retired.
 
+## Site monitor
+
+- `.github/workflows/site-monitor.yml` runs daily (06:17 UTC), on manual dispatch,
+  and on PRs that touch it or `scripts/site-check.sh`. The script checks every
+  public site — not just this one — for HTTP 200 after redirects, a per-site
+  keyword in the body (SPA fallbacks answer 200 for anything), and certificates
+  valid > 14 days (`WARN_DAYS`). Run it locally: `bash scripts/site-check.sh`.
+- On a scheduled/manual failure it opens one issue titled **"Site check failing"**,
+  or comments on it if it's already open; the first green run closes it. PR runs
+  never touch issues. The job also goes red, so GitHub's failed-run email fires too.
+- Add or remove a site by editing `SITES` in the script (`url|keyword`). Pick a
+  keyword from the static HTML (`curl -s <url> | grep -o '<title>.*</title>'`),
+  not from client-rendered content.
+- Behind the Cloudflare proxy the public certificate is Cloudflare's edge cert; an
+  expired origin cert shows as a **526**, which the status check catches.
+- GitHub disables schedules in a public repo after 60 days without commits. If
+  the monitor goes quiet during a pause in work, re-enable it in the Actions tab.
+- Neither file ships, so both are in the deploy workflow's `paths-ignore`.
+- The 5-minute layer is UptimeRobot (keyword monitors, owner's account) — this
+  workflow is the advance warning and the in-repo record.
+
 ## Static analysis (SonarCloud)
 
 - `.github/workflows/sonarcloud.yml` runs `SonarSource/sonarqube-scan-action` on push

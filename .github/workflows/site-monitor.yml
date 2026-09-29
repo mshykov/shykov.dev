@@ -1,0 +1,73 @@
+name: Site monitor
+# Daily availability + TLS-expiry check of every public site (list and rules in
+# scripts/site-check.sh). Complements the 5-minute UptimeRobot keyword monitors:
+# this one gives advance warning on certificates that are about to expire, and it
+# lives in the repo, so it can't quietly go missing from a dashboard.
+#
+# Failure → opens one "Site check failing" issue (or comments on the open one);
+# the first green run closes it. Public repo, so the minutes are free — but keep
+# it to one short job a day anyway. GitHub disables schedules in a public repo
+# after 60 days without commits; this repo is active, but if the issue stops
+# showing up, check the Actions tab.
+'on':
+  schedule:
+    - cron: '17 6 * * *' # daily 06:17 UTC, off the top of the hour
+  workflow_dispatch: {}
+  # Validate edits to the monitor itself. Not a required check.
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/site-monitor.yml
+      - scripts/site-check.sh
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Check sites
+        id: check
+        run: |
+          if bash scripts/site-check.sh > report.md; then
+            echo "failed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "failed=true" >> "$GITHUB_OUTPUT"
+          fi
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          cat report.md
+
+      # PR runs only validate; the issue belongs to scheduled/manual runs.
+      - name: Open, update or close the tracking issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED: ${{ steps.check.outputs.failed }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Site check failing"
+          num=$(gh issue list --state open --search "\"$title\" in:title" \
+            --json number,title --jq "map(select(.title == \"$title\")) | .[0].number // empty")
+          printf '\n[Run log](%s)\n' "$RUN_URL" >> report.md
+          if [[ $FAILED == true ]]; then
+            if [[ -n $num ]]; then
+              gh issue comment "$num" --body-file report.md
+            else
+              gh issue create --title "$title" --body-file report.md
+            fi
+          elif [[ -n $num ]]; then
+            gh issue close "$num" --comment "Recovered — all sites OK. [Run log]($RUN_URL)"
+          fi
+
+      - name: Fail the run if any site failed
+        if: steps.check.outputs.failed == 'true'
+        run: exit 1

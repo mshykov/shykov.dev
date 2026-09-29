@@ -16,7 +16,7 @@ they outrank cosmetic cleanups.
 | 3 | Prerender asserts titles but not body content | Test | 3 | 4 | 3 | **21** | open |
 | 4 | Double analytics pipeline (gtag + Firebase Analytics) | Architecture | 3 | 2 | 2 | **20** | open |
 | 5 | Lighthouse CI audits only the home page | Test | 2 | 2 | 1 | **20** | open |
-| 6 | Satellite subdomains not in uptime monitoring | Infra | 2 | 2 | 1 | **20** | open |
+| 6 | Satellite subdomains not in uptime monitoring | Infra | 2 | 2 | 1 | **20** | resolved |
 | 7 | `redesign/micrographics-portfolio` decision debt | Decision | 2 | 2 | 2 | **16** | open |
 | 8 | `lucide-react` pinned to 0.x | Dependency | 2 | 2 | 2 | **16** | held |
 | 9 | No RSS/Atom feed | Content | 2 | 1 | 1 | **15** | open |
@@ -70,11 +70,26 @@ styles, and JSON-LD; none of it is gated. Fix: add an article URL (and
 context in mind — only accessibility is gated hard, and for good reason
 (see [developer.md](developer.md)).
 
-**6 — Only the apex domain is monitored.**
-The UptimeRobot keyword monitor covers `https://shykov.dev/`. The portfolio
-links `cv.`, `moat.`, and `local-review.` from the home page; any of them can
-go dark unnoticed. Fix: three more keyword monitors (dashboard work, not repo
-work).
+**6 — Only the apex domain is monitored.** *Resolved 2026-09-28.*
+The UptimeRobot keyword monitor covered only `https://shykov.dev/`, and the
+debt came due: `local-review.shykov.dev` was down 2026-09-20 → 09-28 (GitHub
+Pages cert expired; renewal failed with `bad_authz` because the Cloudflare
+record was proxied, so Cloudflare answered 526) and nobody noticed for 8 days.
+Fixed in two layers:
+- **Daily check in this repo** — `.github/workflows/site-monitor.yml` runs
+  `scripts/site-check.sh` against all public sites (`shykov.dev`, `cv.`,
+  `local-review.`, `moat.`, `www.coffeeslack.com`, `aploma.dev`, `alotno.app`):
+  HTTP 200 + a keyword per site, and every certificate valid > 14 days. A failure
+  opens one "Site check failing" issue (comments on it while it stays red); the
+  first green run closes it. Details in [developer.md](developer.md#site-monitor).
+- **5-minute alerts** — one UptimeRobot keyword monitor per site (dashboard work,
+  owner; the six non-apex monitors were still to be added as of 2026-09-28).
+
+Behind the Cloudflare proxy the public certificate is Cloudflare's own, so the
+expiry check can't see the origin cert; an expired origin shows up as a 526,
+which the status check catches. The expiry check gives real advance warning
+only for hosts that serve their own certificate (`local-review` on GitHub
+Pages, `coffeeslack` on Vercel).
 
 **7 — Stale redesign branch.**
 `redesign/micrographics-portfolio` (1 commit, 18 files, +1091/−476) has been
@@ -109,10 +124,9 @@ revisit only if CI images stop shipping Chrome.
 
 ## Phased plan
 
-**Phase 1 — the silent-failure batch.** Items 1, 3, 5, 2 fit one PR
-(parser tests, prerender content assertions, Lighthouse URLs, redirect-check
-cron). Item 6 is ~10 minutes in the UptimeRobot dashboard. Highest
-value-per-hour of anything here.
+**Phase 1 — the silent-failure batch.** Items 1, 3, 5 fit one PR
+(parser tests, prerender content assertions, Lighthouse URLs). Items 2 and 6
+are done. Highest value-per-hour of anything here.
 
 **Phase 2 — consolidation.** Item 4 (verify the double-instrumentation
 hypothesis, then remove or document) and item 9 (RSS at build time).
