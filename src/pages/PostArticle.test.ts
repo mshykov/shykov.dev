@@ -9,12 +9,12 @@ const readProjectFile = (path: string) => readFileSync(resolve(process.cwd(), pa
 describe('article SEO surface', () => {
   const postArticleSource = readProjectFile('src/pages/PostArticle.tsx');
 
-  it('emits richer BlogPosting structured data for article discovery', () => {
-    expect(postArticleSource).toContain('image:');
-    expect(postArticleSource).toContain('author:');
-    expect(postArticleSource).toContain('publisher:');
-    expect(postArticleSource).toContain('Maksym Shykov');
-    expect(postArticleSource).toContain('og-image-explore.png');
+  // What the structured data contains is tested in src/lib/postSeo.test.ts;
+  // this only guards that the page actually hands it to <Seo>.
+  it('passes the post JSON-LD, social card and article dates to <Seo>', () => {
+    expect(postArticleSource).toContain('jsonLd={buildPostJsonLd(post)}');
+    expect(postArticleSource).toContain('postOgImagePath(post.slug)');
+    expect(postArticleSource).toContain('publishedTime: post.publishedAt');
   });
 
   it('renders an author byline on article pages', () => {
