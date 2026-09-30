@@ -71,8 +71,8 @@ rules — the legacy `m-shykov.web.app` hosting site is retired.
 - Neither file ships, so both are in the deploy workflow's `paths-ignore`.
 - The 5-minute layer is UptimeRobot (owner's account, free plan): a Keyword monitor
   on `https://shykov.dev/` (`Maksym Shykov`, id 803429678) and HTTP(s) monitors on
-  every other site in `SITES` — the free plan no longer lets you create Keyword
-  monitors, so for those this workflow's keyword check is the only content check.
+  every other site in `SITES`. HTTP(s) monitors don't check page content, so for
+  those sites this workflow's keyword check is the only content check.
   This workflow is the advance warning on certificates and the in-repo record.
 
 ## Static analysis (SonarCloud)
