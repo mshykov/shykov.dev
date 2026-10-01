@@ -2,10 +2,10 @@
 title: "Professional Development Plan for Engineers: Template and Real Examples"
 description: "What a professional development plan (PDP) is, who owns it, a copy-ready template, and real example plans for junior, middle, and senior engineers."
 slug: "professional-development-plan-for-engineers"
-publishedAt: "2026-08-15"
+publishedAt: "2026-10-01"
 tags: ["career growth", "personal development plan", "engineering leadership", "mentoring"]
 excerpt: "After two years of lecturing at an engineering school, the most common feedback was not about theory. It was: show us a real PDP. Here it is — the template, real examples per level, and the loop that keeps it alive."
-published: false
+published: true
 ---
 
 # Professional Development Plan for Engineers: Template and Real Examples
@@ -156,13 +156,42 @@ The senior plan is mostly **leverage**: bets, systems, people, and a public
 footprint. Almost nothing on it is "learn a technology" — at this level the
 gap is rarely knowledge.
 
-_[TODO: your own completed-per-plan story — the one goal you took from
-current-state to evidence-in-hand by following the plan (slide-20 placeholder
-from the lecture). 3-5 sentences, concrete.]_
+### A goal of mine that worked
 
-_[TODO: the paper-PDP story — a plan of yours (or a pattern you saw) that was
-written and died: why (no dates? no calendar slot? reading list?). The
-anti-pattern makes the rules above land.]_
+At Headway I ran the Foundation team: no PM and no product area of our own.
+We worked under the hood, on CI/CD, alerts, crash-free sessions and a legacy
+backend. My manager put one goal on my PDP: own a piece of the product and be
+accountable for it.
+
+I asked our analysts which feature had the highest adoption among paying,
+signed-in users. To my surprise it was search. So I tested ours, then
+benchmarked it against 25 direct competitors in the book-summary category and
+5 tier-A products with their own catalogues, like Netflix, Amazon and the App
+Store. I wrote down how each of them handles search, how ours compared, and a
+three-iteration plan to bring ours up to the best practice on the market in
+autumn 2025. Another team, one focused on engagement metrics, picked up the
+research and built part of it.
+
+The evidence column for that goal was not "understands product." It was a
+document another team used to decide what to build. The same shape worked when I moved to a
+new product and my own PDP had a goal to make every engineer on the team, iOS,
+Android and backend, work as a product engineer: code written with AI agents,
+and every task looked at through the product problem it solves. None of that
+was true when the plan started; all of it was by the end.
+
+### A plan that died on paper
+
+Not every PDP dies from bad writing. After the summer 2025 performance review,
+three backend engineers on my team had plans to grow into ML engineering, built
+around a real piece of work: the backend side of an ML service for the app,
+such as recommendations, smarter search or a paywall. Two months later all
+three moved from Foundation into product squads, because strengthening the
+product with features had become the bigger priority for the company.
+
+The plans were well written. Dates, evidence, a real project behind every
+row. What they were tied to was a company plan from the summer, and by autumn
+that plan had changed. The mistake would have been to keep following the
+document anyway.
 
 ## The loop that keeps it alive
 
@@ -182,9 +211,15 @@ Quarterly, the PDP itself gets rewritten: completed rows out, the future
 state re-examined, new rows in. Three artifacts, three cadences — weekly
 changelog, monthly review, quarterly plan — each feeding the next.
 
-_[TODO: reports' PDP patterns — as a manager, 2-3 sentences on what separates
-the reports whose PDPs actually moved their trajectory from those whose plans
-stayed paper. This anchors the manager section below.]_
+With the people I manage, the difference between a PDP that moves someone's
+career and one that stays paper is where it starts. We build it from what the
+business needs over the next six months, not from ten design patterns to learn,
+five books to read or an ML service because ML is in fashion. Every row has to
+grow the engineer *and* give the product something useful. And when the
+business climate changes, we change the plan instead of quietly following a
+document written five months ago. A PDP is a living thing: once a month we ask
+whether the plan still does what the product and the business need, and that
+question applies to a junior engineer as much as to a lead.
 
 ## How AI helps run the loop
 
@@ -212,9 +247,13 @@ mattered, what it taught you, and what to do differently — the mirror
 questions stay human. An auto-generated reflection is a status report wearing
 a costume.
 
-_[TODO (optional): if you already run this with an agent — one concrete
-sentence on your setup (what it reads, what it drafts) makes this section
-land as practice, not prediction.]_
+What that looks like for me: once a month an agent collects everything an
+engineer shipped, meaning merged MRs or PRs, DORA metrics and tickets from
+Jira, Notion or whichever tracker the team uses, and turns it into a one-month
+log. I read that log against the previous months to see how the engineer is
+moving, and then we talk. I am building the same loop into
+[Aploma](https://aploma.dev), a tool for engineering managers that turns
+weekly 1:1 notes into the evidence behind reviews and development plans.
 
 ## For managers: your half of the contract
 
