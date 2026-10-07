@@ -164,7 +164,15 @@ const Layout = () => {
         </div>
 
         <div className="mt-10 text-xs text-ink-tertiary dark:text-ink-tertiary-dark">
-          <p>© {new Date().getFullYear()} Maksym Shykov</p>
+          <p>
+            © {new Date().getFullYear()} Maksym Shykov ·{' '}
+            <a
+              href="https://cv.shykov.dev/"
+              className="underline underline-offset-2 hover:text-ink dark:hover:text-ink-dark transition-colors"
+            >
+              Free ATS resume checker
+            </a>
+          </p>
         </div>
       </footer>
 
