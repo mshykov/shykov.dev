@@ -139,9 +139,9 @@ manager's job is the bridge. Take what the business needs, explain how the
 business works and where it's heading, carry that to the engineers in a form
 they can act on, and carry their constraints back.
 
-I saw the same structure much earlier, as a junior design engineer at ANTK
-Antonov, the aircraft design bureau in Kyiv, in the department responsible for
-the pilot's cabin. When an instrument went out of
+I saw the same structure much earlier. In 2009 and 2010 I was a junior aircraft
+design engineer at ANTK Antonov in Kyiv, in the department responsible for the
+pilot's cabin. When an instrument went out of
 production, someone found a replacement and redrew the instrument panel around
 it. The drawings then needed signatures from 9 to 12 other departments before
 they reached the workshop. Nobody in that chain was the best at everything. Each
