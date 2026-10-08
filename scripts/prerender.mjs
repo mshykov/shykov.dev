@@ -14,7 +14,9 @@
  *
  * Invariants:
  * - Routes come from public/sitemap.xml — the existing "add a route → add it
- *   to the sitemap" convention now also controls prerendering.
+ *   to the sitemap" convention now also controls prerendering. A route that is
+ *   not in the sitemap has no prerendered file and answers 404 in production
+ *   (public/_redirects has no SPA fallback), plus the extra /404 snapshot.
  * - Cookie consent is pre-seeded as 'declined' ONLY inside the snapshot
  *   browser so the banner never enters the captured DOM (it client-renders
  *   after a timer for real visitors — keeping snapshots equal to the initial
@@ -92,7 +94,11 @@ const main = async () => {
   if (!existsSync(join(DIST, 'index.html'))) {
     throw new Error('prerender: dist/index.html missing — run vite build first');
   }
-  const routes = await routesFromSitemap();
+  // '/404' is not in the sitemap but is snapshotted too: dist/404.html is what
+  // Cloudflare Pages serves — with a real 404 status — for any path that has no
+  // file. Without it, Pages falls back to SPA mode and answers 200 to every URL
+  // (a soft 404 that Google reports under "Page indexing").
+  const routes = [...(await routesFromSitemap()), '/404'];
   const server = await serveDist();
   const browser = await puppeteer.launch({ channel: 'chrome', headless: true });
 

@@ -26,7 +26,7 @@ domain: `https://shykov.dev`.
 | Unique per-route titles & descriptions | `src/components/Seo.tsx`, rendered in every page |
 | Canonical per route | set by `Seo.tsx`; static base in `index.html` |
 | Crawlability | `public/robots.txt` (+ `Sitemap:` line), `public/sitemap.xml`; CSS/JS not blocked |
-| Soft-404s | `*` route → `src/pages/NotFound.tsx` renders `noindex` |
+| Soft-404s | Unknown URL answers a real HTTP 404: `scripts/prerender.mjs` writes `dist/404.html` and `public/_redirects` has no SPA fallback (a file there turns Pages into SPA mode → 200 for everything). The `*` route → `src/pages/NotFound.tsx` stays as the client-side `noindex` view. A new page must be in `public/sitemap.xml` or it 404s in production |
 | Structured data | `WebSite` + `Person` JSON-LD `@graph` in `index.html`; article routes add `BlogPosting` (tied to `#person`), `BreadcrumbList` and `FAQPage` from `src/lib/postSeo.ts`, plus `article:*` meta and a per-post card `public/og/<slug>.png` (`npm run og`) |
 | Descriptive URLs | `/`, `/experience`, `/blog`, `/blog/<slug>` |
 | Alt text | avatar + all company logos |
