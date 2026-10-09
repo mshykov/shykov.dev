@@ -3,8 +3,9 @@ title: "Do Engineering Managers Need Technical Skills? What Google's Project Oxy
 description: "Google's Project Oxygen put technical skills last among eight manager qualities. What that does and doesn't mean for engineering managers in 2026."
 slug: "technical-skills-engineering-manager"
 publishedAt: "2026-10-08"
+updatedAt: "2026-10-09"
 tags: ["engineering management", "leadership", "project oxygen", "AI"]
-excerpt: "In 2008 Google set out to learn what makes a great manager, and technical skills came last of eight. Why that still holds in 2026, why it doesn't mean what people think, and what the job looked like across two companies and four products."
+excerpt: "In 2008 Google set out to learn what makes a great manager, and technical skills came last of eight. What that does and doesn't mean when the 2026 data points the other way, and what the job looked like across two companies and four products."
 published: true
 ---
 
@@ -147,15 +148,6 @@ it. The drawings then needed signatures from 9 to 12 other departments before
 they reached the workshop. Nobody in that chain was the best at everything. Each
 department owned its zone, and the aircraft flew because the system worked.
 
-## Growth is offered, not forced
-
-One part of the job I'm deliberate about: I help engineers grow, but I don't
-push growth on anyone for its own sake. If an engineer wants to move forward, I
-help them find the work, the feedback and the opportunity to do it in our
-context. Making ten or twenty people "develop" because development is expected
-isn't management. A manager directs and helps. Engineers who are happy being
-very good at what they do are not a problem to solve.
-
 ## Why so many engineering manager roles now say "hands-on"
 
 More and more companies want an engineering manager who is close to a tech lead
@@ -209,8 +201,8 @@ technical skills eighth because the two newest behaviours were added after it.
 
 ### Does that mean engineering managers don't need to be technical?
 
-No. The study shows what separates great managers from good ones, and every
-Google manager already cleared the technical bar. Technical skill is the entry
+No. The study shows what separates great managers from good ones, and Google's
+managers were already technical. Technical skill is the entry
 ticket, not the edge.
 
 ### Are engineering managers coding more in 2026?
