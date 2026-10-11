@@ -58,6 +58,9 @@ rules — the legacy `m-shykov.web.app` hosting site is retired.
   public site — not just this one — for HTTP 200 after redirects, a per-site
   keyword in the body (SPA fallbacks answer 200 for anything), and certificates
   valid > 14 days (`WARN_DAYS`). Run it locally: `bash scripts/site-check.sh`.
+  The five language homepages of `cv.shykov.dev` (`/es/`, `/pt-br/`, `/pt-pt/`, `/fr/`,
+  `/de/`) are checked too, keyed on the `<html lang>` the build writes, so a locale that
+  falls back to English fails the check. Adding a language there means adding a row.
 - On a scheduled/manual failure it opens one issue titled **"Site check failing"**,
   or comments on it if it's already open; the first green run closes it. PR runs
   never touch issues. The job also goes red, so GitHub's failed-run email fires too.
