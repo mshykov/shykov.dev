@@ -18,6 +18,14 @@ WARN_DAYS="${WARN_DAYS:-14}"
 SITES=(
   "https://shykov.dev/|Maksym Shykov"
   "https://cv.shykov.dev/|ATS Resume Checker"
+  # The language versions of cv.shykov.dev. The keyword is the <html lang> the build
+  # writes into each page, so a locale that falls back to English (or a 404 page that
+  # slipped through as 200) fails here.
+  "https://cv.shykov.dev/es/|lang=\"es-ES\""
+  "https://cv.shykov.dev/pt-br/|lang=\"pt-BR\""
+  "https://cv.shykov.dev/pt-pt/|lang=\"pt-PT\""
+  "https://cv.shykov.dev/fr/|lang=\"fr-FR\""
+  "https://cv.shykov.dev/de/|lang=\"de-DE\""
   "https://local-review.shykov.dev/|local-review"
   "https://moat.shykov.dev/|Zero to Moat"
   "https://www.coffeeslack.com/|CoffeeSlack"
