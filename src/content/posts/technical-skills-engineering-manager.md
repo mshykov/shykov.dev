@@ -3,7 +3,7 @@ title: "Do Engineering Managers Need Technical Skills? What Google's Project Oxy
 description: "Google's Project Oxygen put technical skills last among eight manager qualities. What that does and doesn't mean for engineering managers in 2026."
 slug: "technical-skills-engineering-manager"
 publishedAt: "2026-10-08"
-updatedAt: "2026-10-09"
+updatedAt: "2026-10-12"
 tags: ["engineering management", "leadership", "project oxygen", "AI"]
 excerpt: "In 2008 Google set out to learn what makes a great manager, and technical skills came last of eight. What that does and doesn't mean when the 2026 data points the other way, and what the job looked like across two companies and four products."
 published: true
@@ -162,6 +162,12 @@ closes hard problems quickly without breaking production. For a team of ten I'd
 rather find a senior engineer to be the tech lead and own the technical
 decisions, while I take everything that isn't engineering: processes,
 stakeholders, blockers.
+
+The line between the two isn't clean, and it shouldn't be. Technical decisions
+land on the plan: scope, dates, risk. The tech lead owns the decision. I own
+understanding what it does to the plan, and I'm the one who explains that to
+product and other stakeholders. Without that, a plan can look realistic on paper
+and still not match the technical reality.
 
 The test is the critical path. A manager who reads the diff has credibility. A
 manager who is the team's delivery bottleneck is an expensive engineer who
