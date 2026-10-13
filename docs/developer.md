@@ -51,6 +51,22 @@ Production deploys run via GitHub Actions → Cloudflare Pages (project `shykov-
 domain `shykov.dev`) on merge to main. `firebase deploy` now only pushes Firestore
 rules — the legacy `m-shykov.web.app` hosting site is retired.
 
+### Deploy safety net
+
+- The deploy step retries once: Cloudflare answered "Unknown internal error" on
+  2026-10-12 and a rerun passed.
+- The build is stamped with its commit (`dist/build-sha.txt`). After the deploy, the
+  last step asks the live site for `/build-sha.txt` for up to 2 minutes and fails if
+  it doesn't return this run's commit. A green wrangler step alone only means wrangler
+  finished.
+- `.github/workflows/deploy-alert.yml` listens for the deploy workflow finishing on
+  `main`. A failure opens one **"Production deploy failing"** issue (or comments on
+  it), which e-mails the owner within a minute; the next green deploy closes it. This
+  covers what the daily site check can't see: a failed deploy leaves the previous
+  version live and the site "up".
+- Deploys are serialized (`concurrency: production-deploy`, no cancel-in-progress),
+  so each run verifies its own commit. Docs-only merges skip the deploy entirely.
+
 ## Site monitor
 
 - `.github/workflows/site-monitor.yml` runs daily (06:17 UTC), on manual dispatch,
