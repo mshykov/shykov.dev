@@ -81,13 +81,18 @@ jobs:
       # or missing stamp fails the match instead of passing on a 200.
       - name: Verify the live site serves this commit
         run: |
-          for i in $(seq 1 12); do
-            live=$(curl -fsS --max-time 10 "https://shykov.dev/build-sha.txt?run=${GITHUB_RUN_ID}-${i}" || true)
+          deadline=$((SECONDS + 120))
+          attempt=0
+          while (( SECONDS < deadline )); do
+            attempt=$((attempt + 1))
+            live=$(curl -fsS --max-time 5 "https://shykov.dev/build-sha.txt?run=${GITHUB_RUN_ID}-${attempt}" || true)
             if [[ $live == "$GITHUB_SHA" ]]; then
               echo "Live site serves $GITHUB_SHA"
               exit 0
             fi
-            echo "Attempt $i: live serves '${live:0:60}', expected $GITHUB_SHA"
+            echo "Attempt $attempt: live serves '${live:0:60}', expected $GITHUB_SHA"
+            # Sleep only if another attempt still fits inside the deadline.
+            (( SECONDS + 10 < deadline )) || break
             sleep 10
           done
           echo "::error::shykov.dev did not start serving $GITHUB_SHA within 2 minutes"
