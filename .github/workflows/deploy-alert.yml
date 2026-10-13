@@ -37,8 +37,9 @@ jobs:
           read -r conclusion sha url < <(gh run list --repo "$REPO" \
             --workflow cloudflare-pages-merge.yml --branch main --status completed \
             --limit 20 --json conclusion,headSha,url \
-            --jq 'map(select(.conclusion == "success" or .conclusion == "failure")) | .[0] | "\(.conclusion) \(.headSha) \(.url)"')
-          [[ -n ${conclusion:-} ]] || exit 0
+            --jq 'map(select(.conclusion == "success" or .conclusion == "failure")) | (.[0] // empty) | "\(.conclusion) \(.headSha) \(.url)"')
+          # No finished deploy to judge (all cancelled or skipped): leave the issue alone.
+          [[ ${conclusion:-} == success || ${conclusion:-} == failure ]] || exit 0
           title="Production deploy failing"
           num=$(gh issue list --repo "$REPO" --state open --search "\"$title\" in:title" \
             --json number,title --jq "map(select(.title == \"$title\")) | .[0].number // empty")
