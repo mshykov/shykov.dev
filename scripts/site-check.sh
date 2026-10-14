@@ -31,6 +31,7 @@ SITES=(
   "https://www.coffeeslack.com/|CoffeeSlack"
   "https://aploma.dev/|Aploma"
   "https://alotno.app/|Alotno"
+  "https://darnasobras.com/|DarNas"
 )
 
 failures=0
