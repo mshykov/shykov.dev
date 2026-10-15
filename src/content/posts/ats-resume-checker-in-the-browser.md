@@ -77,15 +77,20 @@ affiliate fees, so check the vendor page before you pay.
 ## What an "ATS score" is
 
 The number these tools sell is a 0 to 100 score. Nobody can show you how any of
-them is computed, because none is published. And no applicant tracking system
-publishes a score for a resume either.
+them is computed, because none is published.
 
-Greenhouse, for one, states in its support documentation that its AI features
-don't advance or reject candidates; recruiters and hiring managers make those
+Applicant tracking systems do something different. Some show recruiters a
+job-specific match result: [Greenhouse Talent Matching](https://support.greenhouse.io/hc/en-us/articles/41396009937307-Talent-Matching), for example, compares a
+resume with the criteria the hiring team set for a role and reports one of five
+categories, from strong match to limited match. That is not the general 0 to 100
+resume score these tools sell, and the ATS documentation I read doesn't
+describe one.
+
+Greenhouse also states in its support documentation that its AI features don't
+advance or reject candidates; recruiters and hiring managers make those
 decisions. Employers can configure knockout questions that reject on a specific
 answer, such as work authorization, but that's a form rule and not a resume
-score. Some systems do add AI ranking on top, so I won't claim that none of them
-scores anyone. Most of what you read about ATS rejection rates comes from
+score. Most of what you read about ATS rejection rates comes from
 resume-service blogs with something to sell.
 
 So what a checker can measure honestly is narrower: **can a machine read your
@@ -225,5 +230,6 @@ whether your problem is "can it read my CV" or "what should my CV say".
 - [Jobscan plans](https://app.jobscan.co/plan), checked 9 October 2026
 - [Rezi pricing](https://www.rezi.ai/pricing), checked 9 October 2026
 - [Enhancv pricing](https://enhancv.com/pricing/), checked 9 October 2026
+- Greenhouse, [Talent Matching](https://support.greenhouse.io/hc/en-us/articles/41396009937307-Talent-Matching), checked 15 October 2026
 - Greenhouse, [MyGreenhouse FAQ for Candidates](https://support.greenhouse.io/hc/en-us/articles/43418495049499-MyGreenhouse-FAQ-for-Candidates)
 - [cv.shykov.dev](https://cv.shykov.dev), [source code](https://github.com/mshykov/cv.shykov.dev)
