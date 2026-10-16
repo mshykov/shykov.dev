@@ -3,6 +3,7 @@ title: "I Compared 20+ Resume Checkers, Then Built a Free One That Runs in Your 
 description: "Paid ATS resume checkers charge $17 to $50 a month. I spent half a day on 20+ of them, then built a free one: no backend, no account, no LLM, no hidden paywall. What it does, what it can't, and what you'd still pay for."
 slug: "ats-resume-checker-in-the-browser"
 publishedAt: "2026-10-15"
+updatedAt: "2026-10-16"
 tags: ["resume", "ATS", "open source", "privacy", "AI"]
 excerpt: "I needed one answer: what is my CV's ATS score? I spent half a day on 20+ tools, built a local one in an hour and a web version in a couple of evenings. Free, no sign-up, no backend, nothing leaves your browser."
 published: true
@@ -77,7 +78,7 @@ affiliate fees, so check the vendor page before you pay.
 ## What an "ATS score" is
 
 The number these tools sell is a 0 to 100 score. Nobody can show you how any of
-them is computed, because none is published.
+them is computed, because none publishes its rules.
 
 Applicant tracking systems do something different. Some show recruiters a
 job-specific match result: [Greenhouse Talent Matching](https://support.greenhouse.io/hc/en-us/articles/41396009937307-Talent-Matching), for example, compares a
