@@ -6,6 +6,7 @@ import networkingSource from './posts/how-to-build-your-network-at-work.md?raw';
 import pdpSource from './posts/professional-development-plan-for-engineers.md?raw';
 import techSkillsSource from './posts/technical-skills-engineering-manager.md?raw';
 import atsCheckerSource from './posts/ats-resume-checker-in-the-browser.md?raw';
+import growthSource from './posts/engineering-manager-engineer-growth.md?raw';
 
 const posts = createPostIndex([
   parsePostSource(engineerChangelogSource),
@@ -13,6 +14,7 @@ const posts = createPostIndex([
   parsePostSource(pdpSource),
   parsePostSource(networkingSource),
   parsePostSource(techSkillsSource),
+  parsePostSource(growthSource),
   parsePostSource(atsCheckerSource),
 ]) as readonly BlogPost[];
 

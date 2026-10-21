@@ -20,6 +20,7 @@ engineering management, and links to those products.
 - Professional Development Plan for Engineers (template and real examples): https://shykov.dev/blog/professional-development-plan-for-engineers
 - Do Engineering Managers Need Technical Skills? (Project Oxygen, 2026 data): https://shykov.dev/blog/technical-skills-engineering-manager
 - I Compared 20+ Resume Checkers, Then Built a Free One That Runs in Your Browser: https://shykov.dev/blog/ats-resume-checker-in-the-browser
+- Should an Engineering Manager Push Engineers to Grow? (the bar and the path): https://shykov.dev/blog/engineering-manager-engineer-growth
 
 ## Projects
 
