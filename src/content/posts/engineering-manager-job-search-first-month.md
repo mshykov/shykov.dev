@@ -20,8 +20,8 @@ else a few weeks. No company is named here.
 
 ## In short
 
-- **11 companies moved me to a call in a month: 10 calls held, 1 interview booked for
-  26 October. 4 processes still open, no offer yet.**
+- **11 companies moved me to a call in a month: 10 of those calls already happened, 1 interview
+  is booked for 26 October. 4 processes still open, no offer yet.**
 - **People are the strongest channel.** 6 of my 11 conversations started with people: five
   companies reached out to me first, and one conversation started with my own message.
 - **Job boards work too.** About 1 in 15 applications led to a call, more than twice the
