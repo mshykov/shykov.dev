@@ -10,7 +10,7 @@ published: true
 
 # Job Search as an Engineering Manager: My First Month in Numbers
 
-My role ended on 25 September. One month later 11 companies have got to a call with me,
+My role ended on 25 September. One month later 11 companies have moved me to a call,
 4 processes are still open, and I know much more clearly where my next role is likely to come
 from.
 
@@ -20,8 +20,8 @@ else a few weeks. No company is named here.
 
 ## In short
 
-- **11 companies got to a call in a month (one of them on 26 October), 4 processes still
-  open, no offer yet.**
+- **11 companies moved me to a call in a month: 10 calls held, 1 interview booked for
+  26 October. 4 processes still open, no offer yet.**
 - **People are the strongest channel.** 6 of my 11 conversations started with people: five
   companies reached out to me first, and one conversation started with my own message.
 - **Job boards work too.** About 1 in 15 applications led to a call, more than twice the
