@@ -33,6 +33,7 @@ SITES=(
   "https://alotno.app/|Alotno"
   "https://darnasobras.com/|DarNas"
   "https://ladyluckcats.pt/|Lady Luck Cats"
+  "https://clipcards.app/|Clip Cards"
 )
 
 failures=0
