@@ -234,7 +234,7 @@ hiring and compensation, as the CEO's partner. A common split is that the VP own
 runs and the CTO owns which technology bets the company makes. The third post is a small company's
 "VP" who builds automation systems hands-on: a reminder that titles inflate as companies shrink.
 
-### Architects, and the missing "System Designer"
+### Architects: beside the staircase
 
 The 14 architect posts split in two. **8 of 14 face customers, sales or consulting clients:**
 pre-sales solution designs, partner enablement, proofs of concept. Even a post titled "Principal
@@ -243,11 +243,6 @@ internal:** they own the technical *what* across systems, such as target archite
 build-versus-buy and governance, without owning the people who build it. On the staircase, an
 internal architect works on the strategy side next to the Head of Engineering and the CTO; a
 solutions architect sits at the edge between sales and engineering.
-
-"System Architect" appeared in two posts, and both times it was a certification title for one
-low-code platform. I did not find a job called System Designer. System design is a skill, not a
-role: senior and staff engineers, tech leads and engineering managers are interviewed on it. One
-Head of Engineering process I read starts with a system design round.
 
 ## What this means
 
