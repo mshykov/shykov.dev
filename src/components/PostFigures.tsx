@@ -120,15 +120,50 @@ export const MonthlyReviewFigure = () => (
 );
 
 const whoOwnsWhatRows = [
-  { role: 'CTO', line1: 'Bets, budget,', line2: 'org shape', cx: 249, cy: 115 },
-  { role: 'Head', line1: 'Plan, hiring,', line2: 'quality bar', cx: 294, cy: 205 },
-  { role: 'EM', line1: 'Team, priorities,', line2: 'delivery', cx: 507, cy: 295 },
-  { role: 'Engineer', line1: 'Build, ship,', line2: 'raise risks', cx: 614, cy: 385 },
+  { role: 'CTO', line1: 'Bets, budget,', line2: 'org shape', cx: 249, cy: 115, x: 2 },
+  { role: 'Head', line1: 'Plan, hiring,', line2: 'quality bar', cx: 294, cy: 205, x: 46 },
+  { role: 'EM', line1: 'Team, priorities,', line2: 'delivery', cx: 507, cy: 295, x: 96 },
+  { role: 'Engineer', line1: 'Build, ship,', line2: 'raise risks', cx: 614, cy: 385, x: 140 },
 ] as const;
 
+const whoOwnsWhatLabel =
+  'CTO, Head of Engineering, Engineering Manager and engineer on a staircase from strategy to tactics and tasks. Decisions go down one level at a time; results, risks and ideas go back up.';
+
+// Two drawings of one diagram: the wide one shrinks below readable on a phone,
+// so narrow screens get a vertical version with larger text.
 export const WhoOwnsWhatFigure = () => (
   <FigureShell title="Decisions flow down, reality flows up: each level decides the what for the level below and brings results, risks and ideas to the level above.">
-    <svg viewBox="0 0 760 510" role="img">
+    <svg viewBox="0 0 360 455" className="sm:hidden">
+      <title>{whoOwnsWhatLabel}</title>
+      <SvgDefs markerId="who-owns-what-arrow-sm" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+        {whoOwnsWhatRows.map(({ role, x }, index) => (
+          <rect key={role} x={x} y={60 + index * 90} width="180" height="60" rx="12" />
+        ))}
+        <Arrow markerId="who-owns-what-arrow-sm" x1={120} y1={120} x2={120} y2={146} />
+        <Arrow markerId="who-owns-what-arrow-sm" x1={170} y1={210} x2={170} y2={236} />
+        <Arrow markerId="who-owns-what-arrow-sm" x1={220} y1={300} x2={220} y2={326} />
+        <path d="M320 360 L346 360 L346 90 L186 90" strokeDasharray="6 6" markerEnd="url(#who-owns-what-arrow-sm)" />
+        <line x1="2" y1="410" x2="36" y2="410" />
+        <line x1="2" y1="438" x2="36" y2="438" strokeDasharray="6 6" />
+      </g>
+      <g fontFamily="var(--font-sans)" fill="currentColor">
+        <text x="2" y="18" fontSize="11" fontWeight="700" letterSpacing="1.5">STRATEGY</text>
+        <text x="2" y="36" fontSize="13" fontWeight="600">What to do</text>
+        <text x="358" y="18" textAnchor="end" fontSize="11" fontWeight="700" letterSpacing="1.5">TACTICS · TASKS</text>
+        <text x="358" y="36" textAnchor="end" fontSize="13" fontWeight="600">How to do it</text>
+        {whoOwnsWhatRows.map(({ role, line1, line2, x }, index) => (
+          <g key={role}>
+            <text x={x + 90} y={84 + index * 90} textAnchor="middle" fontSize="15" fontWeight="700">{role}</text>
+            <text x={x + 90} y={104 + index * 90} textAnchor="middle" fontSize="12">{`${line1} ${line2}`}</text>
+          </g>
+        ))}
+        <text x="44" y="414" fontSize="12">Decisions: the what goes to the level below</text>
+        <text x="44" y="442" fontSize="12">Reality: results, risks and ideas go up</text>
+      </g>
+    </svg>
+    <svg viewBox="0 0 760 510" className="hidden sm:block">
+      <title>{whoOwnsWhatLabel}</title>
       <SvgDefs markerId="who-owns-what-arrow" />
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
         <line x1="405" y1="64" x2="405" y2="430" strokeDasharray="4 6" opacity="0.5" />

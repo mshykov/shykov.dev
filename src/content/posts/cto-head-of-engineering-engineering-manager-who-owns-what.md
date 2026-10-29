@@ -115,7 +115,7 @@ agenda, not an order book.
 
 Strategy is a staircase. Hands-on work is not.
 
-| Level | Share of posts that expect some coding | Tasks share |
+| Level | Posts that expect some hands-on work (code or reviews) | Tasks share |
 |---|---|---|
 | Senior engineer | 15 of 15 | 59% |
 | Engineering Manager | 9 of 19 | 5% |
