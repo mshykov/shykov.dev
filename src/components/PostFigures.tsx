@@ -119,10 +119,54 @@ export const MonthlyReviewFigure = () => (
   </FigureShell>
 );
 
+const whoOwnsWhatRows = [
+  { role: 'CTO', line1: 'Bets, budget,', line2: 'org shape', cx: 249, cy: 115 },
+  { role: 'Head', line1: 'Plan, hiring,', line2: 'quality bar', cx: 294, cy: 205 },
+  { role: 'EM', line1: 'Team, priorities,', line2: 'delivery', cx: 507, cy: 295 },
+  { role: 'Engineer', line1: 'Build, ship,', line2: 'raise risks', cx: 614, cy: 385 },
+] as const;
+
+export const WhoOwnsWhatFigure = () => (
+  <FigureShell title="Decisions flow down, reality flows up: each level decides the what for the level below and brings results, risks and ideas to the level above.">
+    <svg viewBox="0 0 760 510" role="img">
+      <SvgDefs markerId="who-owns-what-arrow" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+        <line x1="405" y1="64" x2="405" y2="430" strokeDasharray="4 6" opacity="0.5" />
+        <path d="M130 64 L130 430 L716 430" />
+        {whoOwnsWhatRows.map(({ role, cx, cy }) => (
+          <rect key={role} x={cx - 80} y={cy - 28} width="160" height="56" rx="12" />
+        ))}
+        <Arrow markerId="who-owns-what-arrow" x1={270} y1={143} x2={270} y2={171} />
+        <path d="M374 205 L490 205 L490 261" markerEnd="url(#who-owns-what-arrow)" />
+        <Arrow markerId="who-owns-what-arrow" x1={560} y1={323} x2={560} y2={351} />
+        <path d="M694 385 L736 385 L736 115 L337 115" strokeDasharray="6 6" markerEnd="url(#who-owns-what-arrow)" />
+        <line x1="130" y1="465" x2="170" y2="465" />
+        <line x1="130" y1="493" x2="170" y2="493" strokeDasharray="6 6" />
+      </g>
+      <g fontFamily="var(--font-sans)" fill="currentColor">
+        <text x="267" y="28" textAnchor="middle" fontSize="12" fontWeight="700" letterSpacing="2">STRATEGY</text>
+        <text x="267" y="50" textAnchor="middle" fontSize="16" fontWeight="600">What to do</text>
+        <text x="562" y="28" textAnchor="middle" fontSize="12" fontWeight="700" letterSpacing="2">TACTICS · TASKS</text>
+        <text x="562" y="50" textAnchor="middle" fontSize="16" fontWeight="600">How to do it</text>
+        {whoOwnsWhatRows.map(({ role, line1, line2, cx, cy }) => (
+          <g key={role}>
+            <text x="116" y={cy + 6} textAnchor="end" fontSize="17" fontWeight="700">{role}</text>
+            <text x={cx} y={cy - 4} textAnchor="middle" fontSize="13" fontWeight="600">{line1}</text>
+            <text x={cx} y={cy + 14} textAnchor="middle" fontSize="13" fontWeight="600">{line2}</text>
+          </g>
+        ))}
+        <text x="182" y="470" fontSize="13">Decisions: the what goes to the level below</text>
+        <text x="182" y="498" fontSize="13">Reality: results, risks and ideas go to the level above</text>
+      </g>
+    </svg>
+  </FigureShell>
+);
+
 const figures = {
   'friday-test': FridayTestFigure,
   'weekly-template': WeeklyTemplateFigure,
   'monthly-review': MonthlyReviewFigure,
+  'who-owns-what': WhoOwnsWhatFigure,
 } as const;
 
 export const PostFigure = ({ name }: { name: string }) => {

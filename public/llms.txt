@@ -22,6 +22,7 @@ engineering management, and links to those products.
 - I Compared 20+ Resume Checkers, Then Built a Free One That Runs in Your Browser: https://shykov.dev/blog/ats-resume-checker-in-the-browser
 - Should an Engineering Manager Push Engineers to Grow? (the bar and the path): https://shykov.dev/blog/engineering-manager-engineer-growth
 - Job Search as an Engineering Manager: My First Month in Numbers (channels, response times, month-two plan): https://shykov.dev/blog/engineering-manager-job-search-first-month
+- From CTO to Senior Engineer: Who Owns What in Engineering? (115 job posts; Team Lead, Tech Lead, Staff, Director, VP, architects): https://shykov.dev/blog/cto-head-of-engineering-engineering-manager-who-owns-what
 
 ## Projects
 
