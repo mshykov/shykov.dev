@@ -129,23 +129,43 @@ const whoOwnsWhatRows = [
 const whoOwnsWhatLabel =
   'CTO, Head of Engineering, Engineering Manager and engineer on a staircase from strategy to tactics and tasks. Decisions go down one level at a time; results, risks and ideas go back up.';
 
+// Up arrows (results, risks, ideas) get their own colour, so the two flows
+// read apart at a glance; both connect neighbouring levels only.
+const realityStroke = 'stroke-amber-700 dark:stroke-amber-400';
+const realityFill = 'fill-amber-700 dark:fill-amber-400';
+
+const RealityDefs = ({ markerId }: { markerId: string }) => (
+  <defs>
+    <marker id={markerId} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" className={realityFill} />
+    </marker>
+  </defs>
+);
+
+const RealityArrow = ({ markerId, d }: { markerId: string; d: string }) => (
+  <path d={d} className={realityStroke} strokeDasharray="5 4" markerEnd={`url(#${markerId})`} />
+);
+
 // Two drawings of one diagram: the wide one shrinks below readable on a phone,
 // so narrow screens get a vertical version with larger text.
 export const WhoOwnsWhatFigure = () => (
-  <FigureShell title="Decisions flow down, reality flows up: each level decides the what for the level below and brings results, risks and ideas to the level above.">
+  <FigureShell title="Decisions flow down, reality flows up, one level at a time: each level decides the what for the level below and brings results, risks and ideas to the level above.">
     <svg viewBox="0 0 360 455" className="sm:hidden">
       <title>{whoOwnsWhatLabel}</title>
       <SvgDefs markerId="who-owns-what-arrow-sm" />
+      <RealityDefs markerId="who-owns-what-up-sm" />
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
         {whoOwnsWhatRows.map(({ role, x }, index) => (
           <rect key={role} x={x} y={60 + index * 90} width="180" height="60" rx="12" />
         ))}
-        <Arrow markerId="who-owns-what-arrow-sm" x1={120} y1={120} x2={120} y2={146} />
-        <Arrow markerId="who-owns-what-arrow-sm" x1={170} y1={210} x2={170} y2={236} />
-        <Arrow markerId="who-owns-what-arrow-sm" x1={220} y1={300} x2={220} y2={326} />
-        <path d="M320 360 L346 360 L346 90 L186 90" strokeDasharray="6 6" markerEnd="url(#who-owns-what-arrow-sm)" />
-        <line x1="2" y1="410" x2="36" y2="410" />
-        <line x1="2" y1="438" x2="36" y2="438" strokeDasharray="6 6" />
+        <Arrow markerId="who-owns-what-arrow-sm" x1={90} y1={120} x2={90} y2={146} />
+        <RealityArrow markerId="who-owns-what-up-sm" d="M150 150 L150 124" />
+        <Arrow markerId="who-owns-what-arrow-sm" x1={140} y1={210} x2={140} y2={236} />
+        <RealityArrow markerId="who-owns-what-up-sm" d="M200 240 L200 214" />
+        <Arrow markerId="who-owns-what-arrow-sm" x1={190} y1={300} x2={190} y2={326} />
+        <RealityArrow markerId="who-owns-what-up-sm" d="M250 330 L250 304" />
+        <Arrow markerId="who-owns-what-arrow-sm" x1={10} y1={404} x2={10} y2={426} />
+        <RealityArrow markerId="who-owns-what-up-sm" d="M10 452 L10 430" />
       </g>
       <g fontFamily="var(--font-sans)" fill="currentColor">
         <text x="2" y="18" fontSize="11" fontWeight="700" letterSpacing="1.5">STRATEGY</text>
@@ -158,25 +178,30 @@ export const WhoOwnsWhatFigure = () => (
             <text x={x + 90} y={104 + index * 90} textAnchor="middle" fontSize="12">{`${line1} ${line2}`}</text>
           </g>
         ))}
-        <text x="44" y="414" fontSize="12">Decisions: the what goes to the level below</text>
-        <text x="44" y="442" fontSize="12">Reality: results, risks and ideas go up</text>
+        <text x="84" y="139" textAnchor="end" fontSize="11" fontWeight="600">the what</text>
+        <text x="158" y="139" fontSize="11" fontWeight="600" className={realityFill}>results, risks, ideas</text>
+        <text x="26" y="419" fontSize="12">Decisions: the what goes to the level below</text>
+        <text x="26" y="447" fontSize="12" className={realityFill}>Reality: results, risks and ideas go up</text>
       </g>
     </svg>
-    <svg viewBox="0 0 760 510" className="hidden sm:block">
+    <svg viewBox="0 0 760 515" className="hidden sm:block">
       <title>{whoOwnsWhatLabel}</title>
       <SvgDefs markerId="who-owns-what-arrow" />
+      <RealityDefs markerId="who-owns-what-up" />
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
         <line x1="405" y1="64" x2="405" y2="430" strokeDasharray="4 6" opacity="0.5" />
         <path d="M130 64 L130 430 L716 430" />
         {whoOwnsWhatRows.map(({ role, cx, cy }) => (
           <rect key={role} x={cx - 80} y={cy - 28} width="160" height="56" rx="12" />
         ))}
-        <Arrow markerId="who-owns-what-arrow" x1={270} y1={143} x2={270} y2={171} />
+        <Arrow markerId="who-owns-what-arrow" x1={245} y1={143} x2={245} y2={171} />
+        <RealityArrow markerId="who-owns-what-up" d="M305 177 L305 149" />
         <path d="M374 205 L490 205 L490 261" markerEnd="url(#who-owns-what-arrow)" />
-        <Arrow markerId="who-owns-what-arrow" x1={560} y1={323} x2={560} y2={351} />
-        <path d="M694 385 L736 385 L736 115 L337 115" strokeDasharray="6 6" markerEnd="url(#who-owns-what-arrow)" />
-        <line x1="130" y1="465" x2="170" y2="465" />
-        <line x1="130" y1="493" x2="170" y2="493" strokeDasharray="6 6" />
+        <RealityArrow markerId="who-owns-what-up" d="M427 295 L345 295 L345 239" />
+        <Arrow markerId="who-owns-what-arrow" x1={550} y1={323} x2={550} y2={351} />
+        <RealityArrow markerId="who-owns-what-up" d="M578 357 L578 329" />
+        <Arrow markerId="who-owns-what-arrow" x1={140} y1={448} x2={140} y2={472} />
+        <RealityArrow markerId="who-owns-what-up" d="M140 506 L140 482" />
       </g>
       <g fontFamily="var(--font-sans)" fill="currentColor">
         <text x="267" y="28" textAnchor="middle" fontSize="12" fontWeight="700" letterSpacing="2">STRATEGY</text>
@@ -190,8 +215,10 @@ export const WhoOwnsWhatFigure = () => (
             <text x={cx} y={cy + 14} textAnchor="middle" fontSize="13" fontWeight="600">{line2}</text>
           </g>
         ))}
-        <text x="182" y="470" fontSize="13">Decisions: the what goes to the level below</text>
-        <text x="182" y="498" fontSize="13">Reality: results, risks and ideas go to the level above</text>
+        <text x="236" y="164" textAnchor="end" fontSize="12" fontWeight="600">the what</text>
+        <text x="314" y="164" fontSize="12" fontWeight="600" className={realityFill}>results, risks, ideas</text>
+        <text x="160" y="465" fontSize="13">Decisions: the what goes to the level below</text>
+        <text x="160" y="499" fontSize="13" className={realityFill}>Reality: results, risks and ideas go to the level above</text>
       </g>
     </svg>
   </FigureShell>
