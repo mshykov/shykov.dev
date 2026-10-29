@@ -85,9 +85,11 @@ groups:
 - **Tasks:** the person's own hands-on work. Writing and reviewing code, designing and building,
   debugging, on-call.
 
-Two honest limits. First, a job post describes what a company *says* it wants, not what the
+Three honest limits. First, a job post describes what a company *says* it wants, not what the
 person ends up doing. Second, the sorting is mine; another reader would land a few points
-differently. The samples are small, so read the numbers as direction, not as proof.
+differently. The samples are small, so read the numbers as direction, not as proof. Third, the
+samples differ by company size: 4 of the 14 CTO posts come from companies of up to 50 people, and
+none of the EM posts do. Company size moves every level, and that is my next article.
 
 ## The strategy staircase holds
 
