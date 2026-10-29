@@ -119,10 +119,146 @@ export const MonthlyReviewFigure = () => (
   </FigureShell>
 );
 
+// Strategy share of the listed responsibilities, from the article's 68 job posts.
+// Each bar is split at that share, and the split sits on the column divider.
+const whoOwnsWhatRows = [
+  { role: 'CTO', share: 45, line1: 'Bets, budget,', line2: 'org shape' },
+  { role: 'Head', share: 32, line1: 'Plan, hiring,', line2: 'quality bar' },
+  { role: 'EM', share: 23, line1: 'Team, priorities,', line2: 'delivery' },
+  { role: 'Engineer', share: 14, line1: 'Build, ship,', line2: 'raise risks' },
+] as const;
+
+const whoOwnsWhatLabel =
+  'CTO, Head of Engineering, Engineering Manager and engineer as bars split between strategy and tactics: 45, 32, 23 and 14 percent strategy. Decisions go down one level at a time; results, risks and ideas go back up.';
+
+// Up arrows (results, risks, ideas) get their own colour, so the two flows
+// read apart at a glance; both connect neighbouring levels only.
+const realityStroke = 'stroke-amber-700 dark:stroke-amber-400';
+const realityFill = 'fill-amber-700 dark:fill-amber-400';
+const onAccentFill = 'fill-[var(--color-surface)] dark:fill-[var(--color-surface-dark)]';
+
+const RealityDefs = ({ markerId }: { markerId: string }) => (
+  <defs>
+    <marker id={markerId} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" className={realityFill} />
+    </marker>
+  </defs>
+);
+
+const RealityArrow = ({ markerId, d }: { markerId: string; d: string }) => (
+  <path d={d} className={realityStroke} strokeDasharray="5 4" markerEnd={`url(#${markerId})`} />
+);
+
+const ShareBar = ({ id, x, y, width, height, share }: { id: string; x: number; y: number; width: number; height: number; share: number }) => (
+  <g>
+    <clipPath id={id}>
+      <rect x={x} y={y} width={width} height={height} rx="10" />
+    </clipPath>
+    <g clipPath={`url(#${id})`} fill="currentColor" stroke="none">
+      <rect x={x} y={y} width={width} height={height} opacity="0.12" />
+      <rect x={x} y={y} width={(width * share) / 100} height={height} />
+    </g>
+    <rect x={x} y={y} width={width} height={height} rx="10" />
+  </g>
+);
+
+// Two drawings of one diagram: the wide one shrinks below readable on a phone,
+// so narrow screens get a vertical version with larger text.
+export const WhoOwnsWhatFigure = () => (
+  <FigureShell title="Decisions flow down, reality flows up, one level at a time. Each bar is one level, split at its share of strategy in 68 job posts from Europe, autumn 2026.">
+    <svg viewBox="0 0 360 462" className="sm:hidden">
+      <title>{whoOwnsWhatLabel}</title>
+      <SvgDefs markerId="who-owns-what-arrow-sm" />
+      <RealityDefs markerId="who-owns-what-up-sm" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+        <line x1="145" y1="44" x2="145" y2="372" strokeDasharray="4 5" opacity="0.5" />
+        {whoOwnsWhatRows.map(({ role, share }, index) => (
+          <ShareBar key={role} id={`who-owns-what-bar-sm-${index}`} x={145 - (230 * share) / 100} y={62 + index * 86} width={230} height={48} share={share} />
+        ))}
+        {[0, 1, 2].map((index) => (
+          <g key={index}>
+            <Arrow markerId="who-owns-what-arrow-sm" x1={210} y1={113 + index * 86} x2={210} y2={141 + index * 86} />
+            <RealityArrow markerId="who-owns-what-up-sm" d={`M240 ${145 + index * 86} L240 ${117 + index * 86}`} />
+          </g>
+        ))}
+        <Arrow markerId="who-owns-what-arrow-sm" x1={8} y1={384} x2={8} y2={402} />
+        <RealityArrow markerId="who-owns-what-up-sm" d="M8 428 L8 410" />
+      </g>
+      <g fontFamily="var(--font-sans)" fill="currentColor">
+        <text x="72" y="16" textAnchor="middle" fontSize="10" fontWeight="700" letterSpacing="1.5">STRATEGY</text>
+        <text x="72" y="32" textAnchor="middle" fontSize="12" fontWeight="600">What to do</text>
+        <text x="252" y="16" textAnchor="middle" fontSize="10" fontWeight="700" letterSpacing="1.5">TACTICS · TASKS</text>
+        <text x="252" y="32" textAnchor="middle" fontSize="12" fontWeight="600">How to do it</text>
+        {whoOwnsWhatRows.map(({ role, share, line1, line2 }, index) => {
+          const x = 145 - (230 * share) / 100;
+          const y = 62 + index * 86;
+          return (
+            <g key={role}>
+              <text x={x - 6} y={y + 29} textAnchor="end" fontSize="12" fontWeight="700">{role}</text>
+              <text x={(x + 145) / 2} y={y + 29} textAnchor="middle" fontSize="13" fontWeight="700" className={onAccentFill}>{share}%</text>
+              <text x={145 + (230 - (230 * share) / 100) / 2} y={y + 21} textAnchor="middle" fontSize="11" fontWeight="600">{line1}</text>
+              <text x={145 + (230 - (230 * share) / 100) / 2} y={y + 35} textAnchor="middle" fontSize="11" fontWeight="600">{line2}</text>
+            </g>
+          );
+        })}
+        <text x="204" y="133" textAnchor="end" fontSize="10" fontWeight="600">the what</text>
+        <text x="246" y="133" fontSize="10" fontWeight="600" className={realityFill}>results, risks, ideas</text>
+        <text x="22" y="397" fontSize="11">Decisions: the what goes to the level below</text>
+        <text x="22" y="423" fontSize="11" className={realityFill}>Reality: results, risks and ideas go up</text>
+        <text x="2" y="452" fontSize="10" opacity="0.75">% = share of listed responsibilities that are strategy</text>
+      </g>
+    </svg>
+    <svg viewBox="0 0 760 545" className="hidden sm:block">
+      <title>{whoOwnsWhatLabel}</title>
+      <SvgDefs markerId="who-owns-what-arrow" />
+      <RealityDefs markerId="who-owns-what-up" />
+      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M130 64 L130 422 L740 422" />
+        <line x1="400" y1="64" x2="400" y2="422" strokeDasharray="4 6" opacity="0.5" />
+        {whoOwnsWhatRows.map(({ role, share }, index) => (
+          <ShareBar key={role} id={`who-owns-what-bar-${index}`} x={400 - (380 * share) / 100} y={86 + index * 88} width={380} height={56} share={share} />
+        ))}
+        {[0, 1, 2].map((index) => (
+          <g key={index}>
+            <Arrow markerId="who-owns-what-arrow" x1={470} y1={145 + index * 88} x2={470} y2={169 + index * 88} />
+            <RealityArrow markerId="who-owns-what-up" d={`M505 ${173 + index * 88} L505 ${149 + index * 88}`} />
+          </g>
+        ))}
+        <Arrow markerId="who-owns-what-arrow" x1={140} y1={448} x2={140} y2={470} />
+        <RealityArrow markerId="who-owns-what-up" d="M140 504 L140 482" />
+      </g>
+      <g fontFamily="var(--font-sans)" fill="currentColor">
+        <text x="265" y="28" textAnchor="middle" fontSize="12" fontWeight="700" letterSpacing="2">STRATEGY</text>
+        <text x="265" y="50" textAnchor="middle" fontSize="16" fontWeight="600">What to do</text>
+        <text x="570" y="28" textAnchor="middle" fontSize="12" fontWeight="700" letterSpacing="2">TACTICS · TASKS</text>
+        <text x="570" y="50" textAnchor="middle" fontSize="16" fontWeight="600">How to do it</text>
+        {whoOwnsWhatRows.map(({ role, share, line1, line2 }, index) => {
+          const x = 400 - (380 * share) / 100;
+          const cy = 114 + index * 88;
+          return (
+            <g key={role}>
+              <text x="116" y={cy + 6} textAnchor="end" fontSize="17" fontWeight="700">{role}</text>
+              <text x={(x + 400) / 2} y={cy + 6} textAnchor="middle" fontSize="16" fontWeight="700" className={onAccentFill}>{share}%</text>
+              <text x={400 + (380 - (380 * share) / 100) / 2} y={cy - 4} textAnchor="middle" fontSize="13" fontWeight="600">{line1}</text>
+              <text x={400 + (380 - (380 * share) / 100) / 2} y={cy + 14} textAnchor="middle" fontSize="13" fontWeight="600">{line2}</text>
+            </g>
+          );
+        })}
+        <text x="462" y="162" textAnchor="end" fontSize="12" fontWeight="600">the what</text>
+        <text x="513" y="162" fontSize="12" fontWeight="600" className={realityFill}>results, risks, ideas</text>
+        <text x="160" y="464" fontSize="13">Decisions: the what goes to the level below</text>
+        <text x="160" y="498" fontSize="13" className={realityFill}>Reality: results, risks and ideas go to the level above</text>
+        <text x="130" y="534" fontSize="12" opacity="0.75">% = share of the listed responsibilities that are strategy, 68 job posts from Europe, autumn 2026</text>
+      </g>
+    </svg>
+  </FigureShell>
+);
+
 const figures = {
   'friday-test': FridayTestFigure,
   'weekly-template': WeeklyTemplateFigure,
   'monthly-review': MonthlyReviewFigure,
+  'who-owns-what': WhoOwnsWhatFigure,
 } as const;
 
 export const PostFigure = ({ name }: { name: string }) => {
