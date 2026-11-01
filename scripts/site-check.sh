@@ -33,6 +33,7 @@ SITES=(
   "https://alotno.app/|Alotno"
   "https://darnasobras.com/|DarNas"
   "https://ladyluckcats.pt/|Lady Luck Cats"
+  "https://gannacutcut.com/|Ganna CutCut"
   "https://clipcards.app/|Clip Cards"
   # A live card page: NFC cards, QR codes and the App Clip all open /c/<slug>, which
   # the backend renders, so the landing page answering doesn't prove cards do.
