@@ -2,7 +2,7 @@
 title: "Lisbon vs Madrid for an Engineering Manager: Jobs, Language and Life After Two Years in Each"
 description: "I lived two years in Lisbon and two in Madrid, and I'm moving back to Lisbon. How the two cities compare for an English-speaking engineering manager: 42 job posts, who hires, the language each market expects, salaries, rent and daily life."
 slug: "lisbon-vs-madrid-engineering-manager"
-publishedAt: "2026-11-10"
+publishedAt: "2026-11-09"
 tags: ["job search", "engineering management", "career", "relocation"]
 excerpt: "Madrid is the bigger city, but for an English-speaking engineering manager the job markets are closer than they look: 18 roles in Lisbon and 24 in Madrid in a month, and one in five Madrid roles needs Spanish. Plus two years of daily life in each city."
 published: true
@@ -97,7 +97,8 @@ many lead and manager roles there ask for fluent French.
 
 ## Salaries
 
-Lisbon posts state a salary range three times as often: 6 of 18, against 2 of 24 in Madrid.
+Lisbon posts state a salary range four times as often: 6 of 18 (a third), against 2 of 24 in
+Madrid (one in twelve).
 
 | Role | Range (gross per year) |
 |---|---|
