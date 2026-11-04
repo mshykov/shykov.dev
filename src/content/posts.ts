@@ -9,6 +9,7 @@ import atsCheckerSource from './posts/ats-resume-checker-in-the-browser.md?raw';
 import growthSource from './posts/engineering-manager-engineer-growth.md?raw';
 import jobSearchSource from './posts/engineering-manager-job-search-first-month.md?raw';
 import whoOwnsWhatSource from './posts/cto-head-of-engineering-engineering-manager-who-owns-what.md?raw';
+import lisbonMadridSource from './posts/lisbon-vs-madrid-engineering-manager.md?raw';
 
 const posts = createPostIndex([
   parsePostSource(engineerChangelogSource),
@@ -20,6 +21,7 @@ const posts = createPostIndex([
   parsePostSource(atsCheckerSource),
   parsePostSource(jobSearchSource),
   parsePostSource(whoOwnsWhatSource),
+  parsePostSource(lisbonMadridSource),
 ]) as readonly BlogPost[];
 
 export const getAllPosts = (): BlogPost[] => [...posts];
