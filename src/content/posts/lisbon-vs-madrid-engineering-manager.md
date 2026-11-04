@@ -24,7 +24,9 @@ doesn't speak fluent Spanish or Portuguese.
   engineering-management roles tied to Lisbon and 24 tied to Madrid. Greater Madrid has more than
   twice the population of Greater Lisbon.
 - **Language is the real difference.** None of the 18 Lisbon roles requires Portuguese. 5 of the
-  24 Madrid roles are written in Spanish or ask for it, often at a native level.
+  24 Madrid roles are written in Spanish or ask for it, often at a native level. That leaves 19
+  Madrid roles open to an English-only manager, against 18 in Lisbon: twice the people, just as
+  many jobs in English.
 - **Lisbon is a city of international engineering hubs.** 15 of the 18 Lisbon roles are at
   companies headquartered abroad. In Madrid a third of the roles are at Spanish companies.
 - **Lisbon shows salaries more often.** 6 of 18 Lisbon posts state a range, against 2 of 24 in
@@ -90,7 +92,7 @@ language request in Lisbon was "Portuguese strongly preferred" for Discord's Dir
 
 In Madrid, one post asks for native Spanish with English at B1. A Santander post requires
 Spanish. For an English-only engineering manager, the Madrid market is about a fifth smaller
-than it looks.
+than it looks: 19 roles, one more than Lisbon.
 
 Lisbon has its own language twist: French. A large nearshore sector serves French clients, and
 many lead and manager roles there ask for fluent French.
