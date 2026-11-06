@@ -24,9 +24,9 @@ doesn't speak fluent Spanish or Portuguese.
   engineering-management roles tied to Lisbon and 24 tied to Madrid. Greater Madrid has more than
   twice the population of Greater Lisbon.
 - **Language is the real difference.** None of the 18 Lisbon roles requires Portuguese. 5 of the
-  24 Madrid roles are written in Spanish or ask for it, often at a native level. That leaves 19
-  Madrid roles open to an English-only manager, against 18 in Lisbon: twice the people, just as
-  many jobs in English.
+  24 Madrid roles are written in Spanish or ask for it, often at a native level. One Lisbon
+  role asks for German. That leaves 19 Madrid roles open to an English-only manager, against 17 in
+  Lisbon: twice the people, just two more jobs in English.
 - **Lisbon is a city of international engineering hubs.** 15 of the 18 Lisbon roles are at
   companies headquartered abroad. In Madrid a third of the roles are at Spanish companies.
 - **Lisbon shows salaries more often.** 6 of 18 Lisbon posts state a range, against 2 of 24 in
@@ -86,16 +86,21 @@ This is the number that matters most if you work in English.
 |---|---|---|
 | Post written in the local language | 2 of 18 | 5 of 24 |
 | Local language required | **0 of 18** | **5 of 24** |
+| Another language required | 1 of 18 (German) | 0 of 24 |
+| **Open to an English-only manager** | **17** | **19** |
 
 The two Lisbon posts written in Portuguese ask only for fluent English. The strongest local
 language request in Lisbon was "Portuguese strongly preferred" for Discord's Director role.
 
 In Madrid, one post asks for native Spanish with English at B1. A Santander post requires
 Spanish. For an English-only engineering manager, the Madrid market is about a fifth smaller
-than it looks: 19 roles, one more than Lisbon.
+than it looks: 19 roles, two more than Lisbon's 17. Lisbon loses one role too: a German company
+asks for fluent German.
 
 Lisbon has its own language twist: French. A large nearshore sector serves French clients, and
-many lead and manager roles there ask for fluent French.
+many lead and manager roles there ask for fluent French. None of the 18 roles I counted requires
+it (one lists French as a plus): the posts with mandatory French were remote or agency roles,
+which I had already removed.
 
 ## Salaries
 
@@ -215,7 +220,8 @@ Madrid usually work in English. Outside work, you need Spanish from the first we
 ### Do you need Portuguese to work as an engineering manager in Lisbon?
 
 In my sample, no. None of the 18 Lisbon roles required Portuguese; one Director role said it was
-strongly preferred. Several lead roles at nearshore companies required French instead.
+strongly preferred. One role required German, and remote or agency roles at nearshore companies
+often require French.
 
 ### Which city has more engineering manager jobs?
 
