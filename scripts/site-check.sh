@@ -29,6 +29,9 @@ SITES=(
   "https://local-review.shykov.dev/|local-review"
   "https://moat.shykov.dev/|Zero to Moat"
   "https://www.coffeeslack.com/|CoffeeSlack"
+  # The CoffeeSlack backend (Cloud Run): /coffee, OAuth and the dashboard API live
+  # here, not on the marketing host above. /readyz answers 503 until it is ready.
+  "https://api.coffeeslack.com/readyz|\"status\":\"ready\""
   "https://aploma.dev/|Aploma"
   "https://alotno.app/|Alotno"
   "https://darnasobras.com/|DarNas"
